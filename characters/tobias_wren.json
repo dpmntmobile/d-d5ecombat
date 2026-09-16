@@ -1,0 +1,2175 @@
+{
+  \"export_metadata\": {
+    \"format\": \"dnd5ecombat-roll20\",
+    \"version\": 2
+  },
+  \"name\": \"Tobias Wren\",
+  \"character_id\": \"-Oz_bouaN2OyzXtZAFmc\",
+  \"stats\": {
+    \"strength_bonus\": {
+      \"current\": \"0\"
+    },
+    \"dexterity_bonus\": {
+      \"current\": \"0\"
+    },
+    \"constitution_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_bonus\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_base\": {
+      \"current\": 17
+    },
+    \"constitution_base\": {
+      \"current\": 14
+    },
+    \"strength_base\": {
+      \"current\": 10
+    },
+    \"dexterity_base\": {
+      \"current\": 14
+    },
+    \"wisdom_base\": {
+      \"current\": 12
+    },
+    \"charisma_base\": {
+      \"current\": 8
+    },
+    \"strength\": {
+      \"current\": 10
+    },
+    \"strength_mod\": {
+      \"current\": 0
+    },
+    \"dexterity\": {
+      \"current\": 14
+    },
+    \"dexterity_mod\": {
+      \"current\": 2
+    },
+    \"constitution\": {
+      \"current\": 14
+    },
+    \"constitution_mod\": {
+      \"current\": 2
+    },
+    \"intelligence\": {
+      \"current\": 17
+    },
+    \"intelligence_mod\": {
+      \"current\": 3
+    },
+    \"wisdom\": {
+      \"current\": 12
+    },
+    \"wisdom_mod\": {
+      \"current\": 1
+    },
+    \"charisma\": {
+      \"current\": 8
+    },
+    \"charisma_mod\": {
+      \"current\": -1
+    }
+  },
+  \"skills\": {
+    \"stealth_bonus\": {
+      \"current\": 2
+    },
+    \"athletics_bonus\": {
+      \"current\": 0
+    },
+    \"acrobatics_bonus\": {
+      \"current\": 2
+    },
+    \"sleight_of_hand_bonus\": {
+      \"current\": 2
+    },
+    \"arcana_prof\": {
+      \"current\": \"(@{pb}*@{arcana_type})\"
+    },
+    \"arcana_bonus\": {
+      \"current\": 5
+    },
+    \"history_prof\": {
+      \"current\": \"(@{pb}*@{history_type})\"
+    },
+    \"history_bonus\": {
+      \"current\": 5
+    },
+    \"investigation_prof\": {
+      \"current\": \"(@{pb}*@{investigation_type})\"
+    },
+    \"investigation_bonus\": {
+      \"current\": 5
+    },
+    \"nature_bonus\": {
+      \"current\": 3
+    },
+    \"religion_bonus\": {
+      \"current\": 3
+    },
+    \"animal_handling_bonus\": {
+      \"current\": 1
+    },
+    \"insight_bonus\": {
+      \"current\": 1
+    },
+    \"medicine_bonus\": {
+      \"current\": 1
+    },
+    \"perception_prof\": {
+      \"current\": \"(@{pb}*@{perception_type})\"
+    },
+    \"perception_bonus\": {
+      \"current\": 3
+    },
+    \"survival_bonus\": {
+      \"current\": 1
+    },
+    \"deception_bonus\": {
+      \"current\": -1
+    },
+    \"intimidation_bonus\": {
+      \"current\": -1
+    },
+    \"performance_bonus\": {
+      \"current\": -1
+    },
+    \"persuasion_bonus\": {
+      \"current\": -1
+    }
+  },
+  \"hp_and_level\": {
+    \"class\": {
+      \"current\": \"Artificer\"
+    },
+    \"race\": {
+      \"current\": \"Human\"
+    },
+    \"hp\": {
+      \"current\": 10,
+      \"max\": 10
+    },
+    \"speed\": {
+      \"current\": 30
+    },
+    \"ac\": {
+      \"current\": 18
+    },
+    \"initiative_bonus\": {
+      \"current\": 2
+    },
+    \"pb\": {
+      \"current\": \"2\"
+    },
+    \"level\": {
+      \"current\": 1
+    }
+  },
+  \"attacks_and_spellcasting\": {
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_atkattr_base\": {
+      \"current\": \"@{intelligence_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_spellid\": {
+      \"current\": \"-OzZhTJJtJLNO5NNmcV4\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_savedc\": {
+      \"current\": \"(@{intelligence_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_atkname\": {
+      \"current\": \"Fire Bolt\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_atkflag\": {
+      \"current\": \"{{attack=1}}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_dmgbase\": {
+      \"current\": \"[[round((@{level} + 1) / 6 + 0.5)]]d10\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_dmgtype\": {
+      \"current\": \"Fire\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_dmg2flag\": {
+      \"current\": 0
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_atkrange\": {
+      \"current\": \"120 feet\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_saveflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_spelldesc_link\": {
+      \"current\": \"%{-Oz_bouaN2OyzXtZAFmc|repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_output}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_atkattr_base\": {
+      \"current\": \"@{intelligence_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_spellid\": {
+      \"current\": \"-OzZhTJJtJLNO5NNmcV5\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_savedc\": {
+      \"current\": \"(@{intelligence_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_atkname\": {
+      \"current\": \"Cure Wounds\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_atkflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_dmgattr\": {
+      \"current\": \"@{intelligence_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_dmgtype\": {
+      \"current\": \"Healing\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_dmg2flag\": {
+      \"current\": 0
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_atkrange\": {
+      \"current\": \"Touch\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_saveflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_hldmg\": {
+      \"current\": \"{{hldmg=[[(1*?{Cast at what level?|Level 1,0|Level 2,1|Level 3,2|Level 4,3|Level 5,4|Level 6,5|Level 7,6|Level 8,7|Level 9,8})d8]]}}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_spelldesc_link\": {
+      \"current\": \"%{-Oz_bouaN2OyzXtZAFmc|repeating_spell-1_-ozzhtjjtjlno5nnmcv5_output}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_itemid\": {
+      \"current\": \"-OzZhTJKSxITDjn6BJEb\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_atkname\": {
+      \"current\": \"Dagger\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_dmgbase\": {
+      \"current\": \"1d4\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_atkrange\": {
+      \"current\": \"20/60\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_itemid\": {
+      \"current\": \"-OzZhTJKSxITDjn6BJEe\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_atkname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_atkrange\": {
+      \"current\": \"80/320\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_itemid\": {
+      \"current\": \"-OzZhTJKSxITDjn6BJEc\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_atkname\": {
+      \"current\": \"Quarterstaff (One-Handed)\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_dmgbase\": {
+      \"current\": \"1d6\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_dmgtype\": {
+      \"current\": \"Bludgeoning\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_itemid\": {
+      \"current\": \"-OzZhTJKSxITDjn6BJEc\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_atkname\": {
+      \"current\": \"Quarterstaff (Two-Handed)\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_dmgtype\": {
+      \"current\": \"Bludgeoning\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_versatile_alt\": {
+      \"current\": \"1\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_atkdmgtype\": {
+      \"current\": \"1d10 Fire \"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRv_atkbonus\": {
+      \"current\": \"+5\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_atkdmgtype\": {
+      \"current\": \"1d8+3 Healing \"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRw_atkbonus\": {
+      \"current\": \"-\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_atkdmgtype\": {
+      \"current\": \"1d4+2 Piercing \"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRx_atkbonus\": {
+      \"current\": \"+4\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_atkdmgtype\": {
+      \"current\": \"1d8+2 Piercing \"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lS-_atkbonus\": {
+      \"current\": \"+4\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_atkdmgtype\": {
+      \"current\": \"1d6 Bludgeoning \"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRy_atkbonus\": {
+      \"current\": \"+2\"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_atkdmgtype\": {
+      \"current\": \"1d8 Bludgeoning \"
+    },
+    \"repeating_attack_-OzZhTNAlRI2K3yO6lRz_atkbonus\": {
+      \"current\": \"+2\"
+    }
+  },
+  \"traits_and_features\": {
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdc_name\": {
+      \"current\": \"Magical Tinkering\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdc_description\": {
+      \"current\": \"You've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' tools or artisan's tools in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:\
+The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.\
+Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.\
+The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.\
+A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.\
+The chosen property lasts indefinitely. As an action, you can touch the object and end the property early.\
+You can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.\
+\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdc_source_type\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdc_source\": {
+      \"current\": \"Class\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdc_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdc_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdd_name\": {
+      \"current\": \"Artificer Spellcasting\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdd_description\": {
+      \"current\": \"You've studied the workings of magic and how to cast spells, channeling the magic through objects. To observers, you don't appear to be casting spells in a conventional way; you appear to produce wonders from mundane items and outlandish inventions.\
+Tools Required\
+You produce your artificer spell effects through your tools. You must have a spellcasting focus—specifically thieves' tools or some kind of artisan's tool—in hand when you cast any spell with this Spellcasting feature (meaning the spell has an \\\"M\\\" component when you cast it). You must be proficient with the tool to use it in this way. See the equipment chapter in the Player's Handbook for descriptions of these tools.\
+After you gain the Infuse Item feature at 2nd level, you can also use any item bearing one of your infusions as a spellcasting focus.\
+Cantrips (0-Level Spells)\
+You know two cantrips of your choice from the artificer spell list. At higher levels, you learn additional artificer cantrips of your choice, as shown in the Cantrips Known column of the Artificer table.\
+When you gain a level in this class, you can replace one of the artificer cantrips you know with another cantrip from the artificer spell list.\
+Preparing and Casting Spells\
+The Artificer table shows how many spell slots you have to cast your artificer spells. To cast one of your artificer spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.\
+You prepare the list of artificer spells that are available for you to cast, choosing from the artificer spell list. When you do so, choose a number of artificer spells equal to your Intelligence modifier + half your artificer level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots.\
+For example, if you are a 5th-level artificer, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 14, your list of prepared spells can include four spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.\
+You can change your list of prepared spells when you finish a long rest. Preparing a new list of artificer spells requires time spent tinkering with your spellcasting focuses: at least 1 minute per spell level for each spell on your list.\
+Spellcasting Ability\
+Intelligence is your spellcasting ability for your artificer spells; your understanding of the theory behind magic allows you to wield these spells with superior skill. You use your Intelligence whenever an artificer spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for an artificer spell you cast and when making an attack roll with one.\
+Spell save DC = 8 + your proficiency bonus + your Intelligence modifier\
+Spell attack modifier = your proficiency bonus + your Intelligence modifier\
+Ritual Casting\
+You can cast an artificer spell as a ritual if that spell has the ritual tag and you have the spell prepared.\
+\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdd_source_type\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdd_source\": {
+      \"current\": \"Class\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdd_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzZhTJH2ZyeZBluQIdd_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-OzZhTJIQinO05JixSVA_name\": {
+      \"current\": \"Researcher\"
+    },
+    \"repeating_traits_-OzZhTJIQinO05JixSVA_description\": {
+      \"current\": \"When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign.\"
+    },
+    \"repeating_traits_-OzZhTJIQinO05JixSVA_source_type\": {
+      \"current\": \"Sage\"
+    },
+    \"repeating_traits_-OzZhTJIQinO05JixSVA_source\": {
+      \"current\": \"Background\"
+    },
+    \"repeating_traits_-OzZhTJIQinO05JixSVA_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzZhTJIQinO05JixSVA_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-OzZhTJKSxITDjn6BJEm_name\": {
+      \"current\": \"Fey Touched\"
+    },
+    \"repeating_traits_-OzZhTJKSxITDjn6BJEm_description\": {
+      \"current\": \"Your exposure to the Feywild's magic has changed you, granting you the following benefits:\
+Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\
+You learn the misty step spell and one 1st-level spell of your choice. The 1st-level spell must be from the divination or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.\"
+    },
+    \"repeating_traits_-OzZhTJKSxITDjn6BJEm_source\": {
+      \"current\": \"Feat\"
+    },
+    \"repeating_traits_-OzZhTJKSxITDjn6BJEm_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzZhTJKSxITDjn6BJEm_display_flag\": {
+      \"current\": \"on\"
+    }
+  },
+  \"inventory\": {
+    \"repeating_inventory_-OzZhTJIQinO05JixSVB_itemname\": {
+      \"current\": \"Bottle of Black Ink\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVB_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVB_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVB_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVB_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVB_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVC_itemname\": {
+      \"current\": \"Quill\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVC_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVC_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVC_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVC_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVC_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVD_itemname\": {
+      \"current\": \"Small Knife\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVD_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVD_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVD_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVD_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVD_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_itemname\": {
+      \"current\": \"Letter from Professor Elric Vael\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVF_itemname\": {
+      \"current\": \"Belt Pouch\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVF_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVF_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVF_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVF_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVF_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemname\": {
+      \"current\": \"Dagger\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemproperties\": {
+      \"current\": \"Finesse, Light, Range, Thrown\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Dagger\
+Melee weapon (simple, dagger)  Finesse.&nbsp;When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls.  Light.&nbsp;A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.  Range. A weapon that can be used to make a ranged attack has a range in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's long range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range.&nbsp;  Thrown.&nbsp;If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property.  Damage: 1d4\
+Damage Type: Piercing\
+Properties: Finesse, Light, Range, Thrown\
+Range: 20/60\
+Weight: 1\
+ \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 1d4, Damage Type: Piercing, Range: 20/60,Critical Range: 20,Critical Range: 20,Critical Range: 20\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemname\": {
+      \"current\": \"Quarterstaff\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemproperties\": {
+      \"current\": \"Versatile\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemweight\": {
+      \"current\": \"4\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Quarterstaff\
+ Melee weapon (simple, quarterstaff)  Versatile. This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack.\
+   Damage: 1d6 (1d8)\
+  Damage Type: Bludgeoning  Properties: Versatile  Weight: 4 \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 1d6, Damage Type: Bludgeoning, Alternate Damage: 1d8, Alternate Damage Type: Bludgeoning\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_itemname\": {
+      \"current\": \"Scale Mail\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_itemproperties\": {
+      \"current\": \"Stealth Disadvantage\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_itemweight\": {
+      \"current\": \"45\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Scale Mail  Armor (medium)  This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.  Stealth. The wearer has disadvantage on Dexterity (Stealth) checks.&nbsp;\
+  AC:&nbsp;14&nbsp;+&nbsp;Dex&nbsp;modifier&nbsp;(max&nbsp;2)  Stealth: Disadvantage\
+ Weight: 45\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_itemmodifiers\": {
+      \"current\": \"Item Type: Medium Armor, AC: 14, Stealth:Disadvantage\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemproperties\": {
+      \"current\": \"Two-Handed, Range, Loading, Ammunition\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t  Light Crossbow\
+Ranged weapon (simple, light crossbow)  Ammunition. You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\
+\
+If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \\\"Improvised Weapons\\\" later in the section). A sling must be loaded to deal any damage when used in this way.  Loading. Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.  Two-Handed. This weapon requires two hands when you attack with it.\
+  Damage: 1d8\
+Damage Type: Piercing\
+Properties: Ammunition, Loading, Two-Handed\
+Range: 80/320\
+Weight: 5 \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemmodifiers\": {
+      \"current\": \"Item Type: Ranged Weapon, Damage: 1d8, Damage Type: Piercing, Range: 80/320,Critical Range: 20,Critical Range: 20,Critical Range: 20\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_itemname\": {
+      \"current\": \"Crossbow Bolts\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_itemcount\": {
+      \"current\": 20
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_itemweight\": {
+      \"current\": \"0.075\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Crossbow Bolts\
+Ammunition\
+  You can use a weapon that has the ammunition property to make a&nbsp;ranged attack&nbsp;only if you have ammunition to fire from the&nbsp;weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a&nbsp;quiver,&nbsp;case, or other container is part of the&nbsp;attack&nbsp;(you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\
+  Weight: 0.075\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEf_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_itemname\": {
+      \"current\": \"Thieves' Tools\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Thieves' Tools\
+Tools\
+  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tThis set of tools includes a small file, a set of lock picks, a small mirror mounted on a metal handle, a set of narrow-bladed scissors, and a pair of pliers. Proficiency with these tools lets you add your proficiency bonus to any ability checks you make to disarm traps or open locks.  Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_itemmodifiers\": {
+      \"current\": \"Item Type: Tool\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEg_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_itemname\": {
+      \"current\": \"Dungeoneer's Pack\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Dungeoneer's Pack\
+Adventuring gear  Includes a backpack, a crowbar, a hammer, 10 pitons, 10 torches, a tinderbox, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it.\
+ \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEh_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_itemname\": {
+      \"current\": \"Common Clothes\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_itemweight\": {
+      \"current\": \"3\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Common clothes\
+Adventuring gear (clothing)  Weight: 3\
+ \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEi_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_itemname\": {
+      \"current\": \"Crossbow bolts\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_itemcount\": {
+      \"current\": 20
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_itemweight\": {
+      \"current\": \"0.075\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_itemcontent\": {
+      \"current\": \" \
+\\t\\t\\t  Crossbow Bolts\
+Ammunition\
+\
+Ammunition: You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\
+\
+Weight: 0.075\
+\\t\\t \"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEk_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_itemname\": {
+      \"current\": \"Common clothes\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_itemweight\": {
+      \"current\": \"3\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_itemcontent\": {
+      \"current\": \" \
+\\t\\t\\t  Common Clothes\
+Adventuring gear (clothing)\
+\
+Weight: 3\
+\\t\\t \"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEl_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_itemname\": {
+      \"current\": \"Backpack\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Backpack\
+Adventuring gear (container)\
+  A backpack can hold one cubic foot or 30 pounds of gear. You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack.  Weight: 5\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEn_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_itemname\": {
+      \"current\": \"Crowbar\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Crowbar\
+Adventuring gear\
+  Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.  Weight: 5\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEo_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_itemname\": {
+      \"current\": \"Hammer\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_itemweight\": {
+      \"current\": \"3\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Hammer  Adventuring gear\
+\
+  \
+  Weight: 3 \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEp_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_itemname\": {
+      \"current\": \"Piton\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_itemweight\": {
+      \"current\": \"0.25\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_itemcontent\": {
+      \"current\": \" Piton\
+Adventuring gear  Weight: 0.25\
+ \"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEq_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_itemname\": {
+      \"current\": \"Torch\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Torch\
+Adventuring gear\
+  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tA torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.  Damage: 1\
+Damage Type: Fire\
+Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear, Damage: 1, Damage Type: Fire, Range: 20/40\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEr_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_itemname\": {
+      \"current\": \"Tinderbox\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Tinderbox\
+Adventuring gear\
+  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tThis small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch - or anything else with abundant, exposed fuel - takes an action. Lighting any other fire takes 1 minute.  Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEs_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_itemname\": {
+      \"current\": \"Rations\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_itemweight\": {
+      \"current\": \"2\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Rations (1 day)\
+Adventuring gear \
+Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.\
+\\t\\t\\t\\t\
+\
+Weight: 2\
+\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEt_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_itemname\": {
+      \"current\": \"Waterskin\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Waterskin\
+Adventuring gear (container)\
+  A waterskin can hold up to 4 pints of liquid.  Weight: 5 (when full)\
+\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEu_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEb_itemattackid\": {
+      \"current\": \"-OzZhTNAlRI2K3yO6lRx\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEc_itemattackid\": {
+      \"current\": \"-OzZhTNAlRI2K3yO6lRy,-OzZhTNAlRI2K3yO6lRz\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEe_itemattackid\": {
+      \"current\": \"-OzZhTNAlRI2K3yO6lS-\"
+    },
+    \"repeating_inventory_-OzZhTJKSxITDjn6BJEd_inventorysubflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_itemname\": {
+      \"current\": \"Shield\"
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_itemweight\": {
+      \"current\": \"6\"
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_itemcontent\": {
+      \"current\": \" Shield\
+Armor (shield)\
+   A shield is made from wood or metal and is carried in one hand. Wielding a shield increases your Armor Class by 2. You can benefit from only one shield at a time.&nbsp;  AC: 2\
+Weight: 6 \
+\\t\\t\\t\
+\\t\\t\"
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_itemmodifiers\": {
+      \"current\": \"Item Type: Shield, AC: 2\"
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzbYSV8nmZ4s7KOsNOZ_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_itemname\": {
+      \"current\": \"Hempen Rope\"
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Hempen Rope (50 feet)\
+Adventuring gear \
+Rope, whether made of hemp or silk, has 2 hit points and can be burst with a DC 17 Strength check.\
+\
+Weight: 10\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzbYVTEGlqjC9sFYREq_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-P-cuDuoVmZlHVqtPJ6v_itemname\": {
+      \"current\": \"The Wren Houds\"
+    },
+    \"repeating_inventory_-P-cuDuoVmZlHVqtPJ6v_inventorysubflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-P-cuDuoVmZlHVqtPJ6v_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-OzZhTJIQinO05JixSVE_inventorysubflag\": {
+      \"current\": \"0\"
+    }
+  },
+  \"resources\": {},
+  \"other_repeating_attributes\": {
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdX_name\": {
+      \"current\": \"Simple weapons\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdX_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdX_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdY_name\": {
+      \"current\": \"Light armor\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdY_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdY_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdZ_name\": {
+      \"current\": \"shields\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdZ_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIdZ_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_toolname\": {
+      \"current\": \"Thieves' Tools\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_toolattr_base\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_toolname\": {
+      \"current\": \"Tinker's Tools\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_toolattr_base\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIde_name\": {
+      \"current\": \"Common\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIde_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-OzZhTJH2ZyeZBluQIde_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV-_name\": {
+      \"current\": \"Dwarvish\"
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV-_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV-_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV0_name\": {
+      \"current\": \"Goblin\"
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV0_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV0_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV1_name\": {
+      \"current\": \"Draconic\"
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV1_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-OzZhTJJtJLNO5NNmcV1_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_toolname\": {
+      \"current\": \"Smith's Tools\"
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_toolattr_base\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}\"
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_details-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spell_ability\": {
+      \"current\": \"@{intelligence_mod}+\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellclass\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellcomp_m\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellconcentration\": {
+      \"current\": \"{{concentration=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spelldescription\": {
+      \"current\": \"You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends.\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellduration\": {
+      \"current\": \"Up to 1 minute\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellname\": {
+      \"current\": \"Guidance\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spelloutput\": {
+      \"current\": \"SPELLCARD\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellrange\": {
+      \"current\": \"Touch\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spellschool\": {
+      \"current\": \"divination\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV3_spelltarget\": {
+      \"current\": \"One willing creature\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_rollcontent\": {
+      \"current\": \"%{-Oz_bouaN2OyzXtZAFmc|repeating_attack_-OzZhTNAlRI2K3yO6lRv_attack}\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spell_ability\": {
+      \"current\": \"@{intelligence_mod}+\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spell_damage_progression\": {
+      \"current\": \"Cantrip Dice\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellattack\": {
+      \"current\": \"Ranged\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellclass\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellcomp_m\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spelldamage\": {
+      \"current\": \"1d10\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spelldamagetype\": {
+      \"current\": \"Fire\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spelldescription\": {
+      \"current\": \"You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn’t being worn or carried. This spell’s damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10).\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellname\": {
+      \"current\": \"Fire Bolt\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellrange\": {
+      \"current\": \"120 feet\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellschool\": {
+      \"current\": \"evocation\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spelltarget\": {
+      \"current\": \"A creature or object within range\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_rollcontent\": {
+      \"current\": \"%{-Oz_bouaN2OyzXtZAFmc|repeating_attack_-OzZhTNAlRI2K3yO6lRw_attack}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spell_ability\": {
+      \"current\": \"@{intelligence_mod}+\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellathigherlevels\": {
+      \"current\": \"When you cast this spell using a spell slot of 2nd level or higher, the Healing increases by 1d8 for each slot level above 1st.\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellclass\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellcomp_m\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spelldescription\": {
+      \"current\": \"A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs.\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spelldmgmod\": {
+      \"current\": \"Yes\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellhealing\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellhldie\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellhldietype\": {
+      \"current\": \"d8\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellname\": {
+      \"current\": \"Cure Wounds\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellrange\": {
+      \"current\": \"Touch\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellschool\": {
+      \"current\": \"evocation\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spelltarget\": {
+      \"current\": \"A creature you touch\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spell_ability\": {
+      \"current\": \"@{intelligence_mod}+\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellclass\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellcomp_m\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellcomp_s\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellconcentration\": {
+      \"current\": \"{{concentration=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spelldescription\": {
+      \"current\": \"Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice). Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius. Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can’t benefit from being invisible.\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellduration\": {
+      \"current\": \"Up to 1 minute\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellname\": {
+      \"current\": \"Faerie Fire\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spelloutput\": {
+      \"current\": \"SPELLCARD\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellschool\": {
+      \"current\": \"evocation\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spelltarget\": {
+      \"current\": \"Each object in a 20-foot cube within range\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spell_ability\": {
+      \"current\": \"@{intelligence_mod}+\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellclass\": {
+      \"current\": \"Artificer\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellcomp_m\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellconcentration\": {
+      \"current\": \"{{concentration=1}}\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spelldescription\": {
+      \"current\": \"For the duration, you sense the presence of magic within 30 feet of you. If you sense magic in this way, you can use your action to see a faint aura around any visible creature or object in the area that bears magic, and you learn its school of magic, if any. The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellduration\": {
+      \"current\": \"Up to 10 minutes\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellname\": {
+      \"current\": \"Detect Magic\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spelloutput\": {
+      \"current\": \"SPELLCARD\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellrange\": {
+      \"current\": \"Self\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellritual\": {
+      \"current\": \"Yes\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellschool\": {
+      \"current\": \"divination\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spelltarget\": {
+      \"current\": \"Self\"
+    },
+    \"repeating_spell-cantrip_-OzZhTJJtJLNO5NNmcV4_spellattackid\": {
+      \"current\": \"-OzZhTNAlRI2K3yO6lRv\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellattackid\": {
+      \"current\": \"-OzZhTNAlRI2K3yO6lRw\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_toolattr\": {
+      \"current\": \"QUERY\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_toolbonus\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}+0+2\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIda_toolbonus_display\": {
+      \"current\": \"?\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_toolattr\": {
+      \"current\": \"QUERY\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_toolbonus\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}+0+2\"
+    },
+    \"repeating_tool_-OzZhTJH2ZyeZBluQIdb_toolbonus_display\": {
+      \"current\": \"?\"
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_toolattr\": {
+      \"current\": \"QUERY\"
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_toolbonus\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}+0+2\"
+    },
+    \"repeating_tool_-OzZhTJJtJLNO5NNmcV2_toolbonus_display\": {
+      \"current\": \"?\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spell_ability\": {
+      \"current\": \"spell\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellcastingtime\": {
+      \"current\": \"1 bonus action\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellcomp_m\": {
+      \"current\": 0
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellcomp_s\": {
+      \"current\": 0
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spelldescription\": {
+      \"current\": \"Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see.\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spelllevel\": {
+      \"current\": \"2\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellname\": {
+      \"current\": \"Misty Step\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spelloutput\": {
+      \"current\": \"SPELLCARD\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellrange\": {
+      \"current\": \"Self\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spellschool\": {
+      \"current\": \"conjuration\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_spelltarget\": {
+      \"current\": \"Self\"
+    },
+    \"repeating_spell-2_-OzZhTU24TFUR2hRZObc_roll_output_dc\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spell_ability\": {
+      \"current\": \"spell\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellathigherlevels\": {
+      \"current\": \"When you cast this spell using a spell slot of 2nd level or higher, you can target one additional creature for each slot level above 1st.\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellcomp_m\": {
+      \"current\": \"{{m=1}}\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellcomp_materials\": {
+      \"current\": \"A sprinkling of holy water\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellconcentration\": {
+      \"current\": \"{{concentration=1}}\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spelldescription\": {
+      \"current\": \"You bless up to three creatures of your choice within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target can roll a d4 and add the number rolled to the attack roll or saving throw.\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellduration\": {
+      \"current\": \"Up to 1 minute\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellname\": {
+      \"current\": \"Bless\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spelloutput\": {
+      \"current\": \"SPELLCARD\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellrange\": {
+      \"current\": \"30 feet\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spellschool\": {
+      \"current\": \"enchantment\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_spelltarget\": {
+      \"current\": \"Up to three creatures of your choice within range\"
+    },
+    \"repeating_spell-1_-OzbYiyHL7ZsiyZTeGkf_roll_output_dc\": {
+      \"current\": 13
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV5_spellprepared\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV7_spellprepared\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-OzZhTJJtJLNO5NNmcV6_spellprepared\": {
+      \"current\": \"1\"
+    }
+  },
+  \"other_attributes\": {
+    \"hitdieroll\": {
+      \"current\": \"8\"
+    },
+    \"showleveler\": {
+      \"current\": 0
+    },
+    \"invalidXP\": {
+      \"current\": 0
+    },
+    \"sheet_version\": {
+      \"current\": 1
+    },
+    \"version\": {
+      \"current\": 4.21
+    },
+    \"queryadvantage\": {
+      \"current\": \"{{query=1}} ?{Advantage?|Normal Roll,&#123&#123normal=1&#125&#125 &#123&#123r2=[[0d20|Advantage,&#123&#123advantage=1&#125&#125 &#123&#123r2=[[@{d20}|Disadvantage,&#123&#123disadvantage=1&#125&#125 &#123&#123r2=[[@{d20}}\"
+    },
+    \"other_tool\": {
+      \"current\": \"Smith's Tools, Thieves' Tools, Tinker's Tools\"
+    },
+    \"other_languages\": {
+      \"current\": \"Common, Draconic, Dwarvish, Goblin\"
+    },
+    \"other_armor\": {
+      \"current\": \"Light armor, shields\"
+    },
+    \"other_weapon\": {
+      \"current\": \"Simple weapons\"
+    },
+    \"mancer_confirm\": {
+      \"current\": \"on\"
+    },
+    \"class_resource_name\": {
+      \"current\": \"Tinkers\"
+    },
+    \"class_resource\": {
+      \"current\": 3,
+      \"max\": 3
+    },
+    \"class_display\": {
+      \"current\": \"Artificer 1\"
+    },
+    \"hitdietype\": {
+      \"current\": \"8\"
+    },
+    \"hitdie_final\": {
+      \"current\": \"@{hitdietype}\"
+    },
+    \"subrace\": {
+      \"current\": \"Variant Human\"
+    },
+    \"race_display\": {
+      \"current\": \"Variant Human\"
+    },
+    \"custom_class\": {
+      \"current\": \"0\"
+    },
+    \"creaturetype\": {
+      \"current\": \"Humanoid\"
+    },
+    \"size\": {
+      \"current\": \"Medium\"
+    },
+    \"alignment\": {
+      \"current\": \"Chaotic Good\"
+    },
+    \"spellcasting_ability\": {
+      \"current\": \"@{intelligence_mod}+\"
+    },
+    \"death_save_bonus\": {
+      \"current\": 0
+    },
+    \"weighttotal\": {
+      \"current\": 142.5
+    },
+    \"hit_dice\": {
+      \"current\": \"1\",
+      \"max\": 1
+    },
+    \"jack\": {
+      \"current\": 1
+    },
+    \"caster_level\": {
+      \"current\": 1
+    },
+    \"spell_attack_mod\": {
+      \"current\": 0
+    },
+    \"spell_attack_bonus\": {
+      \"current\": 5
+    },
+    \"spell_save_dc\": {
+      \"current\": 13
+    },
+    \"passive_wisdom\": {
+      \"current\": 13
+    },
+    \"background\": {
+      \"current\": \"Sage (Researcher)\"
+    },
+    \"halflingluck_flag\": {
+      \"current\": 0
+    },
+    \"tab\": {
+      \"current\": \"core\"
+    },
+    \"base_level\": {
+      \"current\": \"1\"
+    },
+    \"armorwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"customacwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"custom_ac_flag\": {
+      \"current\": \"0\"
+    },
+    \"custom_attack_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_lvl\": {
+      \"current\": \"1\"
+    },
+    \"multiclass2_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass2_lvl\": {
+      \"current\": \"1\"
+    },
+    \"multiclass3_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass3_lvl\": {
+      \"current\": \"1\"
+    },
+    \"strength_save_prof\": {
+      \"current\": 0
+    },
+    \"strength_save_bonus\": {
+      \"current\": 0
+    },
+    \"dexterity_save_prof\": {
+      \"current\": 0
+    },
+    \"dexterity_save_bonus\": {
+      \"current\": 2
+    },
+    \"constitution_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"constitution_save_bonus\": {
+      \"current\": 4
+    },
+    \"intelligence_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"intelligence_save_bonus\": {
+      \"current\": 5
+    },
+    \"wisdom_save_prof\": {
+      \"current\": 0
+    },
+    \"wisdom_save_bonus\": {
+      \"current\": 1
+    },
+    \"charisma_save_prof\": {
+      \"current\": 0
+    },
+    \"charisma_save_bonus\": {
+      \"current\": -1
+    },
+    \"personality_traits\": {
+      \"current\": \"I'm used to helping out those who aren't as smart as I am, and I patiently explain anything and everything to others.\
+\
+I am horribly, horribly awkward in social situations.\"
+    },
+    \"ideals\": {
+      \"current\": \"No Limits. Nothing should fetter the infinite possibility inherent in all existence. (Chaotic)\"
+    },
+    \"bonds\": {
+      \"current\": \"My life’s work is a series of tomes related to a specific field of lore.\"
+    },
+    \"flaws\": {
+      \"current\": \"I am easily distracted by the promise of information.\"
+    },
+    \"hero_points\": {
+      \"current\": 5
+    },
+    \"d20\": {
+      \"current\": \"1d20\"
+    },
+    \"encumberance\": {
+      \"current\": \" \"
+    },
+    \"strength_flag\": {
+      \"current\": 0
+    },
+    \"dexterity_flag\": {
+      \"current\": 0
+    },
+    \"constitution_flag\": {
+      \"current\": 0
+    },
+    \"intelligence_flag\": {
+      \"current\": 0
+    },
+    \"wisdom_flag\": {
+      \"current\": 0
+    },
+    \"charisma_flag\": {
+      \"current\": 0
+    },
+    \"npc_str_negative\": {
+      \"current\": 0
+    },
+    \"npc_dex_negative\": {
+      \"current\": 0
+    },
+    \"npc_con_negative\": {
+      \"current\": 0
+    },
+    \"npc_int_negative\": {
+      \"current\": 0
+    },
+    \"npc_wis_negative\": {
+      \"current\": 0
+    },
+    \"npc_cha_negative\": {
+      \"current\": 1
+    },
+    \"l1mancer_status\": {
+      \"current\": \"completed\"
+    },
+    \"options-class-selection\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-personality\": {
+      \"current\": 0
+    },
+    \"options-flag-ideals\": {
+      \"current\": 0
+    },
+    \"options-flag-bonds\": {
+      \"current\": 0
+    },
+    \"options-flag-flaws\": {
+      \"current\": 0
+    },
+    \"_reporder_repeating_proficiencies\": {
+      \"current\": \"-OzZhTJH2ZyeZBluQIdY,-OzZhTJH2ZyeZBluQIdZ,-OzZhTJH2ZyeZBluQIde,-OzZhTJJtJLNO5NNmcV1,-OzZhTJJtJLNO5NNmcV-,-OzZhTJJtJLNO5NNmcV0,-OzZhTJH2ZyeZBluQIdX\"
+    },
+    \"lvl1_slots_total\": {
+      \"current\": 2
+    },
+    \"lvl2_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl3_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl4_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl5_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl6_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl7_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl8_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl9_slots_total\": {
+      \"current\": 0
+    },
+    \"honor_save_bonus\": {
+      \"current\": 0
+    },
+    \"sanity_save_bonus\": {
+      \"current\": 0
+    },
+    \"age\": {
+      \"current\": \"28\"
+    },
+    \"height\": {
+      \"current\": \"1.78 m\"
+    },
+    \"hair\": {
+      \"current\": \"dark brown\"
+    },
+    \"eyes\": {
+      \"current\": \"grey/blue\"
+    },
+    \"allies_and_organizations\": {
+      \"current\": \"Master Aldren Vey, Vey's Instruments & Arcana (Tinkering)\
+House of Wonder (Formal schooling)\"
+    },
+    \"lvl1_slots_expended\": {
+      \"current\": \"2\"
+    },
+    \"rtype\": {
+      \"current\": \"@{advantagetoggle}\"
+    },
+    \"dtype\": {
+      \"current\": \"full\"
+    },
+    \"weight\": {
+      \"current\": \"72 kg\"
+    },
+    \"skin\": {
+      \"current\": \"Fair\"
+    },
+    \"character_backstory\": {
+      \"current\": \"Letter from Professor Vael:\
+\
+Tobias Wren,\
+\
+I have now read your account three times.\
+\
+On the first reading, I assumed that some detail had been omitted. On the second, I suspected that your recollection had been distorted by age. On the third, I began to suspect that the inconsistencies themselves may be significant.\
+\
+Your frustration with them is understandable, but misplaced.\
+\
+You remember vegetation unlike that surrounding Waterdeep. You remember laughter without a visible source. You remember encountering someone—or something—whose appearance refuses to remain fixed in your memory. Most significantly, your perception of the time spent there does not agree with the time that passed here.\
+\
+Any one of these observations could be dismissed. Together, they deserve investigation.\
+\
+Your subsequent aptitude for short-range translocation is harder to dismiss still.\
+\
+I have considered your theories concerning residual teleportation magic and accidental planar intersection. Neither is impossible. Your suggestion of localized reality distortion is ingenious, although I suspect you are using the phrase chiefly because it permits you to place several things you do not understand into the same category.\
+\
+Your hypothesis concerning the Feywild is more interesting.\
+\
+Do not mistake that for confirmation.\
+\
+There is insufficient evidence.\
+\
+You have approached this problem as I would expect you to approach it: you are attempting to determine where you went, by what mechanism you arrived there, and what alteration produced the ability you subsequently developed.\
+\
+Those are reasonable questions.\
+\
+I am no longer convinced they are the correct ones.\
+\
+There is one element of your account that you consistently treat as incidental.\
+\
+You returned.\
+\
+Whatever occurred, you were a child alone in a place you did not understand, subject to forces you could neither identify nor control. Yet you returned to Waterdeep unharmed, carrying with you an ability you did not possess before.\
+\
+Perhaps that was chance.\
+\
+Perhaps you escaped.\
+\
+Perhaps something sent you back.\
+\
+Or perhaps you were permitted to leave.\
+\
+I cannot determine which from the evidence available to me.\
+\
+Neither can you.\
+\
+So I suggest that you stop asking, for the moment,  Where you went.\
+\
+Determine instead: Why you were allowed to return.\
+\
+I suspect the answer to that question will prove considerably more important.\
+\
+Professor Elric Vael\
+Planar Studies, House of Wonder\
+Waterdeep\
+\"
+    },
+    \"inspiration\": {
+      \"current\": \"0\"
+    }
+  }
+}

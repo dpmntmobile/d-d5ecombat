@@ -1,0 +1,742 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dnd5ecombat.example/schemas/v1/native-character.schema.json",
+  "title": "D&D 5e Combat Native Character Profile",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/attackResourceLimits"
+    }
+  ],
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "name"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "name": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "primary_attack_name": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "attack_bonus": {
+      "type": "integer"
+    },
+    "damage_dice": {
+      "$ref": "#/$defs/damageDiceList"
+    },
+    "damage_modifier": {
+      "type": "integer"
+    },
+    "damage_type": {
+      "type": "string"
+    },
+    "attack_mode": {
+      "enum": [
+        "",
+        "melee",
+        "ranged",
+        "melee_or_ranged"
+      ]
+    },
+    "reach_feet": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "normal_range_feet": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "long_range_feet": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "condition_effect": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/conditionEffect"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "unmodeled_effects": {
+      "$ref": "#/$defs/stringList"
+    },
+    "limited_uses": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "recharge_min_roll": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 2,
+      "maximum": 6
+    },
+    "reroll_damage_at_or_below": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "action_type": {
+      "enum": [
+        "action",
+        "bonus_action",
+        "reaction"
+      ]
+    },
+    "armor_class": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_hp": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "save_bonus": {
+      "type": "integer"
+    },
+    "initiative_bonus": {
+      "type": "integer"
+    },
+    "attacks_per_action": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "equipment": {
+      "$ref": "#/$defs/stringList"
+    },
+    "attack_profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attackProfile"
+      }
+    },
+    "saving_throw_profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/savingThrowProfile"
+      }
+    },
+    "turn_plans": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/turnPlan"
+      }
+    },
+    "saving_throw_bonuses": {
+      "$ref": "#/$defs/savingThrowBonuses"
+    },
+    "damage_resistances": {
+      "$ref": "#/$defs/uniqueStrings"
+    },
+    "damage_vulnerabilities": {
+      "$ref": "#/$defs/uniqueStrings"
+    },
+    "damage_immunities": {
+      "$ref": "#/$defs/uniqueStrings"
+    },
+    "condition_immunities": {
+      "$ref": "#/$defs/uniqueStrings"
+    },
+    "creature_tags": {
+      "$ref": "#/$defs/uniqueStrings"
+    },
+    "spell_slots": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[1-9]$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "spell_slot_level": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9
+    },
+    "pact_slots": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[1-9]$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "maxProperties": 1
+    },
+    "spell_slot_pool": {
+      "enum": [
+        "spellcasting",
+        "pact",
+        "any"
+      ]
+    },
+    "allow_upcast": {
+      "type": "boolean"
+    },
+    "upcast_damage_dice": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "number",
+          "sides"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sides": {
+            "type": "integer",
+            "minimum": 2
+          }
+        }
+      }
+    },
+    "pack_tactics": {
+      "type": "boolean"
+    },
+    "aggressive": {
+      "type": "boolean"
+    },
+    "nimble_escape": {
+      "type": "boolean"
+    },
+    "stealth_bonus": {
+      "type": "integer"
+    },
+    "passive_perception": {
+      "type": "integer"
+    },
+    "spell_slot_capacity": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[1-9]$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "pact_slot_capacity": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[1-9]$"
+      },
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "maxProperties": 1
+    }
+  },
+  "$defs": {
+    "attackResourceLimits": {
+      "not": {
+        "required": [
+          "limited_uses",
+          "recharge_min_roll"
+        ],
+        "properties": {
+          "limited_uses": {
+            "type": "integer"
+          },
+          "recharge_min_roll": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "conditionEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "difficulty_class",
+        "save_ability",
+        "condition"
+      ],
+      "properties": {
+        "difficulty_class": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "save_ability": {
+          "enum": [
+            "str",
+            "dex",
+            "con",
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "condition": {
+          "enum": [
+            "prone",
+            "paralyzed",
+            "poisoned",
+            "restrained",
+            "stunned",
+            "incapacitated"
+          ]
+        },
+        "repeat_save_at_end_of_turn": {
+          "type": "boolean"
+        },
+        "duration_turns": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "immune_creature_tags": {
+          "$ref": "#/$defs/uniqueStrings"
+        }
+      }
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actionType": {
+      "enum": [
+        "action",
+        "bonus_action",
+        "reaction"
+      ]
+    },
+    "uniqueStrings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "stringList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "damageDie": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "number",
+        "sides"
+      ],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sides": {
+          "type": "integer",
+          "minimum": 2
+        }
+      }
+    },
+    "damageDiceList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/damageDie"
+      },
+      "minItems": 1
+    },
+    "savingThrowBonuses": {
+      "type": "object",
+      "additionalProperties": false,
+      "propertyNames": {
+        "enum": [
+          "str",
+          "dex",
+          "con",
+          "int",
+          "wis",
+          "cha"
+        ]
+      },
+      "patternProperties": {
+        "^(str|dex|con|int|wis|cha)$": {
+          "type": "integer"
+        }
+      }
+    },
+    "attackProfile": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/attackResourceLimits"
+        }
+      ],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "attack_bonus",
+        "damage_dice"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "attack_bonus": {
+          "type": "integer"
+        },
+        "damage_dice": {
+          "$ref": "#/$defs/damageDiceList"
+        },
+        "damage_modifier": {
+          "type": "integer"
+        },
+        "damage_type": {
+          "type": "string"
+        },
+        "attack_mode": {
+          "enum": [
+            "",
+            "melee",
+            "ranged",
+            "melee_or_ranged"
+          ]
+        },
+        "reach_feet": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "normal_range_feet": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "long_range_feet": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "condition_effect": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/conditionEffect"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unmodeled_effects": {
+          "$ref": "#/$defs/stringList"
+        },
+        "limited_uses": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "recharge_min_roll": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 2,
+          "maximum": 6
+        },
+        "reroll_damage_at_or_below": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "action_type": {
+          "enum": [
+            "action",
+            "bonus_action",
+            "reaction"
+          ]
+        },
+        "spell_slot_level": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 9
+        },
+        "spell_slot_pool": {
+          "enum": [
+            "spellcasting",
+            "pact",
+            "any"
+          ]
+        },
+        "allow_upcast": {
+          "type": "boolean"
+        },
+        "upcast_damage_dice": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "number",
+              "sides"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sides": {
+                "type": "integer",
+                "minimum": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    "savingThrowProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "difficulty_class",
+        "damage_dice"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "difficulty_class": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "damage_dice": {
+          "$ref": "#/$defs/damageDiceList"
+        },
+        "damage_modifier": {
+          "type": "integer"
+        },
+        "damage_on_success": {
+          "enum": [
+            "no_damage",
+            "half_damage"
+          ]
+        },
+        "save_ability": {
+          "enum": [
+            "",
+            "str",
+            "dex",
+            "con",
+            "int",
+            "wis",
+            "cha"
+          ]
+        },
+        "damage_type": {
+          "type": "string"
+        },
+        "action_type": {
+          "enum": [
+            "action",
+            "bonus_action",
+            "reaction"
+          ]
+        },
+        "unmodeled_effects": {
+          "$ref": "#/$defs/stringList"
+        },
+        "limited_uses": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "recharge_min_roll": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 2,
+          "maximum": 6
+        },
+        "spell_slot_level": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 9
+        },
+        "range_feet": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "spell_slot_pool": {
+          "enum": [
+            "spellcasting",
+            "pact",
+            "any"
+          ]
+        },
+        "allow_upcast": {
+          "type": "boolean"
+        },
+        "upcast_damage_dice": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "number",
+              "sides"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "number": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sides": {
+                "type": "integer",
+                "minimum": 2
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/attackResourceLimits"
+        }
+      ]
+    },
+    "turnPlanAttack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "attack_name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "attack_name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "bonus_damage_dice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/damageDie"
+          }
+        },
+        "advantage": {
+          "type": "boolean"
+        },
+        "disadvantage": {
+          "type": "boolean"
+        }
+      }
+    },
+    "firstHitBonusDamage": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "damage_dice",
+        "eligible_attack_indices"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "damage_dice": {
+          "$ref": "#/$defs/damageDiceList"
+        },
+        "eligible_attack_indices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "requires_advantage": {
+          "type": "boolean"
+        },
+        "allows_nearby_ally": {
+          "type": "boolean"
+        }
+      }
+    },
+    "turnPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "attacks",
+        "first_hit_bonus_damage"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "attacks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/turnPlanAttack"
+          },
+          "minItems": 1
+        },
+        "first_hit_bonus_damage": {
+          "$ref": "#/$defs/firstHitBonusDamage"
+        }
+      }
+    }
+  }
+}

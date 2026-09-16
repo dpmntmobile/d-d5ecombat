@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dnd5ecombat.example/schemas/v1/roll20-character.schema.json",
+  "title": "D&D 5e Combat Roll20 Character Export",
+  "type": "object",
+  "required": ["name", "stats", "hp_and_level"],
+  "properties": {
+    "export_metadata": {
+      "type": "object",
+      "required": ["format", "version"],
+      "properties": {
+        "format": {"const": "dnd5ecombat-roll20"},
+        "version": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": true
+    },
+    "name": {"type": "string", "minLength": 1},
+    "character_id": {"type": "string"},
+    "stats": {"$ref": "#/$defs/attributeSection"},
+    "skills": {"$ref": "#/$defs/attributeSection"},
+    "hp_and_level": {"$ref": "#/$defs/attributeSection"},
+    "attacks_and_spellcasting": {"$ref": "#/$defs/attributeSection"},
+    "traits_and_features": {"$ref": "#/$defs/attributeSection"},
+    "inventory": {"$ref": "#/$defs/attributeSection"},
+    "resources": {"$ref": "#/$defs/attributeSection"},
+    "other_attributes": {"$ref": "#/$defs/attributeSection"},
+    "attacks_per_action": {"type": ["integer", "string"]}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "attribute": {
+      "type": "object",
+      "properties": {
+        "current": {},
+        "max": {}
+      },
+      "additionalProperties": true
+    },
+    "attributeSection": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/attribute"}
+    }
+  }
+}

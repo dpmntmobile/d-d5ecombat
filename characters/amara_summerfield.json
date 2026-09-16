@@ -1,0 +1,1276 @@
+{
+  \"export_metadata\": {
+    \"format\": \"dnd5ecombat-roll20\",
+    \"version\": 2
+  },
+  \"name\": \"Amara Summerfield\",
+  \"character_id\": \"-OzWydUFEa2I8B9eoh2C\",
+  \"stats\": {
+    \"strength_bonus\": {
+      \"current\": \"0\"
+    },
+    \"dexterity_bonus\": {
+      \"current\": \"0\"
+    },
+    \"constitution_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_bonus\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma_base\": {
+      \"current\": 16
+    },
+    \"wisdom_base\": {
+      \"current\": 14
+    },
+    \"strength_base\": {
+      \"current\": 18
+    },
+    \"dexterity_base\": {
+      \"current\": 11
+    },
+    \"constitution_base\": {
+      \"current\": 16
+    },
+    \"intelligence_base\": {
+      \"current\": 12
+    },
+    \"strength\": {
+      \"current\": 18
+    },
+    \"strength_mod\": {
+      \"current\": 4
+    },
+    \"dexterity\": {
+      \"current\": 11
+    },
+    \"dexterity_mod\": {
+      \"current\": 0
+    },
+    \"constitution\": {
+      \"current\": 16
+    },
+    \"constitution_mod\": {
+      \"current\": 3
+    },
+    \"intelligence\": {
+      \"current\": 12
+    },
+    \"intelligence_mod\": {
+      \"current\": 1
+    },
+    \"wisdom\": {
+      \"current\": 14
+    },
+    \"wisdom_mod\": {
+      \"current\": 2
+    },
+    \"charisma\": {
+      \"current\": 16
+    },
+    \"charisma_mod\": {
+      \"current\": 3
+    }
+  },
+  \"skills\": {
+    \"stealth_bonus\": {
+      \"current\": 0
+    },
+    \"athletics_prof\": {
+      \"current\": \"(@{pb}*@{athletics_type})\"
+    },
+    \"athletics_bonus\": {
+      \"current\": 6
+    },
+    \"acrobatics_bonus\": {
+      \"current\": 0
+    },
+    \"sleight_of_hand_bonus\": {
+      \"current\": 0
+    },
+    \"arcana_bonus\": {
+      \"current\": 1
+    },
+    \"history_bonus\": {
+      \"current\": 1
+    },
+    \"investigation_prof\": {
+      \"current\": \"(@{pb}*@{investigation_type})\"
+    },
+    \"investigation_bonus\": {
+      \"current\": 3
+    },
+    \"nature_bonus\": {
+      \"current\": 1
+    },
+    \"religion_bonus\": {
+      \"current\": 1
+    },
+    \"animal_handling_bonus\": {
+      \"current\": 2
+    },
+    \"insight_bonus\": {
+      \"current\": 2
+    },
+    \"medicine_bonus\": {
+      \"current\": 2
+    },
+    \"perception_bonus\": {
+      \"current\": 2
+    },
+    \"survival_prof\": {
+      \"current\": \"(@{pb}*@{survival_type})\"
+    },
+    \"survival_bonus\": {
+      \"current\": 4
+    },
+    \"deception_bonus\": {
+      \"current\": 3
+    },
+    \"intimidation_prof\": {
+      \"current\": \"(@{pb}*@{intimidation_type})\"
+    },
+    \"intimidation_bonus\": {
+      \"current\": 5
+    },
+    \"performance_bonus\": {
+      \"current\": 3
+    },
+    \"persuasion_bonus\": {
+      \"current\": 3
+    }
+  },
+  \"hp_and_level\": {
+    \"class\": {
+      \"current\": \"Fighter\"
+    },
+    \"race\": {
+      \"current\": \"Aasimar\"
+    },
+    \"hp\": {
+      \"current\": 13,
+      \"max\": 13
+    },
+    \"speed\": {
+      \"current\": 30
+    },
+    \"ac\": {
+      \"current\": 16
+    },
+    \"initiative_bonus\": {
+      \"current\": 0
+    },
+    \"pb\": {
+      \"current\": \"2\"
+    },
+    \"level\": {
+      \"current\": 1
+    }
+  },
+  \"attacks_and_spellcasting\": {
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_itemid\": {
+      \"current\": \"-OzcIWSKXsm4bhY1uwyP\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_atkname\": {
+      \"current\": \"Greatsword\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_dmgbase\": {
+      \"current\": \"2d6\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_dmgtype\": {
+      \"current\": \"Slashing\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_itemid\": {
+      \"current\": \"-OzcIWSKXsm4bhY1uwyQ\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_atkname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_atkrange\": {
+      \"current\": \"80/320\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_atkdmgtype\": {
+      \"current\": \"2d6+4 Slashing \"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHG_atkbonus\": {
+      \"current\": \"+6\"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_atkdmgtype\": {
+      \"current\": \"1d8 Piercing \"
+    },
+    \"repeating_attack_-OzcIWUytxf0FqUGnMHH_atkbonus\": {
+      \"current\": \"+2\"
+    }
+  },
+  \"traits_and_features\": {
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKc_name\": {
+      \"current\": \"Second Wind\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKc_description\": {
+      \"current\": \"You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKc_source_type\": {
+      \"current\": \"Fighter\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKc_source\": {
+      \"current\": \"Class\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKc_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKc_display_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKj_name\": {
+      \"current\": \"Darkvision\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKj_description\": {
+      \"current\": \"Blessed with a radiant soul, your vision can easily cut through darkness. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKj_source_type\": {
+      \"current\": \"Aasimar\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKj_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKj_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKj_display_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKk_name\": {
+      \"current\": \"Celestial Resistance\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKk_description\": {
+      \"current\": \"You have resistance to necrotic damage and radiant damage.\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKk_source_type\": {
+      \"current\": \"Aasimar\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKk_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKk_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKk_display_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKl_name\": {
+      \"current\": \"Healing Hands\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKl_description\": {
+      \"current\": \"As an action, you can touch a creature and cause it to regain a number of hit points equal to your level ([[Untitled document. Once you use this trait, you can’t use it again until you finish a long rest.\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKl_source_type\": {
+      \"current\": \"Aasimar\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKl_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKl_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKl_display_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKm_name\": {
+      \"current\": \"Light Bearer\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKm_description\": {
+      \"current\": \"You know the light cantrip. Charisma is your spellcasting ability for it.\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKm_source_type\": {
+      \"current\": \"Aasimar\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKm_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKm_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSIwU4BzLttPOKm_display_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSJAmHilsj1Gp5W_name\": {
+      \"current\": \"Background Feature: Heart of Darkness\"
+    },
+    \"repeating_traits_-OzcIWSJAmHilsj1Gp5W_description\": {
+      \"current\": \"Those who look into your eyes can see that you have faced unimaginable horrors. Though commoners might fear you, they will extend every courtesy, do their utmost to help you, and—unless you've proven to be a danger—will even take up arms to fight alongside you if you face an enemy alone.\"
+    },
+    \"repeating_traits_-OzcIWSJAmHilsj1Gp5W_source_type\": {
+      \"current\": \"Haunted One\"
+    },
+    \"repeating_traits_-OzcIWSJAmHilsj1Gp5W_source\": {
+      \"current\": \"Background\"
+    },
+    \"repeating_traits_-OzcIWSJAmHilsj1Gp5W_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-OzcIWSJAmHilsj1Gp5W_display_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-P0TEZeirYaPMZc9UnjU_name\": {
+      \"current\": \"Fighting Style: Great Weapon Fighting\"
+    },
+    \"repeating_traits_-P0TEZeirYaPMZc9UnjU_description\": {
+      \"current\": \"When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit.\"
+    },
+    \"repeating_traits_-P0TEZeirYaPMZc9UnjU_source_type\": {
+      \"current\": \"Fighting Style - Great Weapon Fighting\"
+    },
+    \"repeating_traits_-P0TEZeirYaPMZc9UnjU_source\": {
+      \"current\": \"Other\"
+    },
+    \"repeating_traits_-P0TEZeirYaPMZc9UnjU_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-P0TEZeirYaPMZc9UnjU_display_flag\": {
+      \"current\": \"on\"
+    }
+  },
+  \"inventory\": {
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_itemname\": {
+      \"current\": \"Chain Mail\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_itemproperties\": {
+      \"current\": \"Stealth Disadvantage, Strength Requirement\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_itemweight\": {
+      \"current\": \"55\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Chain Mail\
+Armor (heavy)\
+  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tMade of interlocking metal rings, chain mail includes a layer of quilted fabric worn underneath the mail to prevent chafing and to cushion the impact of blows. The suit includes gauntlets.  Stealth.&nbsp;The wearer has disadvantage on Dexterity (Stealth) checks.&nbsp;\
+  AC: 16\
+Stealth: Disadvantage\
+Weight: 55&nbsp;\
+Minimum Strength: 13 \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_itemmodifiers\": {
+      \"current\": \"Item Type: Heavy Armor, AC: 16, Stealth:Disadvantage\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyO_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemname\": {
+      \"current\": \"Greatsword\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemproperties\": {
+      \"current\": \"Two-Handed, Heavy\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemweight\": {
+      \"current\": \"6\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Greatsword\
+Melee weapon (martial, greatsword)  Heavy. Small creatures have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small creature to use effectively.\
+  Two-Handed. This weapon requires two hands when you attack with it.&nbsp;\
+   Damage: 2d6\
+Damage Type: Slashing\
+Properties: Heavy, Two-Handed\
+Weight: 6  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 2d6, Damage Type: Slashing\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemproperties\": {
+      \"current\": \"Two-Handed, Range, Loading, Ammunition\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t  Light Crossbow\
+Ranged weapon (simple, light crossbow)  Ammunition. You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\
+\
+If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \\\"Improvised Weapons\\\" later in the section). A sling must be loaded to deal any damage when used in this way.  Loading. Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.  Two-Handed. This weapon requires two hands when you attack with it.\
+  Damage: 1d8\
+Damage Type: Piercing\
+Properties: Ammunition, Loading, Two-Handed\
+Range: 80/320\
+Weight: 5 \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemmodifiers\": {
+      \"current\": \"Item Type: Ranged Weapon, Damage: 1d8, Damage Type: Piercing, Range: 80/320,Critical Range: 20,Critical Range: 20\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_itemname\": {
+      \"current\": \"Crossbow Bolts\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_itemcount\": {
+      \"current\": 20
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_itemweight\": {
+      \"current\": \"0.075\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Crossbow Bolts\
+Ammunition\
+  You can use a weapon that has the ammunition property to make a&nbsp;ranged attack&nbsp;only if you have ammunition to fire from the&nbsp;weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a&nbsp;quiver,&nbsp;case, or other container is part of the&nbsp;attack&nbsp;(you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\
+  Weight: 0.075\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyR_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_itemname\": {
+      \"current\": \"Explorer's Pack\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_itemweight\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Explorer's Pack\
+Adventuring gear  Includes a backpack, a bedroll, a mess kit, a tinderbox, 10 torches, 10 days of rations, and a waterskin. The pack also has 50 feet of hempen rope strapped to the side of it. \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyS_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_itemname\": {
+      \"current\": \"Crossbow bolts\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_itemcount\": {
+      \"current\": 20
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_itemweight\": {
+      \"current\": \"0.075\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_itemcontent\": {
+      \"current\": \" \
+\\t\\t\\t  Crossbow Bolts\
+Ammunition\
+\
+Ammunition: You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\
+\
+Weight: 0.075\
+\\t\\t \"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyT_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_itemname\": {
+      \"current\": \"Backpack\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Backpack\
+Adventuring gear (container)\
+  A backpack can hold one cubic foot or 30 pounds of gear. You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack.  Weight: 5\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyU_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_itemname\": {
+      \"current\": \"Bedroll\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_itemweight\": {
+      \"current\": \"7\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_itemcontent\": {
+      \"current\": \" Bedroll\
+Adventuring gear  Weight: 7\
+ \"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyV_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_itemname\": {
+      \"current\": \"Mess Kit\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_itemcontent\": {
+      \"current\": \" Mess Kit\
+Adventuring gear\
+  \
+\\t\\t\\t\\t\\tThis tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl.\
+\\t\\t\\t\\t  Weight: 1\
+ \"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyW_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_itemname\": {
+      \"current\": \"Tinderbox\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Tinderbox\
+Adventuring gear\
+  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tThis small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch - or anything else with abundant, exposed fuel - takes an action. Lighting any other fire takes 1 minute.  Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyX_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_itemname\": {
+      \"current\": \"Torch\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Torch\
+Adventuring gear\
+  \
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tA torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.  Damage: 1\
+Damage Type: Fire\
+Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear, Damage: 1, Damage Type: Fire, Range: 20/40\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyY_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_itemname\": {
+      \"current\": \"Waterskin\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t Waterskin\
+Adventuring gear (container)\
+  A waterskin can hold up to 4 pints of liquid.  Weight: 5 (when full)\
+\
+\\t\\t\\t\\t \
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyZ_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_itemname\": {
+      \"current\": \"Hempen Rope\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\t Hempen Rope (50 feet)\
+Adventuring gear \
+Rope, whether made of hemp or silk, has 2 hit points and can be burst with a DC 17 Strength check.\
+\
+Weight: 10\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwya_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_itemname\": {
+      \"current\": \"Hempen rope\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_itemcontent\": {
+      \"current\": \" \
+\\t\\t\\t  Hempen Rope\
+Adventuring gear  Rope, whether made of hemp or silk, has 2 hit points and can be burst with a DC 17 Strength check.  Weight: 10 \"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_hasattack\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyb_useasresource\": {
+      \"current\": 0
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyP_itemattackid\": {
+      \"current\": \"-OzcIWUytxf0FqUGnMHG\"
+    },
+    \"repeating_inventory_-OzcIWSKXsm4bhY1uwyQ_itemattackid\": {
+      \"current\": \"-OzcIWUytxf0FqUGnMHH\"
+    }
+  },
+  \"resources\": {},
+  \"other_repeating_attributes\": {
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKd_name\": {
+      \"current\": \"Simple weapons\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKd_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKd_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKe_name\": {
+      \"current\": \"Martial weapons\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKe_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKe_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKf_name\": {
+      \"current\": \"Light Armor\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKf_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKf_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKg_name\": {
+      \"current\": \"Medium Armor\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKg_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKg_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKh_name\": {
+      \"current\": \"Heavy Armor\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKh_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKh_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKi_name\": {
+      \"current\": \"Shields\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKi_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_proficiencies_-OzcIWSIwU4BzLttPOKi_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSJAmHilsj1Gp5U_name\": {
+      \"current\": \"Common\"
+    },
+    \"repeating_proficiencies_-OzcIWSJAmHilsj1Gp5U_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-OzcIWSJAmHilsj1Gp5U_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_proficiencies_-OzcIWSJAmHilsj1Gp5V_name\": {
+      \"current\": \"Celestial\"
+    },
+    \"repeating_proficiencies_-OzcIWSJAmHilsj1Gp5V_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-OzcIWSJAmHilsj1Gp5V_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_details-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_options-flag\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spell_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellclass\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellcomp_m\": {
+      \"current\": \"{{m=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellcomp_materials\": {
+      \"current\": \"A firefly or phosphorescent moss\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellcomp_s\": {
+      \"current\": 0
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spelldescription\": {
+      \"current\": \"You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds bright light in a 20-foot radius and dim light for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or dismiss it as an action. If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity saving throw to avoid the spell.\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellduration\": {
+      \"current\": \"1 hour\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellname\": {
+      \"current\": \"Light\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spelloutput\": {
+      \"current\": \"SPELLCARD\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellrange\": {
+      \"current\": \"Touch\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spellschool\": {
+      \"current\": \"evocation\"
+    },
+    \"repeating_spell-cantrip_-OzcIWSJAmHilsj1Gp5X_spelltarget\": {
+      \"current\": \"One object that is no larger than 10 feet in any dimension\"
+    },
+    \"repeating_proficiencies_-OzcR6H-TguxsAks-CtE_name\": {
+      \"current\": \"Deepspeech\"
+    },
+    \"repeating_proficiencies_-OzcR6H-TguxsAks-CtE_options-flag\": {
+      \"current\": \"0\"
+    }
+  },
+  \"other_attributes\": {
+    \"hitdieroll\": {
+      \"current\": \"10\"
+    },
+    \"showleveler\": {
+      \"current\": 0
+    },
+    \"invalidXP\": {
+      \"current\": 0
+    },
+    \"sheet_version\": {
+      \"current\": 1
+    },
+    \"version\": {
+      \"current\": 4.21
+    },
+    \"queryadvantage\": {
+      \"current\": \"{{query=1}} ?{Advantage?|Normal Roll,&#123&#123normal=1&#125&#125 &#123&#123r2=[[0d20|Advantage,&#123&#123advantage=1&#125&#125 &#123&#123r2=[[@{d20}|Disadvantage,&#123&#123disadvantage=1&#125&#125 &#123&#123r2=[[@{d20}}\"
+    },
+    \"other_languages\": {
+      \"current\": \"Celestial, Common, Deepspeech\"
+    },
+    \"other_armor\": {
+      \"current\": \"Heavy Armor, Light Armor, Medium Armor, Shields\"
+    },
+    \"other_weapon\": {
+      \"current\": \"Martial weapons, Simple weapons\"
+    },
+    \"mancer_confirm\": {
+      \"current\": \"on\"
+    },
+    \"class_resource_name\": {
+      \"current\": \"Second Wind\"
+    },
+    \"class_resource\": {
+      \"current\": 1,
+      \"max\": 1
+    },
+    \"other_resource_name\": {
+      \"current\": \"Healing Hands\"
+    },
+    \"other_resource\": {
+      \"current\": 1,
+      \"max\": 1
+    },
+    \"class_display\": {
+      \"current\": \"Fighter 1\"
+    },
+    \"hitdietype\": {
+      \"current\": \"10\"
+    },
+    \"hitdie_final\": {
+      \"current\": \"@{hitdietype}\"
+    },
+    \"subrace\": {
+      \"current\": \"Protector Aasimar\"
+    },
+    \"race_display\": {
+      \"current\": \"Protector Aasimar\"
+    },
+    \"custom_class\": {
+      \"current\": \"0\"
+    },
+    \"creaturetype\": {
+      \"current\": \"Humanoid\"
+    },
+    \"size\": {
+      \"current\": \"Medium\"
+    },
+    \"gp\": {
+      \"current\": 0
+    },
+    \"alignment\": {
+      \"current\": \"Lawful Good\"
+    },
+    \"spellcasting_ability\": {
+      \"current\": \"0*\"
+    },
+    \"death_save_bonus\": {
+      \"current\": 0
+    },
+    \"weighttotal\": {
+      \"current\": 118
+    },
+    \"hit_dice\": {
+      \"current\": \"1\",
+      \"max\": 1
+    },
+    \"jack\": {
+      \"current\": 1
+    },
+    \"caster_level\": {
+      \"current\": 0
+    },
+    \"spell_attack_bonus\": {
+      \"current\": \"0\"
+    },
+    \"spell_save_dc\": {
+      \"current\": \"0\"
+    },
+    \"passive_wisdom\": {
+      \"current\": 12
+    },
+    \"background\": {
+      \"current\": \"Haunted One\"
+    },
+    \"halflingluck_flag\": {
+      \"current\": 0
+    },
+    \"tab\": {
+      \"current\": \"core\"
+    },
+    \"base_level\": {
+      \"current\": \"1\"
+    },
+    \"armorwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"customacwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"custom_ac_flag\": {
+      \"current\": \"0\"
+    },
+    \"custom_attack_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_lvl\": {
+      \"current\": \"1\"
+    },
+    \"multiclass2_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass2_lvl\": {
+      \"current\": \"1\"
+    },
+    \"multiclass3_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass3_lvl\": {
+      \"current\": \"1\"
+    },
+    \"strength_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"strength_save_bonus\": {
+      \"current\": 6
+    },
+    \"dexterity_save_prof\": {
+      \"current\": 0
+    },
+    \"dexterity_save_bonus\": {
+      \"current\": 0
+    },
+    \"constitution_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"constitution_save_bonus\": {
+      \"current\": 5
+    },
+    \"intelligence_save_prof\": {
+      \"current\": 0
+    },
+    \"intelligence_save_bonus\": {
+      \"current\": 1
+    },
+    \"wisdom_save_prof\": {
+      \"current\": 0
+    },
+    \"wisdom_save_bonus\": {
+      \"current\": 2
+    },
+    \"charisma_save_prof\": {
+      \"current\": 0
+    },
+    \"charisma_save_bonus\": {
+      \"current\": 3
+    },
+    \"personality_traits\": {
+      \"current\": \"Seeker of Validation: She observes others not just tactically, but to see if they perceive her as \\\"whole\\\" or \\\"normal\\\" (making heartfelt encouragement from teammates deeply meaningful to her).\
+\
+Fighting the Voice: In battle, she must actively fight against the internal uncertainty that tries to paralyze her.\"
+    },
+    \"ideals\": {
+      \"current\": \"Ideal: Justice — Wrongdoing must be punished; she uses her training and strength to root out evil and serve as a beacon of hope.\"
+    },
+    \"bonds\": {
+      \"current\": \"Bond: The Glass Queen Chess Piece — Her most precious item, representing her lost wholeness and past identity, which she will fiercely protect.\"
+    },
+    \"flaws\": {
+      \"current\": \"Flaw: Crippling Doubt — When she fails (such as missing an attack or failing a saving throw), deep insecurity can briefly overwhelm her, making her freeze as she fears the darkness might be right.\"
+    },
+    \"hero_points\": {
+      \"current\": 5
+    },
+    \"d20\": {
+      \"current\": \"1d20\"
+    },
+    \"encumberance\": {
+      \"current\": \" \"
+    },
+    \"strength_flag\": {
+      \"current\": 0
+    },
+    \"dexterity_flag\": {
+      \"current\": 0
+    },
+    \"constitution_flag\": {
+      \"current\": 0
+    },
+    \"intelligence_flag\": {
+      \"current\": 0
+    },
+    \"wisdom_flag\": {
+      \"current\": 0
+    },
+    \"charisma_flag\": {
+      \"current\": 0
+    },
+    \"npc_str_negative\": {
+      \"current\": 0
+    },
+    \"npc_dex_negative\": {
+      \"current\": 0
+    },
+    \"npc_con_negative\": {
+      \"current\": 0
+    },
+    \"npc_int_negative\": {
+      \"current\": 0
+    },
+    \"npc_wis_negative\": {
+      \"current\": 0
+    },
+    \"npc_cha_negative\": {
+      \"current\": 0
+    },
+    \"other_resource_reset\": {
+      \"current\": \"long\"
+    },
+    \"l1mancer_status\": {
+      \"current\": \"completed\"
+    },
+    \"options-class-selection\": {
+      \"current\": \"0\"
+    },
+    \"age\": {
+      \"current\": \"28\"
+    },
+    \"height\": {
+      \"current\": \"1.80\"
+    },
+    \"weight\": {
+      \"current\": \"80\"
+    },
+    \"eyes\": {
+      \"current\": \"Light blue\"
+    },
+    \"hair\": {
+      \"current\": \"White with turqouse strands and tips\"
+    },
+    \"skin\": {
+      \"current\": \"light\"
+    },
+    \"options-flag-personality\": {
+      \"current\": 0
+    },
+    \"options-flag-ideals\": {
+      \"current\": 0
+    },
+    \"options-flag-bonds\": {
+      \"current\": 0
+    },
+    \"options-flag-flaws\": {
+      \"current\": 0
+    },
+    \"_reporder_repeating_proficiencies\": {
+      \"current\": \"-OzcIWSIwU4BzLttPOKh,-OzcIWSIwU4BzLttPOKf,-OzcIWSIwU4BzLttPOKg,-OzcIWSIwU4BzLttPOKi,-OzcIWSJAmHilsj1Gp5V,-OzcIWSJAmHilsj1Gp5U,-OzcIWSIwU4BzLttPOKe,-OzcIWSIwU4BzLttPOKd\"
+    },
+    \"lvl1_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl2_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl3_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl4_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl5_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl6_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl7_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl8_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl9_slots_total\": {
+      \"current\": 0
+    },
+    \"honor_save_bonus\": {
+      \"current\": 0
+    },
+    \"sanity_save_bonus\": {
+      \"current\": 0
+    },
+    \"character_backstory\": {
+      \"current\": \"Amara Summerfield was ooit een stralende Protector Aasimar, gedreven door een zuiver hemels doel en voorbestemd om als een baken van hoop door de wereld te reizen. Maar die heldere toekomst werd abrupt verduisterd op een fatale dag, diep in de schaduwrijke ruïnes van een vergeten landschap. Daar kruiste haar pad met een kwaadaardige, corrumperende entiteit uit de duisternis.\
+\
+Het wezen koos voor een wrede vorm van overwinning: het liet haar fysiek in leven, maar scheurde een fundamenteel stuk uit haar ziel. Op de plek waar haar innerlijke licht en pure zelfvertrouwen huurden, liet de entiteit een kille, knagende leegte achter. Sindsdien wordt Amara achtervolgd door een diepe onzekerheid. In de stiltes tussen gevechten door fluistert de duisternis dat ze slechts een gebroken, lege huls is en dat haar hemelse afkomst niets meer dan een leugen is.\
+\
+Om te overleven en te voorkomen dat die innerlijke leegte haar volledig opslokt, heeft ze zich toegelegd op pure discipline en brute kracht. Ze traint onophoudelijk als een meesterlijke krijger, geharnast en gewapend met een zwaar stalen greatsword dat ze met verpletterende precisie hanteert. Toch is er onder haar stoere en intimiderende buitenkant — met haar lichte huid, sproetjes, expressieve lichtblauwe ogen en opvallende witte haar met turquoise lokken — een diepe kwetsbaarheid te vinden.\
+\
+Haar enige reddingsboei en tastbare bewijs van wie ze ooit was, is een oud, uiterst breekbaar glazen schaakstuk van een koningin dat ze angstvallig bij zich draagt. Dit schaakstuk is haar band met het verleden en haar stille belofte aan zichzelf: op een dag zal ze de duisternis overwinnen, de ontbrekende stukken van haar ziel terugveroveren, en weer de complete koningin worden die ze ooit was.\
+\"
+    }
+  }
+}

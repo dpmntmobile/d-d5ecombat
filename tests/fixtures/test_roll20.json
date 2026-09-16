@@ -1,0 +1,580 @@
+{
+  \"name\": \"Ovehaw Ugijo\",
+  \"character_id\": \"-P0GrsAHsBXWfEWCfiQr\",
+  \"stats\": {
+    \"strength_bonus\": {
+      \"current\": \"0\"
+    },
+    \"dexterity_bonus\": {
+      \"current\": \"0\"
+    },
+    \"constitution_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_bonus\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma_bonus\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_base\": {
+      \"current\": 12
+    },
+    \"dexterity_base\": {
+      \"current\": 12
+    },
+    \"charisma_base\": {
+      \"current\": 10
+    },
+    \"constitution_base\": {
+      \"current\": 13
+    },
+    \"intelligence_base\": {
+      \"current\": 11
+    },
+    \"strength_base\": {
+      \"current\": 16
+    },
+    \"strength\": {
+      \"current\": 16
+    },
+    \"strength_mod\": {
+      \"current\": 3
+    },
+    \"dexterity\": {
+      \"current\": 12
+    },
+    \"dexterity_mod\": {
+      \"current\": 1
+    },
+    \"constitution\": {
+      \"current\": 13
+    },
+    \"constitution_mod\": {
+      \"current\": 1
+    },
+    \"intelligence\": {
+      \"current\": 11
+    },
+    \"intelligence_mod\": {
+      \"current\": 0
+    },
+    \"wisdom\": {
+      \"current\": 12
+    },
+    \"wisdom_mod\": {
+      \"current\": 1
+    },
+    \"charisma\": {
+      \"current\": 10
+    },
+    \"charisma_mod\": {
+      \"current\": 0
+    }
+  },
+  \"skills\": {
+    \"stealth_bonus\": {
+      \"current\": 1
+    },
+    \"athletics_prof\": {
+      \"current\": \"(@{pb}*@{athletics_type})\"
+    },
+    \"athletics_bonus\": {
+      \"current\": 5
+    },
+    \"acrobatics_prof\": {
+      \"current\": \"(@{pb}*@{acrobatics_type})\"
+    },
+    \"acrobatics_bonus\": {
+      \"current\": 3
+    },
+    \"sleight_of_hand_bonus\": {
+      \"current\": 1
+    },
+    \"arcana_bonus\": {
+      \"current\": 0
+    },
+    \"history_bonus\": {
+      \"current\": 0
+    },
+    \"investigation_bonus\": {
+      \"current\": 0
+    },
+    \"nature_bonus\": {
+      \"current\": 0
+    },
+    \"religion_bonus\": {
+      \"current\": 0
+    },
+    \"animal_handling_bonus\": {
+      \"current\": 1
+    },
+    \"insight_bonus\": {
+      \"current\": 1
+    },
+    \"medicine_bonus\": {
+      \"current\": 1
+    },
+    \"perception_prof\": {
+      \"current\": \"(@{pb}*@{perception_type})\"
+    },
+    \"perception_bonus\": {
+      \"current\": 3
+    },
+    \"survival_bonus\": {
+      \"current\": 1
+    },
+    \"deception_bonus\": {
+      \"current\": 0
+    },
+    \"intimidation_prof\": {
+      \"current\": \"(@{pb}*@{intimidation_type})\"
+    },
+    \"intimidation_bonus\": {
+      \"current\": 2
+    },
+    \"performance_bonus\": {
+      \"current\": 0
+    },
+    \"persuasion_bonus\": {
+      \"current\": 0
+    }
+  },
+  \"hp_and_level\": {
+    \"class\": {
+      \"current\": \"Fighter\"
+    },
+    \"race\": {
+      \"current\": \"Human\"
+    },
+    \"hp\": {
+      \"current\": 11,
+      \"max\": 11
+    },
+    \"speed\": {
+      \"current\": 30
+    },
+    \"ac\": {
+      \"current\": 16
+    },
+    \"initiative_bonus\": {
+      \"current\": 1
+    },
+    \"pb\": {
+      \"current\": \"2\"
+    },
+    \"level\": {
+      \"current\": 1
+    }
+  },
+  \"attacks_and_spellcasting\": {
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_itemid\": {
+      \"current\": \"-P0GstAybPE9V4-oh0Sm\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_atkname\": {
+      \"current\": \"Greatsword\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_dmgbase\": {
+      \"current\": \"2d6\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_dmgtype\": {
+      \"current\": \"Slashing\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_itemid\": {
+      \"current\": \"-P0GstAybPE9V4-oh0So\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_atkname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_atkrange\": {
+      \"current\": \"80/320\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_itemid\": {
+      \"current\": \"-P0GstAybPE9V4-oh0Sn\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_atkname\": {
+      \"current\": \"Warhammer (One-Handed)\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_dmgtype\": {
+      \"current\": \"Bludgeoning\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_itemid\": {
+      \"current\": \"-P0GstAybPE9V4-oh0Sn\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_atkname\": {
+      \"current\": \"Warhammer (Two-Handed)\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_dmgbase\": {
+      \"current\": \"1d10\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_dmgtype\": {
+      \"current\": \"Bludgeoning\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_versatile_alt\": {
+      \"current\": \"1\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_atkdmgtype\": {
+      \"current\": \"2d6+3 Slashing \"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRj_atkbonus\": {
+      \"current\": \"+5\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_atkdmgtype\": {
+      \"current\": \"1d8+1 Piercing \"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRm_atkbonus\": {
+      \"current\": \"+3\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_atkdmgtype\": {
+      \"current\": \"1d8+3 Bludgeoning \"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRk_atkbonus\": {
+      \"current\": \"+5\"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_atkdmgtype\": {
+      \"current\": \"1d10+3 Bludgeoning \"
+    },
+    \"repeating_attack_-P0GstEAAx4z16pLugRl_atkbonus\": {
+      \"current\": \"+5\"
+    }
+  },
+  \"other_attributes\": {
+    \"hitdieroll\": {
+      \"current\": \"10\"
+    },
+    \"showleveler\": {
+      \"current\": 0
+    },
+    \"invalidXP\": {
+      \"current\": 0
+    },
+    \"version\": {
+      \"current\": 4.21
+    },
+    \"sheet_version\": {
+      \"current\": 1
+    },
+    \"queryadvantage\": {
+      \"current\": \"{{query=1}} ?{Advantage?|Normal Roll,&#123&#123normal=1&#125&#125 &#123&#123r2=[[0d20|Advantage,&#123&#123advantage=1&#125&#125 &#123&#123r2=[[@{d20}|Disadvantage,&#123&#123disadvantage=1&#125&#125 &#123&#123r2=[[@{d20}}\"
+    },
+    \"other_tool\": {
+      \"current\": \"Land Vehicles, Playing Card Set\"
+    },
+    \"other_languages\": {
+      \"current\": \"Common, Elvish\"
+    },
+    \"other_armor\": {
+      \"current\": \"Heavy Armor, Light Armor, Medium Armor, Shields\"
+    },
+    \"other_weapon\": {
+      \"current\": \"Martial weapons, Simple weapons\"
+    },
+    \"mancer_confirm\": {
+      \"current\": \"on\"
+    },
+    \"class_resource_name\": {
+      \"current\": \"Second Wind\"
+    },
+    \"class_resource\": {
+      \"current\": 1,
+      \"max\": 1
+    },
+    \"class_display\": {
+      \"current\": \"Fighter 1\"
+    },
+    \"hitdietype\": {
+      \"current\": \"10\"
+    },
+    \"hitdie_final\": {
+      \"current\": \"@{hitdietype}\"
+    },
+    \"subrace\": {
+      \"current\": \"Standard Human\"
+    },
+    \"race_display\": {
+      \"current\": \"Standard Human\"
+    },
+    \"custom_class\": {
+      \"current\": \"0\"
+    },
+    \"creaturetype\": {
+      \"current\": \"Humanoid\"
+    },
+    \"size\": {
+      \"current\": \"Medium\"
+    },
+    \"gp\": {
+      \"current\": 10
+    },
+    \"alignment\": {
+      \"current\": \"Lawful Good\"
+    },
+    \"spellcasting_ability\": {
+      \"current\": \"0*\"
+    },
+    \"death_save_bonus\": {
+      \"current\": 0
+    },
+    \"weighttotal\": {
+      \"current\": 148.7
+    },
+    \"hit_dice\": {
+      \"current\": \"1\",
+      \"max\": 1
+    },
+    \"jack\": {
+      \"current\": 1
+    },
+    \"caster_level\": {
+      \"current\": 0
+    },
+    \"spell_attack_bonus\": {
+      \"current\": \"0\"
+    },
+    \"spell_save_dc\": {
+      \"current\": \"0\"
+    },
+    \"passive_wisdom\": {
+      \"current\": 13
+    },
+    \"background\": {
+      \"current\": \"Soldier (Infantry)\"
+    },
+    \"halflingluck_flag\": {
+      \"current\": 0
+    },
+    \"tab\": {
+      \"current\": \"core\"
+    },
+    \"base_level\": {
+      \"current\": \"1\"
+    },
+    \"armorwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"customacwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"custom_ac_flag\": {
+      \"current\": \"0\"
+    },
+    \"custom_attack_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_lvl\": {
+      \"current\": \"1\"
+    },
+    \"multiclass2_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass2_lvl\": {
+      \"current\": \"1\"
+    },
+    \"multiclass3_flag\": {
+      \"current\": \"0\"
+    },
+    \"multiclass3_lvl\": {
+      \"current\": \"1\"
+    },
+    \"strength_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"strength_save_bonus\": {
+      \"current\": 5
+    },
+    \"dexterity_save_prof\": {
+      \"current\": 0
+    },
+    \"dexterity_save_bonus\": {
+      \"current\": 1
+    },
+    \"constitution_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"constitution_save_bonus\": {
+      \"current\": 3
+    },
+    \"intelligence_save_prof\": {
+      \"current\": 0
+    },
+    \"intelligence_save_bonus\": {
+      \"current\": 0
+    },
+    \"wisdom_save_prof\": {
+      \"current\": 0
+    },
+    \"wisdom_save_bonus\": {
+      \"current\": 1
+    },
+    \"charisma_save_prof\": {
+      \"current\": 0
+    },
+    \"charisma_save_bonus\": {
+      \"current\": 0
+    },
+    \"personality_traits\": {
+      \"current\": \"I'm always polite and respectful.\
+\
+I’m haunted by memories of war. I can’t get the images of violence out of my mind.\"
+    },
+    \"ideals\": {
+      \"current\": \"Greater Good. Our lot is to lay down our lives in defense of others. (Good)\"
+    },
+    \"bonds\": {
+      \"current\": \"My honor is my life.\"
+    },
+    \"flaws\": {
+      \"current\": \"I made a terrible mistake in battle that cost many lives—and I would do anything to keep that mistake secret.\"
+    },
+    \"hero_points\": {
+      \"current\": 5
+    },
+    \"d20\": {
+      \"current\": \"1d20\"
+    },
+    \"encumberance\": {
+      \"current\": \" \"
+    },
+    \"strength_flag\": {
+      \"current\": 0
+    },
+    \"dexterity_flag\": {
+      \"current\": 0
+    },
+    \"constitution_flag\": {
+      \"current\": 0
+    },
+    \"intelligence_flag\": {
+      \"current\": 0
+    },
+    \"wisdom_flag\": {
+      \"current\": 0
+    },
+    \"charisma_flag\": {
+      \"current\": 0
+    },
+    \"npc_str_negative\": {
+      \"current\": 0
+    },
+    \"npc_dex_negative\": {
+      \"current\": 0
+    },
+    \"npc_con_negative\": {
+      \"current\": 0
+    },
+    \"npc_int_negative\": {
+      \"current\": 0
+    },
+    \"npc_wis_negative\": {
+      \"current\": 0
+    },
+    \"npc_cha_negative\": {
+      \"current\": 0
+    },
+    \"l1mancer_status\": {
+      \"current\": \"completed\"
+    },
+    \"options-class-selection\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-personality\": {
+      \"current\": 0
+    },
+    \"options-flag-ideals\": {
+      \"current\": 0
+    },
+    \"options-flag-bonds\": {
+      \"current\": 0
+    },
+    \"options-flag-flaws\": {
+      \"current\": 0
+    },
+    \"_reporder_repeating_proficiencies\": {
+      \"current\": \"-P0GstAx4caPg47HAekQ,-P0GstAx4caPg47HAekO,-P0GstAx4caPg47HAekP,-P0GstAx4caPg47HAekR,-P0GstAx4caPg47HAekT,-P0GstAybPE9V4-oh0Sj,-P0GstAx4caPg47HAekN,-P0GstAwSwpcYlBORe47\"
+    },
+    \"lvl1_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl2_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl3_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl4_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl5_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl6_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl7_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl8_slots_total\": {
+      \"current\": 0
+    },
+    \"lvl9_slots_total\": {
+      \"current\": 0
+    },
+    \"honor_save_bonus\": {
+      \"current\": 0
+    },
+    \"sanity_save_bonus\": {
+      \"current\": 0
+    }
+  }
+}

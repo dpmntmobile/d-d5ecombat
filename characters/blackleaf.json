@@ -1,0 +1,1307 @@
+{
+  \"export_metadata\": {
+    \"format\": \"dnd5ecombat-roll20\",
+    \"version\": 2
+  },
+  \"name\": \"Varyn 'The Blackleaf'\",
+  \"character_id\": \"-OzWjqkPSRjtOmfWpV21\",
+  \"stats\": {
+    \"wisdom_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence\": {
+      \"current\": 16
+    },
+    \"charisma_base\": {
+      \"current\": 8
+    },
+    \"dexterity\": {
+      \"current\": 19
+    },
+    \"wisdom_base\": {
+      \"current\": 16
+    },
+    \"constitution\": {
+      \"current\": 16
+    },
+    \"strength_base\": {
+      \"current\": \"14\"
+    },
+    \"intelligence_base\": {
+      \"current\": \"16\"
+    },
+    \"intelligence_mod\": {
+      \"current\": 3
+    },
+    \"constitution_bonus\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_mod\": {
+      \"current\": 3
+    },
+    \"strength_mod\": {
+      \"current\": 2
+    },
+    \"charisma_mod\": {
+      \"current\": -1
+    },
+    \"dexterity_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma\": {
+      \"current\": 8
+    },
+    \"strength_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma_bonus\": {
+      \"current\": \"0\"
+    },
+    \"constitution_base\": {
+      \"current\": 16
+    },
+    \"intelligence_bonus\": {
+      \"current\": \"0\"
+    },
+    \"strength\": {
+      \"current\": 14
+    },
+    \"wisdom\": {
+      \"current\": 16
+    },
+    \"constitution_mod\": {
+      \"current\": 3
+    },
+    \"dexterity_base\": {
+      \"current\": 19
+    },
+    \"dexterity_mod\": {
+      \"current\": 4
+    }
+  },
+  \"skills\": {
+    \"animal_handling_bonus\": {
+      \"current\": 3
+    },
+    \"survival_bonus\": {
+      \"current\": 3
+    },
+    \"acrobatics_bonus\": {
+      \"current\": 6
+    },
+    \"sleight_of_hand_prof\": {
+      \"current\": \"(@{pb}*@{sleight_of_hand_type})\"
+    },
+    \"history_bonus\": {
+      \"current\": 3
+    },
+    \"stealth_bonus\": {
+      \"current\": 8
+    },
+    \"athletics_prof\": {
+      \"current\": \"(@{pb}*@{athletics_type})\"
+    },
+    \"perception_type\": {
+      \"current\": 2
+    },
+    \"investigation_bonus\": {
+      \"current\": 5
+    },
+    \"investigation_prof\": {
+      \"current\": \"(@{pb}*@{investigation_type})\"
+    },
+    \"acrobatics_prof\": {
+      \"current\": \"(@{pb}*@{acrobatics_type})\"
+    },
+    \"insight_bonus\": {
+      \"current\": 3
+    },
+    \"athletics_bonus\": {
+      \"current\": 4
+    },
+    \"arcana_bonus\": {
+      \"current\": 3
+    },
+    \"stealth_type\": {
+      \"current\": 2
+    },
+    \"deception_bonus\": {
+      \"current\": 1
+    },
+    \"religion_bonus\": {
+      \"current\": 3
+    },
+    \"intimidation_bonus\": {
+      \"current\": -1
+    },
+    \"persuasion_bonus\": {
+      \"current\": -1
+    },
+    \"stealth_prof\": {
+      \"current\": \"(@{pb}*@{stealth_type})\"
+    },
+    \"deception_prof\": {
+      \"current\": \"(@{pb}*@{deception_type})\"
+    },
+    \"perception_bonus\": {
+      \"current\": 7
+    },
+    \"sleight_of_hand_bonus\": {
+      \"current\": 6
+    },
+    \"medicine_bonus\": {
+      \"current\": 3
+    },
+    \"nature_bonus\": {
+      \"current\": 3
+    },
+    \"performance_bonus\": {
+      \"current\": -1
+    },
+    \"perception_prof\": {
+      \"current\": \"(@{pb}*@{perception_type})\"
+    }
+  },
+  \"hp_and_level\": {
+    \"pb\": {
+      \"current\": \"2\"
+    },
+    \"class\": {
+      \"current\": \"Rogue\"
+    },
+    \"race\": {
+      \"current\": \"Elf\"
+    },
+    \"level\": {
+      \"current\": 1
+    },
+    \"ac\": {
+      \"current\": 15
+    },
+    \"speed\": {
+      \"current\": 35
+    },
+    \"hp\": {
+      \"current\": 11,
+      \"max\": 11
+    },
+    \"initiative_bonus\": {
+      \"current\": 4
+    }
+  },
+  \"attacks_and_spellcasting\": {
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_itemid\": {
+      \"current\": \"-5sTq2LAwpbIRQDXfMje\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_atkrange\": {
+      \"current\": \"80/320 ft.\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_dmgbase\": {
+      \"current\": \"1d6\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_atkrange\": {
+      \"current\": \"20/60\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_atkdmgtype\": {
+      \"current\": \"1d6+4 Piercing \"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_dmgbase\": {
+      \"current\": \"1d6\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_itemid\": {
+      \"current\": \"-I3IovGXbU6cNrrBsFqb\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_dmgbase\": {
+      \"current\": \"1d4\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_atkname\": {
+      \"current\": \"Dagger Off Hand\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_atkdmgtype\": {
+      \"current\": \"1d4 Piercing \"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_atkdmgtype\": {
+      \"current\": \"1d6+4 Piercing \"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_atkbonus\": {
+      \"current\": \"+6\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_atkname\": {
+      \"current\": \"Shortsword\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_atkname\": {
+      \"current\": \"Shortbow\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_atkbonus\": {
+      \"current\": \"+6\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_atkbonus\": {
+      \"current\": \"+6\"
+    },
+    \"repeating_attack_-ap7hNqx3zqEzS31qhJK_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_itemid\": {
+      \"current\": \"-6IiXmdSfcn2E6njhIoS\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-xMZnNrlEVVCraAWjZ0N_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-CbnVrarx1c7qusFC8nv_atkflag\": {
+      \"current\": \"{{attack=1}}\"
+    }
+  },
+  \"traits_and_features\": {
+    \"repeating_traits_-9lFQZ9OjCED8x8G96Fc_source_type\": {
+      \"current\": \"Elf\"
+    },
+    \"repeating_traits_-85GxPtjIUMVwDmNmazi_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-ZyJPanOMKG131ZPE1cZ_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-85GxPtjIUMVwDmNmazi_name\": {
+      \"current\": \"Criminal Contact\"
+    },
+    \"repeating_traits_-85GxPtjIUMVwDmNmazi_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-oH9dRmRCYvhczSUtS4e_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-oH9dRmRCYvhczSUtS4e_name\": {
+      \"current\": \"Fey Ancestry\"
+    },
+    \"repeating_traits_-iviB4yrxfwdQda8nCj6_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-oH9dRmRCYvhczSUtS4e_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-oH9dRmRCYvhczSUtS4e_description\": {
+      \"current\": \"You have advantage on saving throws against being charmed, and magic can’t put you to sleep.\"
+    },
+    \"repeating_traits_-5lDRLLzuhze2U6gHjt3_source_type\": {
+      \"current\": \"Rogue\"
+    },
+    \"repeating_traits_-iviB4yrxfwdQda8nCj6_name\": {
+      \"current\": \"Mask of the Wild\"
+    },
+    \"repeating_traits_-iviB4yrxfwdQda8nCj6_description\": {
+      \"current\": \"You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.\"
+    },
+    \"repeating_traits_-ZyJPanOMKG131ZPE1cZ_source_type\": {
+      \"current\": \"Rogue\"
+    },
+    \"repeating_traits_-iviB4yrxfwdQda8nCj6_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-VH6V94SP0zdYmcxAZTe_description\": {
+      \"current\": \"Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.\"
+    },
+    \"repeating_traits_-VH6V94SP0zdYmcxAZTe_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-VH6V94SP0zdYmcxAZTe_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-9lFQZ9OjCED8x8G96Fc_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-5lDRLLzuhze2U6gHjt3_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-iviB4yrxfwdQda8nCj6_source_type\": {
+      \"current\": \"Wood Elf\"
+    },
+    \"repeating_traits_-ZyJPanOMKG131ZPE1cZ_description\": {
+      \"current\": \"During your rogue training you learned thieves’ cant, a secret mix of dialect, jargon, and code that allows you to hide messages in seemingly normal conversation. Only another creature that knows thieves’ cant understands such messages. It takes four times longer to convey such a message⁠ than it does to speak the same idea plainly.\
+In addition, you understand a set of secret signs and symbols used to convey short, simple messages, such as whether an area is dangerous or the territory of a thieves’ guild, whether loot is nearby, or whether the people in an area are easy marks or will provide a safe house for thieves on the run.\"
+    },
+    \"repeating_traits_-oH9dRmRCYvhczSUtS4e_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-9lFQZ9OjCED8x8G96Fc_description\": {
+      \"current\": \"Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is “trance.”) While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.\"
+    },
+    \"repeating_traits_-85GxPtjIUMVwDmNmazi_source_type\": {
+      \"current\": \"Criminal\"
+    },
+    \"repeating_traits_-ZyJPanOMKG131ZPE1cZ_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-VH6V94SP0zdYmcxAZTe_name\": {
+      \"current\": \"Darkvision\"
+    },
+    \"repeating_traits_-5lDRLLzuhze2U6gHjt3_source\": {
+      \"current\": \"Class\"
+    },
+    \"repeating_traits_-ZyJPanOMKG131ZPE1cZ_source\": {
+      \"current\": \"Class\"
+    },
+    \"repeating_traits_-5lDRLLzuhze2U6gHjt3_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-9lFQZ9OjCED8x8G96Fc_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-ZyJPanOMKG131ZPE1cZ_name\": {
+      \"current\": \"Thieves' Cant\"
+    },
+    \"repeating_traits_-VH6V94SP0zdYmcxAZTe_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-9lFQZ9OjCED8x8G96Fc_name\": {
+      \"current\": \"Trance\"
+    },
+    \"repeating_traits_-85GxPtjIUMVwDmNmazi_description\": {
+      \"current\": \"You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you.\"
+    },
+    \"repeating_traits_-5lDRLLzuhze2U6gHjt3_description\": {
+      \"current\": \"Beginning at 1st level, you know how to strike subtly and exploit a foe’s distraction. Once per turn, you can deal an extra 1d6 damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or a ranged weapon.\
+You don’t need advantage on the attack roll if another enemy of the target is within 5 feet of it, that enemy isn’t incapacitated, and you don’t have disadvantage on the attack roll.\
+The amount of the extra damage increases as you gain levels in this class, as shown in the Sneak Attack column of the Rogue table.\"
+    },
+    \"repeating_traits_-oH9dRmRCYvhczSUtS4e_source_type\": {
+      \"current\": \"Elf\"
+    },
+    \"repeating_traits_-iviB4yrxfwdQda8nCj6_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-9lFQZ9OjCED8x8G96Fc_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-85GxPtjIUMVwDmNmazi_source\": {
+      \"current\": \"Background\"
+    },
+    \"repeating_traits_-5lDRLLzuhze2U6gHjt3_name\": {
+      \"current\": \"Sneak Attack\"
+    },
+    \"repeating_traits_-VH6V94SP0zdYmcxAZTe_source_type\": {
+      \"current\": \"Elf\"
+    }
+  },
+  \"inventory\": {
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemname\": {
+      \"current\": \"Shortbow\"
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemmodifiers\": {
+      \"current\": \"Item Type: Ranged Weapon, Damage: 1d6, Damage Type: Piercing, Range: 80/320 ft.,Critical Range: 20\"
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_itemweight\": {
+      \"current\": \"7\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_itemcontent\": {
+      \"current\": \"Mess Kit\
+Adventuring gear\
+\
+\\t\\t\\t\\t\\tThis tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl.\
+\\t\\t\\t\\tWeight: 1\
+\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemweight\": {
+      \"current\": \"2\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_itemcontent\": {
+      \"current\": \"Rations (1 day)\
+Adventuring gear\
+Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.\
+\\t\\t\\t\\t\
+\
+Weight: 2\
+\"
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_itemcontent\": {
+      \"current\": \"Waterskin\
+Adventuring gear (container)\
+A waterskin can hold up to 4 pints of liquid.Weight: 5 (when full)\
+\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemproperties\": {
+      \"current\": \"Two-Handed, Range, Ammunition\"
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_itemcontent\": {
+      \"current\": \"Backpack\
+Adventuring gear (container)\
+A backpack can hold one cubic foot or 30 pounds of gear. You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack.Weight: 5\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemattackid\": {
+      \"current\": \"-ap7hNqx3zqEzS31qhJK\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 1d6, Damage Type: Piercing\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_itemweight\": {
+      \"current\": \"2\"
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_itemname\": {
+      \"current\": \"Hempen Rope 50ft\"
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_itemweight\": {
+      \"current\": \"0.05\"
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_itemcontent\": {
+      \"current\": \"Tinderbox\
+Adventuring gear\
+\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tThis small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch - or anything else with abundant, exposed fuel - takes an action. Lighting any other fire takes 1 minute.Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_itemcontent\": {
+      \"current\": \"Hempen Rope (50 feet)\
+Adventuring gear\
+Rope, whether made of hemp or silk, has 2 hit points and can be burst with a DC 17 Strength check.\
+\
+Weight: 10\
+\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_itemname\": {
+      \"current\": \"Leather Armor\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tShortbowRanged weapon (simple, shortbow)\
+Ammunition. You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \\\"Improvised Weapons\\\" later in the section). A sling must be loaded to deal any damage when used in this way.Range. A weapon that can be used to make a ranged attack has a range in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon’s normal range in feet, and the second indicates the weapon’s long range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can’t attack a target beyond the weapon’s long range.Two-Handed. This weapon requires two hands when you attack with it.\
+Damage: 1d6\
+Damage Type: PiercingProperties: Ammunition, Range, Two-Handed\
+Range: 80/320Weight: 2\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_itemcontent\": {
+      \"current\": \"Torch\
+Adventuring gear\
+\
+\\t\\t\\t\\t\\t\
+\\t\\t\\t\\t\\tA torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.Damage: 1\
+Damage Type: Fire\
+Weight: 1\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 1d4, Damage Type: Piercing, Range: 20/60,Critical Range: 20,Critical Range: 20,Critical Range: 20,Critical Range: 20,Critical Range: 20,Critical Range: 20,Critical Range: 20,Critical Range: 20,Critical Range: 20\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemproperties\": {
+      \"current\": \"Finesse, Light, Range, Thrown\"
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemweight\": {
+      \"current\": \"2\"
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_itemcount\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_itemweight\": {
+      \"current\": \"3\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemproperties\": {
+      \"current\": \"Finesse, Light\"
+    },
+    \"repeating_inventory_-qgr10hjTKVmIvVF90xT_itemname\": {
+      \"current\": \"Waterskin\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemname\": {
+      \"current\": \"Dagger Off Hand\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_itemname\": {
+      \"current\": \"Crowbar\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_itemmodifiers\": {
+      \"current\": \"Item Type: Light Armor, AC: 11\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_itemcount\": {
+      \"current\": \"20\"
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemname\": {
+      \"current\": \"Shortsword\"
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_itemname\": {
+      \"current\": \"Rations\"
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_itemname\": {
+      \"current\": \"Torch\"
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_itemname\": {
+      \"current\": \"Backpack\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_itemcontent\": {
+      \"current\": \"\
+\\t\\t\\t\\t\\tLeather Armor\
+Armor (light)The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.AC: 11 + Dex modifier\
+Weight: 10\
+\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-ernZjzHG57P2FWb7ive_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemattackid\": {
+      \"current\": \"-xMZnNrlEVVCraAWjZ0N\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemcontent\": {
+      \"current\": \"Dagger\
+Melee weapon (simple, dagger)Finesse. When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls.Light. A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.Range. A weapon that can be used to make a ranged attack has a range in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's long range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range. Thrown. If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property.Damage: 1d4\
+Damage Type: Piercing\
+Properties: Finesse, Light, Range, Thrown\
+Range: 20/60\
+Weight: 1\
+\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_itemcontent\": {
+      \"current\": \"ShortswordMelee weapon (martial, shortsword)Finesse. When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls.Light. A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.Damage: 1d6\
+Damage Type: PiercingProperties: Finesse, Light\
+Weight: 2\"
+    },
+    \"repeating_inventory_-yi6KAdiooglLVp5FwQw_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_itemname\": {
+      \"current\": \"Bedroll\"
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear, Damage: 1, Damage Type: Fire, Range: 20/40\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-mpl8RAywinOAxNyvhDd_itemname\": {
+      \"current\": \"Tinderbox\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_itemcount\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_itemname\": {
+      \"current\": \"Arrows\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemattackid\": {
+      \"current\": \"-CbnVrarx1c7qusFC8nv\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_itemname\": {
+      \"current\": \"Mess Kit\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_itemcontent\": {
+      \"current\": \"Common clothes\
+Adventuring gear (clothing)Weight: 3\
+\"
+    },
+    \"repeating_inventory_-l6okXKuqeONmkhQ2rMA_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_itemcontent\": {
+      \"current\": \"Crowbar\
+Adventuring gear\
+Using a crowbar grants advantage to Strength checks where the crowbar's leverage can be applied.Weight: 5\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    },
+    \"repeating_inventory_-6IiXmdSfcn2E6njhIoS_itemcount\": {
+      \"current\": \"2\"
+    },
+    \"repeating_inventory_-EISWQUFayDnVZ3vTg2Y_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-5sTq2LAwpbIRQDXfMje_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-eNwMnzL2UKmSrgVs1gZ_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-i9hmNlNT1JYnw2DW97U_itemname\": {
+      \"current\": \"Dark com. clothes incl hood\"
+    },
+    \"repeating_inventory_-K5jsp4RdfD0bNu9WLde_itemcontent\": {
+      \"current\": \"Bedroll\
+Adventuring gearWeight: 7\
+\"
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_itemcount\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-8yOPNYz6yyF9PswFDsP_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-uuDr78XAUgiI8xDH141_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-I3IovGXbU6cNrrBsFqb_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-fkdYUJe4sQpaQnoxTqs_itemcontent\": {
+      \"current\": \"Arrows (20)\
+AmmunitionYou can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.Weight: 1 lb. for 20\
+\
+\\t\\t\\t\\t\
+\\t\\t\\t\\t\"
+    }
+  },
+  \"resources\": {},
+  \"other_repeating_attributes\": {
+    \"repeating_proficiencies_-RWzrqCQTEVr718wn9p8_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-VMXJNhOPghOPigMFBsE_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-E5ha1XjTngjfikN4QoT_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-i6W6tNHXBbuADHzYp9d_name\": {
+      \"current\": \"Common\"
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_toolbonus\": {
+      \"current\": 6
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_toolattr\": {
+      \"current\": \"DEXTERITY\"
+    },
+    \"repeating_proficiencies_-5F2hFOyZcSH8td6Qn0X_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-iDWEjFSyUuSitcJxo03_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_toolbonus_display\": {
+      \"current\": 6
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-Od9PlKKugIeGmc6fSXY_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-Od9PlKKugIeGmc6fSXY_name\": {
+      \"current\": \"Shortsword\"
+    },
+    \"repeating_proficiencies_-VMXJNhOPghOPigMFBsE_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-FxxOyDUoURw5mGBwu6z_name\": {
+      \"current\": \"Hand Crossbow\"
+    },
+    \"repeating_proficiencies_-oaZO9fkxVpdaz030GOe_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tohitmod_-axG2I6VbiyyOjRhj6XA_global_attack_name\": {
+      \"current\": \"BLESS\"
+    },
+    \"repeating_proficiencies_-5F2hFOyZcSH8td6Qn0X_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-VMXJNhOPghOPigMFBsE_name\": {
+      \"current\": \"Longsword\"
+    },
+    \"repeating_damagemod_-j5dsG8iyLExlIo0LCJz_global_damage_type\": {
+      \"current\": \"Sneak\"
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_toolattr\": {
+      \"current\": \"DEXTERITY\"
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_proficiencies_-yqcGp26N77Ire93YLWS_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-oaZO9fkxVpdaz030GOe_name\": {
+      \"current\": \"Longbow\"
+    },
+    \"repeating_proficiencies_-xJMolymBS7yjcVECrr6_name\": {
+      \"current\": \"Elvish\"
+    },
+    \"repeating_proficiencies_-RWzrqCQTEVr718wn9p8_name\": {
+      \"current\": \"Rapier\"
+    },
+    \"repeating_proficiencies_-E5ha1XjTngjfikN4QoT_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tohitmod_-axG2I6VbiyyOjRhj6XA_global_attack_active_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_damagemod_-j5dsG8iyLExlIo0LCJz_global_damage_name\": {
+      \"current\": \"Sneak Attack\"
+    },
+    \"repeating_proficiencies_-i6W6tNHXBbuADHzYp9d_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-xJMolymBS7yjcVECrr6_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_damagemod_-j5dsG8iyLExlIo0LCJz_global_damage_active_flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-E5ha1XjTngjfikN4QoT_name\": {
+      \"current\": \"Simple weapons\"
+    },
+    \"repeating_proficiencies_-iDWEjFSyUuSitcJxo03_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-yqcGp26N77Ire93YLWS_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_toolname\": {
+      \"current\": \"Dice Set\"
+    },
+    \"repeating_proficiencies_-FxxOyDUoURw5mGBwu6z_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_toolbonus_display\": {
+      \"current\": 6
+    },
+    \"repeating_proficiencies_-iDWEjFSyUuSitcJxo03_name\": {
+      \"current\": \"Shortbow\"
+    },
+    \"repeating_proficiencies_-5F2hFOyZcSH8td6Qn0X_name\": {
+      \"current\": \"Thieves' Cant\"
+    },
+    \"repeating_proficiencies_-oaZO9fkxVpdaz030GOe_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_toolname\": {
+      \"current\": \"Thieves' Tools\"
+    },
+    \"repeating_tool_-DdRvdjWGh32H66vZ0ZS_toolattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_proficiencies_-FxxOyDUoURw5mGBwu6z_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_toolbonus\": {
+      \"current\": 6
+    },
+    \"repeating_damagemod_-j5dsG8iyLExlIo0LCJz_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_damagemod_-j5dsG8iyLExlIo0LCJz_global_damage_damage\": {
+      \"current\": \"1d6\"
+    },
+    \"repeating_proficiencies_-yqcGp26N77Ire93YLWS_name\": {
+      \"current\": \"Light Armor\"
+    },
+    \"repeating_proficiencies_-i6W6tNHXBbuADHzYp9d_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_proficiencies_-Od9PlKKugIeGmc6fSXY_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_proficiencies_-xJMolymBS7yjcVECrr6_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tool_-bqebO64WPCIzl9za5eI_toolattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_proficiencies_-RWzrqCQTEVr718wn9p8_options-flag\": {
+      \"current\": \"0\"
+    }
+  },
+  \"other_attributes\": {
+    \"constitution_flag\": {
+      \"current\": \"0\"
+    },
+    \"l1mancer_status\": {
+      \"current\": \"completed\"
+    },
+    \"options-flag-ideals\": {
+      \"current\": \"0\"
+    },
+    \"multiclass2_flag\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_flag\": {
+      \"current\": \"0\"
+    },
+    \"character_appearance\": {
+      \"current\": \"Battered, haggard and scarred in more than one way.\"
+    },
+    \"encumberance\": {
+      \"current\": \" \"
+    },
+    \"rtype\": {
+      \"current\": \"@{advantagetoggle}\"
+    },
+    \"multiclass3_lvl\": {
+      \"current\": \"1\"
+    },
+    \"lvl7_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"options-class-selection\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_save_bonus\": {
+      \"current\": 3
+    },
+    \"_reporder_repeating_proficiencies\": {
+      \"current\": \"-yqcGp26N77Ire93YLWS,-i6W6tNHXBbuADHzYp9d,-xJMolymBS7yjcVECrr6,-5F2hFOyZcSH8td6Qn0X,-FxxOyDUoURw5mGBwu6z,-oaZO9fkxVpdaz030GOe,-VMXJNhOPghOPigMFBsE,-RWzrqCQTEVr718wn9p8,-iDWEjFSyUuSitcJxo03,-Od9PlKKugIeGmc6fSXY,-E5ha1XjTngjfikN4QoT\"
+    },
+    \"character_backstory\": {
+      \"current\": \"Humans talk about the black sheep of the family, the one who doesn't quite belong. I never had a family, so the streets came up with their own version: Blackleaf. It started as a joke, then became a nickname, and eventually it became the name most people knew me by. Funny how that happens.\
+\
+My real name is Varyn. That's what my friends call me. Since I don't have any friends, you can call me what everyone else does: The Blackleaf.\"
+    },
+    \"queryadvantage\": {
+      \"current\": \"{{query=1}} ?{Advantage?|Normal Roll,&#123&#123normal=1&#125&#125 &#123&#123r2=[[0d20|Advantage,&#123&#123advantage=1&#125&#125 &#123&#123r2=[[@{d20}|Disadvantage,&#123&#123disadvantage=1&#125&#125 &#123&#123r2=[[@{d20}}\"
+    },
+    \"lvl1_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"spell_attack_bonus\": {
+      \"current\": \"0\"
+    },
+    \"npc_wis_negative\": {
+      \"current\": \"0\"
+    },
+    \"hair\": {
+      \"current\": \"Black\"
+    },
+    \"flaws\": {
+      \"current\": \"When faced with a choice between money and my friends, I usually choose the money.\"
+    },
+    \"lvl8_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"weighttotal\": {
+      \"current\": 84.3
+    },
+    \"class_display\": {
+      \"current\": \"Rogue 1\"
+    },
+    \"honor_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"custom_class\": {
+      \"current\": \"0\"
+    },
+    \"hero_points\": {
+      \"current\": 5
+    },
+    \"charisma_save_bonus\": {
+      \"current\": -1
+    },
+    \"armorwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"npc_str_negative\": {
+      \"current\": \"0\"
+    },
+    \"dexterity_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"customacwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"other_languages\": {
+      \"current\": \"Common, Elvish, Thieves' Cant\"
+    },
+    \"lvl5_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"strength_flag\": {
+      \"current\": \"0\"
+    },
+    \"global_damage_mod_flag\": {
+      \"current\": \"1\"
+    },
+    \"lvl6_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"custom_attack_flag\": {
+      \"current\": \"0\"
+    },
+    \"lvl9_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"lvl2_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"multiclass3_flag\": {
+      \"current\": \"0\"
+    },
+    \"alignment\": {
+      \"current\": \"Chaotic Neutral\"
+    },
+    \"constitution_save_bonus\": {
+      \"current\": 3
+    },
+    \"dexterity_flag\": {
+      \"current\": \"0\"
+    },
+    \"hitdieroll\": {
+      \"current\": \"8\"
+    },
+    \"eyes\": {
+      \"current\": \"Brown\"
+    },
+    \"lvl4_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-flaws\": {
+      \"current\": \"0\"
+    },
+    \"bonds\": {
+      \"current\": \"I will become the greatest thief that ever lived. Gold and power are all that matter.\"
+    },
+    \"custom_ac_flag\": {
+      \"current\": \"0\"
+    },
+    \"subrace\": {
+      \"current\": \"Wood Elf\"
+    },
+    \"charisma_flag\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-personality\": {
+      \"current\": \"0\"
+    },
+    \"base_level\": {
+      \"current\": \"1\"
+    },
+    \"constitution_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"hitdietype\": {
+      \"current\": \"8\"
+    },
+    \"weight\": {
+      \"current\": \"127 lb\"
+    },
+    \"sanity_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"npc_cha_negative\": {
+      \"current\": 1
+    },
+    \"options-flag-bonds\": {
+      \"current\": \"0\"
+    },
+    \"version\": {
+      \"current\": 4.21
+    },
+    \"showleveler\": {
+      \"current\": 0
+    },
+    \"wisdom_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"ideals\": {
+      \"current\": \"Freedom. Chains are meant to be broken, as are those who would forge them. (Chaotic)\"
+    },
+    \"strength_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"other_tool\": {
+      \"current\": \"Dice Set, Thieves' Tools\"
+    },
+    \"multiclass2_lvl\": {
+      \"current\": \"1\"
+    },
+    \"npc_con_negative\": {
+      \"current\": \"0\"
+    },
+    \"global_attack_mod_flag\": {
+      \"current\": \"0\"
+    },
+    \"npc_int_negative\": {
+      \"current\": \"0\"
+    },
+    \"death_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_flag\": {
+      \"current\": \"0\"
+    },
+    \"sheet_version\": {
+      \"current\": 1
+    },
+    \"spell_save_dc\": {
+      \"current\": \"0\"
+    },
+    \"gp\": {
+      \"current\": \"15\"
+    },
+    \"hitdie_final\": {
+      \"current\": \"@{hitdietype}\"
+    },
+    \"intelligence_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"other_weapon\": {
+      \"current\": \"Hand Crossbow, Longbow, Longsword, Rapier, Shortbow, Shortsword, Simple weapons\"
+    },
+    \"mancer_confirm\": {
+      \"current\": \"on\"
+    },
+    \"creaturetype\": {
+      \"current\": \"Humanoid\"
+    },
+    \"halflingluck_flag\": {
+      \"current\": \"0\"
+    },
+    \"lvl3_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"dexterity_save_bonus\": {
+      \"current\": 6
+    },
+    \"intelligence_save_bonus\": {
+      \"current\": 5
+    },
+    \"spellcasting_ability\": {
+      \"current\": \"0*\"
+    },
+    \"jack\": {
+      \"current\": 1
+    },
+    \"age\": {
+      \"current\": \"27\"
+    },
+    \"height\": {
+      \"current\": \"5ft 3inch\"
+    },
+    \"other_armor\": {
+      \"current\": \"Light Armor\"
+    },
+    \"race_display\": {
+      \"current\": \"Wood Elf\"
+    },
+    \"strength_save_bonus\": {
+      \"current\": 2
+    },
+    \"caster_level\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_flag\": {
+      \"current\": \"0\"
+    },
+    \"passive_wisdom\": {
+      \"current\": 17
+    },
+    \"tab\": {
+      \"current\": \"core\"
+    },
+    \"multiclass1_lvl\": {
+      \"current\": \"1\"
+    },
+    \"charisma_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"background\": {
+      \"current\": \"Criminal (Burglar)\"
+    },
+    \"size\": {
+      \"current\": \"Medium\"
+    },
+    \"hit_dice\": {
+      \"current\": \"1\",
+      \"max\": 1
+    },
+    \"dtype\": {
+      \"current\": \"full\"
+    },
+    \"npc_dex_negative\": {
+      \"current\": \"0\"
+    },
+    \"personality_traits\": {
+      \"current\": \"I am incredibly slow to trust. Those who seem the fairest often have the most to hide.\"
+    },
+    \"invalidXP\": {
+      \"current\": 0
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Skeleton",
+  "armor_class": 13,
+  "max_hp": 13,
+  "initiative_bonus": 2,
+  "saving_throw_bonuses": {
+    "str": 0,
+    "dex": 2,
+    "con": 2,
+    "int": -2,
+    "wis": -1,
+    "cha": -3
+  },
+  "ruleset": "D&D 5e Basic Rules (2014)",
+  "source_url": "https://www.dndbeyond.com/monsters/17015-skeleton",
+  "damage_vulnerabilities": ["bludgeoning"],
+  "damage_immunities": ["poison"],
+  "condition_immunities": ["exhaustion", "poisoned"],
+  "creature_tags": ["undead"],
+  "multiattack": [],
+  "unmodeled_traits": [],
+  "attacks": [
+    {
+      "name": "Shortsword",
+      "attack_bonus": 4,
+      "damage_dice": "1d6",
+      "damage_modifier": 2,
+      "damage_type": "piercing",
+      "attack_mode": "melee",
+      "reach_feet": 5,
+      "unmodeled_effects": []
+    },
+    {
+      "name": "Shortbow",
+      "attack_bonus": 4,
+      "damage_dice": "1d6",
+      "damage_modifier": 2,
+      "damage_type": "piercing",
+      "attack_mode": "ranged",
+      "normal_range_feet": 80,
+      "long_range_feet": 320,
+      "unmodeled_effects": []
+    }
+  ]
+}

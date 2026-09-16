@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Wolf",
+  "armor_class": 13,
+  "max_hp": 11,
+  "initiative_bonus": 2,
+  "saving_throw_bonuses": {
+    "str": 1,
+    "dex": 2,
+    "con": 1,
+    "int": -4,
+    "wis": 1,
+    "cha": -2
+  },
+  "ruleset": "D&D 5e Basic Rules (2014)",
+  "source_url": "https://www.dndbeyond.com/monsters/17062-wolf",
+  "creature_tags": [
+    "beast"
+  ],
+  "multiattack": [],
+  "unmodeled_traits": [
+    "Keen Hearing and Smell"
+  ],
+  "attacks": [
+    {
+      "name": "Bite",
+      "attack_bonus": 4,
+      "damage_dice": "2d4",
+      "damage_modifier": 2,
+      "damage_type": "piercing",
+      "attack_mode": "melee",
+      "reach_feet": 5,
+      "unmodeled_effects": [],
+      "condition_effect": {
+        "difficulty_class": 11,
+        "save_ability": "str",
+        "condition": "prone"
+      }
+    }
+  ],
+  "pack_tactics": true,
+  "passive_perception": 13
+}

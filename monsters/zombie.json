@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Zombie",
+  "armor_class": 8,
+  "max_hp": 22,
+  "initiative_bonus": -2,
+  "saving_throw_bonuses": {
+    "str": 1,
+    "dex": -2,
+    "con": 3,
+    "int": -4,
+    "wis": 0,
+    "cha": -3
+  },
+  "ruleset": "D&D 5e Basic Rules (2014)",
+  "source_url": "https://www.dndbeyond.com/monsters/17077-zombie",
+  "damage_immunities": ["poison"],
+  "condition_immunities": ["poisoned"],
+  "creature_tags": ["undead"],
+  "multiattack": [],
+  "undead_fortitude": true,
+  "unmodeled_traits": [],
+  "attacks": [
+    {
+      "name": "Slam",
+      "attack_bonus": 3,
+      "damage_dice": "1d6",
+      "damage_modifier": 1,
+      "damage_type": "bludgeoning",
+      "attack_mode": "melee",
+      "reach_feet": 5,
+      "unmodeled_effects": []
+    }
+  ]
+}

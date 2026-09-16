@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Ghoul",
+  "armor_class": 12,
+  "max_hp": 22,
+  "initiative_bonus": 2,
+  "saving_throw_bonuses": {
+    "str": 1,
+    "dex": 2,
+    "con": 0,
+    "int": -2,
+    "wis": 0,
+    "cha": -2
+  },
+  "ruleset": "D&D 5e Basic Rules (2014)",
+  "source_url": "https://www.dndbeyond.com/monsters/16872-ghoul",
+  "damage_immunities": ["poison"],
+  "condition_immunities": ["charmed", "exhaustion", "poisoned"],
+  "creature_tags": ["undead"],
+  "multiattack": [],
+  "unmodeled_traits": [],
+  "attacks": [
+    {
+      "name": "Bite",
+      "attack_bonus": 2,
+      "damage_dice": "2d6",
+      "damage_modifier": 2,
+      "damage_type": "piercing",
+      "attack_mode": "melee",
+      "reach_feet": 5,
+      "unmodeled_effects": []
+    },
+    {
+      "name": "Claws",
+      "attack_bonus": 4,
+      "damage_dice": "2d4",
+      "damage_modifier": 2,
+      "damage_type": "slashing",
+      "attack_mode": "melee",
+      "reach_feet": 5,
+      "unmodeled_effects": [],
+      "condition_effect": {
+        "difficulty_class": 10,
+        "save_ability": "con",
+        "condition": "paralyzed",
+        "duration_turns": 10,
+        "repeat_save_at_end_of_turn": true,
+        "immune_creature_tags": ["elf", "undead"]
+      }
+    }
+  ]
+}

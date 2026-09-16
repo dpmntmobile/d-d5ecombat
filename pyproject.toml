@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dnd5ecombat"
+version = "0.4.0"
+description = "Seeded D&D 5e combat comparisons with CLI and desktop interfaces"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["jsonschema>=4.23,<5"]
+
+[project.optional-dependencies]
+gui = ["PySide6>=6.8,<7"]
+dev = ["coverage[toml]>=7.6,<8", "ruff>=0.12,<1"]
+package = ["PyInstaller>=6.10,<7", "PySide6>=6.8,<7"]
+
+[project.scripts]
+dnd5ecombat = "dnd5ecombat.main:main"
+dnd5ecombat-gui = "dnd5ecombat.gui:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dnd5ecombat = ["schemas/*/*.json"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.coverage.run]
+branch = true
+source = ["dnd5ecombat"]
+
+[tool.coverage.report]
+fail_under = 70
+show_missing = true
+skip_covered = true

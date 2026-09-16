@@ -1,0 +1,1733 @@
+{
+  \"export_metadata\": {
+    \"format\": \"dnd5ecombat-roll20\",
+    \"version\": 2
+  },
+  \"name\": \"Felicity\",
+  \"character_id\": \"-OzXxgl919_2A7W-pkvK\",
+  \"stats\": {
+    \"strength\": {
+      \"current\": 7
+    },
+    \"dexterity\": {
+      \"current\": 12
+    },
+    \"dexterity_mod\": {
+      \"current\": 1
+    },
+    \"wisdom_base\": {
+      \"current\": 10
+    },
+    \"constitution_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_mod\": {
+      \"current\": \"0\"
+    },
+    \"strength_base\": {
+      \"current\": 7
+    },
+    \"dexterity_base\": {
+      \"current\": 12
+    },
+    \"wisdom\": {
+      \"current\": 10
+    },
+    \"constitution\": {
+      \"current\": 15
+    },
+    \"wisdom_bonus\": {
+      \"current\": \"0\"
+    },
+    \"strength_bonus\": {
+      \"current\": \"0\"
+    },
+    \"charisma\": {
+      \"current\": 15
+    },
+    \"constitution_mod\": {
+      \"current\": 2
+    },
+    \"strength_mod\": {
+      \"current\": -2
+    },
+    \"wisdom_mod\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_base\": {
+      \"current\": 10
+    },
+    \"dexterity_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence\": {
+      \"current\": 10
+    },
+    \"charisma_base\": {
+      \"current\": 15
+    },
+    \"charisma_bonus\": {
+      \"current\": \"0\"
+    },
+    \"constitution_base\": {
+      \"current\": 15
+    },
+    \"charisma_mod\": {
+      \"current\": 2
+    }
+  },
+  \"skills\": {
+    \"investigation_bonus\": {
+      \"current\": 2
+    },
+    \"animal_handling_bonus\": {
+      \"current\": \"0\"
+    },
+    \"persuasion_bonus\": {
+      \"current\": 2
+    },
+    \"history_bonus\": {
+      \"current\": 2
+    },
+    \"arcana_bonus\": {
+      \"current\": \"0\"
+    },
+    \"survival_bonus\": {
+      \"current\": \"0\"
+    },
+    \"insight_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intimidation_bonus\": {
+      \"current\": 2
+    },
+    \"deception_bonus\": {
+      \"current\": 2
+    },
+    \"history_prof\": {
+      \"current\": \"(@{pb}*@{history_type})\"
+    },
+    \"athletics_bonus\": {
+      \"current\": -2
+    },
+    \"stealth_bonus\": {
+      \"current\": 1
+    },
+    \"investigation_prof\": {
+      \"current\": \"(@{pb}*@{investigation_type})\"
+    },
+    \"acrobatics_bonus\": {
+      \"current\": 1
+    },
+    \"sleight_of_hand_bonus\": {
+      \"current\": 1
+    },
+    \"performance_bonus\": {
+      \"current\": 2
+    },
+    \"religion_bonus\": {
+      \"current\": \"0\"
+    },
+    \"nature_bonus\": {
+      \"current\": \"0\"
+    },
+    \"medicine_bonus\": {
+      \"current\": \"0\"
+    },
+    \"perception_bonus\": {
+      \"current\": \"0\"
+    }
+  },
+  \"hp_and_level\": {
+    \"speed\": {
+      \"current\": 30
+    },
+    \"level\": {
+      \"current\": 1
+    },
+    \"class\": {
+      \"current\": \"Warlock\"
+    },
+    \"race\": {
+      \"current\": \"Tiefling\"
+    },
+    \"pb\": {
+      \"current\": \"2\"
+    },
+    \"ac\": {
+      \"current\": 12
+    },
+    \"initiative_bonus\": {
+      \"current\": 1
+    },
+    \"hp\": {
+      \"current\": 10,
+      \"max\": 10
+    },
+    \"subclass\": {
+      \"current\": \"Great Old One\"
+    }
+  },
+  \"attacks_and_spellcasting\": {
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_dmgbase\": {
+      \"current\": \"3d6\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_dmgtype\": {
+      \"current\": \"Force\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_dmgtype\": {
+      \"current\": \"Psychic\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_dmgbase\": {
+      \"current\": \"1d6\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_atkbonus\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_atkflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_atkrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_dmgbase\": {
+      \"current\": \"[[round((@{level} + 1) / 6 + 0.5)]]d6\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_dmgtype\": {
+      \"current\": \"Bludgeoning\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_saveflag\": {
+      \"current\": \"{{save=1}} {{saveattr=@{saveattr}}} {{savedesc=@{saveeffect}}} {{savedc=[[[[@{savedc}]][SAVE]]]}}\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_dmg2flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_spellid\": {
+      \"current\": \"-xgRF3PcrBK6x3al0RCk\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_atkattr_base\": {
+      \"current\": \"@{charisma_mod}\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_atkdmgtype\": {
+      \"current\": \"1d4 Psychic \"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_atkbonus\": {
+      \"current\": \"DC12\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_atkbonus\": {
+      \"current\": \"DC12\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_atkflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_dmg2flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_atkrange\": {
+      \"current\": \"60 ft\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_savedc\": {
+      \"current\": \"(@{charisma_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_atkattr_base\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_itemid\": {
+      \"current\": \"-33xaoPwiyvzvYCYwo74\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_spelldesc_link\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_output}\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_atkdmgtype\": {
+      \"current\": \"1d4+1 Piercing \"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_spelldesc_link\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_output}\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_spellid\": {
+      \"current\": \"-v9te6ZB2DsOgFwg0nQc\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_saveattr\": {
+      \"current\": \"Wisdom\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_atkattr_base\": {
+      \"current\": \"@{charisma_mod}\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_spellid\": {
+      \"current\": \"-YHEFSue0fDertSqjnP0\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_atkdmgtype\": {
+      \"current\": \"1d8+1 Piercing \"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_atkname\": {
+      \"current\": \"Hellish Rebuke\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_hldmg\": {
+      \"current\": \"{{hldmg=[[(1*?{Cast at what level?|Level 1,0|Level 2,1|Level 3,2|Level 4,3|Level 5,4|Level 6,5|Level 7,6|Level 8,7|Level 9,8})d6]]}}\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_dmgbase\": {
+      \"current\": \"2d10\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_atkbonus\": {
+      \"current\": \"+4\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_atkname\": {
+      \"current\": \"Eldritch Blast\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_atkbonus\": {
+      \"current\": \"+3\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_dmg2flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_dmgtype\": {
+      \"current\": \"Psychic\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_atkbonus\": {
+      \"current\": \"DC12\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_dmg2flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_savedc\": {
+      \"current\": \"(@{charisma_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_atkbonus\": {
+      \"current\": \"DC12\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_dmgtype\": {
+      \"current\": \"Fire\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_itemid\": {
+      \"current\": \"-BYbsBbc9jjoz680sL3P\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_atkattr_base\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_dmgbase\": {
+      \"current\": \"1d10\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_atkname\": {
+      \"current\": \"Vicious Mockery\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_atkattr_base\": {
+      \"current\": \"@{charisma_mod}\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_saveflag\": {
+      \"current\": \"{{save=1}} {{saveattr=@{saveattr}}} {{savedesc=@{saveeffect}}} {{savedc=[[[[@{savedc}]][SAVE]]]}}\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_dmgbase\": {
+      \"current\": \"1d8\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_spelldesc_link\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_output}\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_savedc\": {
+      \"current\": \"(@{charisma_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_dmgtype\": {
+      \"current\": \"Piercing\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_atkname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_atkattr_base\": {
+      \"current\": \"@{charisma_mod}\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_saveattr\": {
+      \"current\": \"Dexterity\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_saveattr\": {
+      \"current\": \"Wisdom\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_saveflag\": {
+      \"current\": \"{{save=1}} {{saveattr=@{saveattr}}} {{savedesc=@{saveeffect}}} {{savedc=[[[[@{savedc}]][SAVE]]]}}\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_atkdmgtype\": {
+      \"current\": \"1d6 Psychic \"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_hldmg\": {
+      \"current\": \"{{hldmg=[[(1*?{Cast at what level?|Level 1,0|Level 2,1|Level 3,2|Level 4,3|Level 5,4|Level 6,5|Level 7,6|Level 8,7|Level 9,8})d10]]}}\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_atkbonus\": {
+      \"current\": \"+3\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_atkdmgtype\": {
+      \"current\": \"2d10 Fire \"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_spelldesc_link\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_spell-1_-nCeirlW43lSzyvMmLQK_output}\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_atkattr_base\": {
+      \"current\": \"@{charisma_mod}\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_saveattr\": {
+      \"current\": \"Intelligence\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_dmg2attr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_atkrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_dmgattr\": {
+      \"current\": \"@{strength_mod}\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_savedc\": {
+      \"current\": \"(@{charisma_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_atkname\": {
+      \"current\": \"Mind Sliver\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_saveflag\": {
+      \"current\": \"{{save=1}} {{saveattr=@{saveattr}}} {{savedesc=@{saveeffect}}} {{savedc=[[[[@{savedc}]][SAVE]]]}}\"
+    },
+    \"repeating_attack_-ir6ADUEVw8SVQ8bzXHh_atkrange\": {
+      \"current\": \"80/320 ft\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_atkflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_dmgattr\": {
+      \"current\": \"@{dexterity_mod}\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_atkname\": {
+      \"current\": \"Mace\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_atkdmgtype\": {
+      \"current\": \"1d6-2 Bludgeoning \"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_atkdmgtype\": {
+      \"current\": \"3d6 Psychic \"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_atkrange\": {
+      \"current\": \"20/60\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_atkrange\": {
+      \"current\": \"120 feet\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_dmg2flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_atkname\": {
+      \"current\": \"Dissonant Whispers\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_dmgattr\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_spellid\": {
+      \"current\": \"-F1RIbHFClIK1vmO0JhN\"
+    },
+    \"repeating_attack_-FQfZkUVXlygHhWjaf8l_spelldesc_link\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_spell-1_-YHEFSue0fDertSqjnP0_output}\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_spellid\": {
+      \"current\": \"-nCeirlW43lSzyvMmLQK\"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_dmgflag\": {
+      \"current\": \"{{damage=1}} {{dmg1flag=1}}\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_dmgtype\": {
+      \"current\": \"Psychic\"
+    },
+    \"repeating_attack_-11wxWdpDrxkyyjs8PeF_savedc\": {
+      \"current\": \"(@{charisma_mod}+8+@{spell_dc_mod}+@{pb})\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_atkflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_dmgbase\": {
+      \"current\": \"1d4\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_itemid\": {
+      \"current\": \"-OHBCGhJnGOW4pr57gSq\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_atkrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_atkflag\": {
+      \"current\": \"{{attack=1}}\"
+    },
+    \"repeating_attack_-eetzH6Kjzdgh4WwTABQ_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_atkdmgtype\": {
+      \"current\": \"1d10 Force \"
+    },
+    \"repeating_attack_-r5WTvk36UCxYMtBzaqL_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-Trw2qHQdulrrfTEpL1K_saveflag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_attack_-AVLuiLNg11qtl2o0xEE_atkname\": {
+      \"current\": \"Dagger\"
+    },
+    \"repeating_attack_-Zq6HSIm3ezX5WImYpuw_dmgbase\": {
+      \"current\": \"[[round((@{level} + 1) / 6 + 0.5)]]d4\"
+    }
+  },
+  \"traits_and_features\": {
+    \"repeating_traits_-0GPCzJvpyM3lBSGhDKk_name\": {
+      \"current\": \"Hellish Resistance\"
+    },
+    \"repeating_traits_-1YvaIjkYH3YWcpc9Mt8_description\": {
+      \"current\": \"You are in frequent contact with people in the segment of society that your chosen quarries move through. These people might be associated with the criminal underworld, the rough-and-tumble folk of the streets, or members of high society. This connection comes in the form of a contact in any city you visit, a person who provides information about the people and places of the local area.\
+\"
+    },
+    \"repeating_traits_-gf9DZ3UxfiPoklSRbvv_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-1YvaIjkYH3YWcpc9Mt8_source\": {
+      \"current\": \"Background\"
+    },
+    \"repeating_traits_-1YvaIjkYH3YWcpc9Mt8_source_type\": {
+      \"current\": \"Urban Bounty Hunter\"
+    },
+    \"repeating_traits_-gf9DZ3UxfiPoklSRbvv_source_type\": {
+      \"current\": \"Great Old One\"
+    },
+    \"repeating_traits_-gf9DZ3UxfiPoklSRbvv_source\": {
+      \"current\": \"Class\"
+    },
+    \"repeating_traits_-gf9DZ3UxfiPoklSRbvv_description\": {
+      \"current\": \"Starting at 1st level, your alien knowledge gives you the ability to touch the minds of other creatures. You can communicate telepathically with any creature you can see within 30 feet of you. You don't need to share a language with the creature for it to understand your telepathic utterances, but the creature must be able to understand at least one language.\"
+    },
+    \"repeating_traits_-qF2WrECFEncBMWeyqSy_name\": {
+      \"current\": \"Darkvision\"
+    },
+    \"repeating_traits_-1YvaIjkYH3YWcpc9Mt8_name\": {
+      \"current\": \"Ear to the Ground\"
+    },
+    \"repeating_traits_-EuWrWdT4EQPIYv9YaVg_name\": {
+      \"current\": \"Devil's Tongue\"
+    },
+    \"repeating_traits_-qF2WrECFEncBMWeyqSy_source_type\": {
+      \"current\": \"Tiefling\"
+    },
+    \"repeating_traits_-qF2WrECFEncBMWeyqSy_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-1YvaIjkYH3YWcpc9Mt8_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-0GPCzJvpyM3lBSGhDKk_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-EuWrWdT4EQPIYv9YaVg_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-EuWrWdT4EQPIYv9YaVg_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-EuWrWdT4EQPIYv9YaVg_description\": {
+      \"current\": \"You know the vicious mockery cantrip. When you reach 3rd level, you can cast the charm person spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the enthrall spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait.\"
+    },
+    \"repeating_traits_-qF2WrECFEncBMWeyqSy_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-gf9DZ3UxfiPoklSRbvv_name\": {
+      \"current\": \"Awakened Mind\"
+    },
+    \"repeating_traits_-qF2WrECFEncBMWeyqSy_description\": {
+      \"current\": \"Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.\"
+    },
+    \"repeating_traits_-qF2WrECFEncBMWeyqSy_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-0GPCzJvpyM3lBSGhDKk_source\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_traits_-0GPCzJvpyM3lBSGhDKk_source_type\": {
+      \"current\": \"Tiefling\"
+    },
+    \"repeating_traits_-gf9DZ3UxfiPoklSRbvv_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-0GPCzJvpyM3lBSGhDKk_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_traits_-EuWrWdT4EQPIYv9YaVg_source_type\": {
+      \"current\": \"Tiefling - Devil's Tongue\"
+    },
+    \"repeating_traits_-1YvaIjkYH3YWcpc9Mt8_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-EuWrWdT4EQPIYv9YaVg_display_flag\": {
+      \"current\": \"on\"
+    },
+    \"repeating_traits_-0GPCzJvpyM3lBSGhDKk_description\": {
+      \"current\": \"You have resistance to fire damage.\"
+    }
+  },
+  \"inventory\": {
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-Uh3EJef46y7hP3ZpAx8_itemweight\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-daADGqRF7n1FZ6GZbPa_itemname\": {
+      \"current\": \"Crowbar\"
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-daADGqRF7n1FZ6GZbPa_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-oRJaN2owBUc1NWM7wcM_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-nSmULBstFnnZ7igZyZd_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-1etHCM1ofm0WBT7vk1y_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-nSmULBstFnnZ7igZyZd_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-jCzK8JhUzvZdTDMXCtU_itemname\": {
+      \"current\": \"Waterskin\"
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_itemattackid\": {
+      \"current\": \"-eetzH6Kjzdgh4WwTABQ\"
+    },
+    \"repeating_inventory_-a2fWxQZaF81bcJqDq1Z_itemname\": {
+      \"current\": \"Arcane Focus\"
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-oRJaN2owBUc1NWM7wcM_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-1etHCM1ofm0WBT7vk1y_itemname\": {
+      \"current\": \"Hempen rope\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-Uh3EJef46y7hP3ZpAx8_itemname\": {
+      \"current\": \"A set of clothes appropriate to your duties\"
+    },
+    \"repeating_inventory_-jCzK8JhUzvZdTDMXCtU_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-aIhDKlKCowwWqYxUxAW_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-hizjTaJIAhDkzT5Pzlu_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_itemname\": {
+      \"current\": \"Dagger\"
+    },
+    \"repeating_inventory_-89rngB5awa3b3Rvm9lb_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_itemproperties\": {
+      \"current\": \"Two-Handed, Range, Loading, Ammunition\"
+    },
+    \"repeating_inventory_-HaVy1NTJmWIKSmuJZK7_itemname\": {
+      \"current\": \"Leather Armor\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-HaVy1NTJmWIKSmuJZK7_itemmodifiers\": {
+      \"current\": \"Item Type: Light Armor, AC: 11\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 1d4, Damage Type: Piercing, Range: 20/60,Critical Range: 20,Critical Range: 20\"
+    },
+    \"repeating_inventory_-HaVy1NTJmWIKSmuJZK7_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-1etHCM1ofm0WBT7vk1y_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-pBnaEysDDbfbpMVYslZ_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-G4WamsqgEr81d9SspiG_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-a2fWxQZaF81bcJqDq1Z_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-ejBktAZWnxqBM9BGh7m_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-daADGqRF7n1FZ6GZbPa_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-ejBktAZWnxqBM9BGh7m_itemweight\": {
+      \"current\": \"2\"
+    },
+    \"repeating_inventory_-G4WamsqgEr81d9SspiG_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-a2fWxQZaF81bcJqDq1Z_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-pBnaEysDDbfbpMVYslZ_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_itemattackid\": {
+      \"current\": \"-AVLuiLNg11qtl2o0xEE\"
+    },
+    \"repeating_inventory_-G4WamsqgEr81d9SspiG_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-hizjTaJIAhDkzT5Pzlu_itemname\": {
+      \"current\": \"Hammer\"
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_itemweight\": {
+      \"current\": \"4\"
+    },
+    \"repeating_inventory_-JoB17YxvTK9cKrlfqF8_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-a2fWxQZaF81bcJqDq1Z_itemweight\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-nSmULBstFnnZ7igZyZd_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear, Damage: 1, Damage Type: Fire, Range: 20/40\"
+    },
+    \"repeating_inventory_-HaVy1NTJmWIKSmuJZK7_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-hizjTaJIAhDkzT5Pzlu_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_itemname\": {
+      \"current\": \"Light Crossbow\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_itemproperties\": {
+      \"current\": \"Finesse, Light, Range, Thrown\"
+    },
+    \"repeating_inventory_-G4WamsqgEr81d9SspiG_itemname\": {
+      \"current\": \"Backpack\"
+    },
+    \"repeating_inventory_-JoB17YxvTK9cKrlfqF8_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-HaVy1NTJmWIKSmuJZK7_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-JoB17YxvTK9cKrlfqF8_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-HaVy1NTJmWIKSmuJZK7_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-aIhDKlKCowwWqYxUxAW_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-89rngB5awa3b3Rvm9lb_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-jCzK8JhUzvZdTDMXCtU_itemweight\": {
+      \"current\": \"5\"
+    },
+    \"repeating_inventory_-oRJaN2owBUc1NWM7wcM_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-G4WamsqgEr81d9SspiG_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-aIhDKlKCowwWqYxUxAW_itemname\": {
+      \"current\": \"Dungeoneer's Pack\"
+    },
+    \"repeating_inventory_-a2fWxQZaF81bcJqDq1Z_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-nSmULBstFnnZ7igZyZd_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-1etHCM1ofm0WBT7vk1y_itemweight\": {
+      \"current\": \"10\"
+    },
+    \"repeating_inventory_-aIhDKlKCowwWqYxUxAW_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-89rngB5awa3b3Rvm9lb_itemcount\": {
+      \"current\": 10
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_itemmodifiers\": {
+      \"current\": \"Item Type: Ranged Weapon, Damage: 1d8, Damage Type: Piercing, Range: 80/320 ft,Critical Range: 20,Critical Range: 20\"
+    },
+    \"repeating_inventory_-JoB17YxvTK9cKrlfqF8_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-hizjTaJIAhDkzT5Pzlu_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-Uh3EJef46y7hP3ZpAx8_itemmodifiers\": {
+      \"current\": \"Item Type: Items\"
+    },
+    \"repeating_inventory_-hizjTaJIAhDkzT5Pzlu_itemweight\": {
+      \"current\": \"3\"
+    },
+    \"repeating_inventory_-Uh3EJef46y7hP3ZpAx8_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-daADGqRF7n1FZ6GZbPa_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-oRJaN2owBUc1NWM7wcM_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-ejBktAZWnxqBM9BGh7m_itemname\": {
+      \"current\": \"Rations\"
+    },
+    \"repeating_inventory_-jCzK8JhUzvZdTDMXCtU_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-JoB17YxvTK9cKrlfqF8_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-aIhDKlKCowwWqYxUxAW_itemweight\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-jCzK8JhUzvZdTDMXCtU_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-oRJaN2owBUc1NWM7wcM_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-Uh3EJef46y7hP3ZpAx8_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-nSmULBstFnnZ7igZyZd_itemname\": {
+      \"current\": \"Torch\"
+    },
+    \"repeating_inventory_-JoB17YxvTK9cKrlfqF8_itemname\": {
+      \"current\": \"Hempen Rope\"
+    },
+    \"repeating_inventory_-daADGqRF7n1FZ6GZbPa_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-Uh3EJef46y7hP3ZpAx8_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-pBnaEysDDbfbpMVYslZ_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-1etHCM1ofm0WBT7vk1y_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-jCzK8JhUzvZdTDMXCtU_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-1etHCM1ofm0WBT7vk1y_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-daADGqRF7n1FZ6GZbPa_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-oRJaN2owBUc1NWM7wcM_itemname\": {
+      \"current\": \"Tinderbox\"
+    },
+    \"repeating_inventory_-89rngB5awa3b3Rvm9lb_itemweight\": {
+      \"current\": \"0.25\"
+    },
+    \"repeating_inventory_-nSmULBstFnnZ7igZyZd_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-pBnaEysDDbfbpMVYslZ_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_itemmodifiers\": {
+      \"current\": \"Item Type: Melee Weapon, Damage: 1d6, Damage Type: Bludgeoning\"
+    },
+    \"repeating_inventory_-33xaoPwiyvzvYCYwo74_itemattackid\": {
+      \"current\": \"-ir6ADUEVw8SVQ8bzXHh\"
+    },
+    \"repeating_inventory_-ejBktAZWnxqBM9BGh7m_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-89rngB5awa3b3Rvm9lb_itemname\": {
+      \"current\": \"Piton\"
+    },
+    \"repeating_inventory_-ejBktAZWnxqBM9BGh7m_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_hasattack\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-a2fWxQZaF81bcJqDq1Z_hasattack\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-aIhDKlKCowwWqYxUxAW_itemmodifiers\": {
+      \"current\": \"Item Type: Adventuring Gear\"
+    },
+    \"repeating_inventory_-hizjTaJIAhDkzT5Pzlu_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-pBnaEysDDbfbpMVYslZ_itemname\": {
+      \"current\": \"Pouch\"
+    },
+    \"repeating_inventory_-BYbsBbc9jjoz680sL3P_itemcount\": {
+      \"current\": 2
+    },
+    \"repeating_inventory_-89rngB5awa3b3Rvm9lb_useasresource\": {
+      \"current\": \"0\"
+    },
+    \"repeating_inventory_-pBnaEysDDbfbpMVYslZ_itemweight\": {
+      \"current\": \"1\"
+    },
+    \"repeating_inventory_-G4WamsqgEr81d9SspiG_itemcount\": {
+      \"current\": 1
+    },
+    \"repeating_inventory_-OHBCGhJnGOW4pr57gSq_itemname\": {
+      \"current\": \"Mace\"
+    },
+    \"repeating_inventory_-ejBktAZWnxqBM9BGh7m_useasresource\": {
+      \"current\": \"0\"
+    }
+  },
+  \"resources\": {},
+  \"other_repeating_attributes\": {
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spell_damage_progression\": {
+      \"current\": \"Cantrip Beam\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellattackid\": {
+      \"current\": \"-Zq6HSIm3ezX5WImYpuw\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_roll_output_dc\": {
+      \"current\": 12
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellhldietype\": {
+      \"current\": \"d6\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellcomp_m\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_roll_output_dc\": {
+      \"current\": 12
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spell_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_toolattr\": {
+      \"current\": \"QUERY\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_toolbonus_display\": {
+      \"current\": \"?\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_roll_output_dc\": {
+      \"current\": 12
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spelldescription\": {
+      \"current\": \"A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellsave\": {
+      \"current\": \"Wisdom\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_toolname\": {
+      \"current\": \"Dice Set\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_toolbonus_display\": {
+      \"current\": \"?\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spelldamage\": {
+      \"current\": \"1d6\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_rollcontent\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_attack_-Zq6HSIm3ezX5WImYpuw_attack}\"
+    },
+    \"repeating_proficiencies_-X0779WMzMifMjWdh0VD_name\": {
+      \"current\": \"Simple Weapons\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellsave\": {
+      \"current\": \"Dexterity\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellcomp_m\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellcastingtime\": {
+      \"current\": \"1 action\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spelldamagetype\": {
+      \"current\": \"Psychic\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spelltarget\": {
+      \"current\": \"The creature that damaged you\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-8MewpmCIRXDDBgKuWZR_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spelltarget\": {
+      \"current\": \"One creature of your choice within range\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_toolattr_base\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellcomp_s\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spelldamagetype\": {
+      \"current\": \"Force\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spell_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spelldescription\": {
+      \"current\": \"You unleash a string of insults laced with subtle enchantments at a creature you can see within range. If the target can hear you (though it need not understand you), it must succeed on a Wisdom saving throw or take 1d4 psychic damage and have disadvantage on the next attack roll it makes before the end of its next turn.\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spelldescription\": {
+      \"current\": \"You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.\
+\
+This spell's damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), and 17th level (4d6).\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spelldamage\": {
+      \"current\": \"1d4\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellname\": {
+      \"current\": \"Dissonant Whispers\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellname\": {
+      \"current\": \"Eldritch Blast\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellschool\": {
+      \"current\": \"enchantment\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellattack\": {
+      \"current\": \"Ranged\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_rollcontent\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_attack_-FQfZkUVXlygHhWjaf8l_attack}\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spelldamage\": {
+      \"current\": \"1d10\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellcomp_m\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellathigherlevels\": {
+      \"current\": \"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d10 for each slot level above 1st.\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellclass\": {
+      \"current\": \"Warlock\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellclass\": {
+      \"current\": \"Warlock\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellattackid\": {
+      \"current\": \"-r5WTvk36UCxYMtBzaqL\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellcastingtime\": {
+      \"current\": \"Action\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_rollcontent\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_attack_-Trw2qHQdulrrfTEpL1K_attack}\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_toolname\": {
+      \"current\": \"Thieves Tools\"
+    },
+    \"repeating_proficiencies_-Q2GCvg3FqeOd8W4yuVa_prof_type\": {
+      \"current\": \"ARMOR\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellclass\": {
+      \"current\": \"Warlock\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellduration\": {
+      \"current\": \"1 round\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spell_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_roll_output_dc\": {
+      \"current\": 12
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spelldamage\": {
+      \"current\": \"2d10\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_rollcontent\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_attack_-11wxWdpDrxkyyjs8PeF_attack}\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spelllevel\": {
+      \"current\": \"cantrip\"
+    },
+    \"repeating_proficiencies_-X0779WMzMifMjWdh0VD_prof_type\": {
+      \"current\": \"WEAPON\"
+    },
+    \"repeating_proficiencies_-A0MROP1zjccPbYc7Jfu_name\": {
+      \"current\": \"Infernal\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_toolbonus\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}+0+2\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spelldamage\": {
+      \"current\": \"3d6\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spelltarget\": {
+      \"current\": \"A creature you can see and that can hear you within range\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellclass\": {
+      \"current\": \"Racial\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_toolattr\": {
+      \"current\": \"QUERY\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spelldamagetype\": {
+      \"current\": \"Psychic\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellname\": {
+      \"current\": \"Mind Sliver\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellcomp_m\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellhldie\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellname\": {
+      \"current\": \"Vicious Mockery\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellschool\": {
+      \"current\": \"evocation\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_roll_output_dc\": {
+      \"current\": 12
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellathigherlevels\": {
+      \"current\": \"When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st.\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellcomp_s\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellschool\": {
+      \"current\": \"abjuration\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spell_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"repeating_proficiencies_-X0779WMzMifMjWdh0VD_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellattackid\": {
+      \"current\": \"-11wxWdpDrxkyyjs8PeF\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellschool\": {
+      \"current\": \"evocation\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_rollcontent\": {
+      \"current\": \"%{-OzXxgl919_2A7W-pkvK|repeating_attack_-r5WTvk36UCxYMtBzaqL_attack}\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_proficiencies_-8MewpmCIRXDDBgKuWZR_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellcastingtime\": {
+      \"current\": \"Action\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_details-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spelldamagetype\": {
+      \"current\": \"Fire\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellattackid\": {
+      \"current\": \"-FQfZkUVXlygHhWjaf8l\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellcastingtime\": {
+      \"current\": \"Action\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellcomp_s\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellrange\": {
+      \"current\": \"60 ft\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spelllevel\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spellsave\": {
+      \"current\": \"Intelligence\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spelloutput\": {
+      \"current\": \"ATTACK\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellattack\": {
+      \"current\": \"None\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellclass\": {
+      \"current\": \"Warlock\"
+    },
+    \"repeating_proficiencies_-8MewpmCIRXDDBgKuWZR_name\": {
+      \"current\": \"Common\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spell_damage_progression\": {
+      \"current\": \"Cantrip Dice\"
+    },
+    \"repeating_proficiencies_-Q2GCvg3FqeOd8W4yuVa_name\": {
+      \"current\": \"Light Armor\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellrange\": {
+      \"current\": \"60 feet\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spell_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_toolbonus\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}+0+2\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spell_damage_progression\": {
+      \"current\": \"Cantrip Dice\"
+    },
+    \"repeating_tool_-kxkKaLadZOxauE1Q2SC_toolbonus_base\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"repeating_proficiencies_-A0MROP1zjccPbYc7Jfu_prof_type\": {
+      \"current\": \"LANGUAGE\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellhldietype\": {
+      \"current\": \"d10\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellcomp_v\": {
+      \"current\": \"{{v=1}}\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellhldie\": {
+      \"current\": \"1\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spelldescription\": {
+      \"current\": \"You point your finger, and the creature that damaged you is momentarily surrounded by hellish flames. The creature must make a Dexterity saving throw. It takes 2d10 fire damage on a failed save, or half as much damage on a successful one.\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spelltarget\": {
+      \"current\": \"A creature within range\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellrange\": {
+      \"current\": \"120 feet\"
+    },
+    \"repeating_tool_-ZalOyCuJRneYXTDt2fy_toolattr_base\": {
+      \"current\": \"?{Attribute?|Strength,@{strength_mod}|Dexterity,@{dexterity_mod}|Constitution,@{constitution_mod}|Intelligence,@{intelligence_mod}|Wisdom,@{wisdom_mod}|Charisma,@{charisma_mod}}\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellschool\": {
+      \"current\": \"enchantment\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spelldescription\": {
+      \"current\": \"You whisper a discordant melody that only one creature of your choice within range can hear, wracking it with terrible pain. The target must make a Wisdom saving throw. On a failed save, it takes 3d6 psychic damage and must immediately use its reaction, if available, to move as far as its speed allows away from you. The creature doesn't move into obviously dangerous ground, such as a fire or a pit. On a successful save, the target takes half as much damage and doesn't have to move away. A deafened creature automatically succeeds on the save.\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellathigherlevels\": {
+      \"current\": \"The spell creates more than one beam when you reach higher levels: two beams at 5th level, three beams at 11th level, and four beams at 17th level. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.\"
+    },
+    \"repeating_proficiencies_-Q2GCvg3FqeOd8W4yuVa_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-nCeirlW43lSzyvMmLQK_spellsave\": {
+      \"current\": \"Wisdom\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellcomp_s\": {
+      \"current\": \"{{s=1}}\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellname\": {
+      \"current\": \"Hellish Rebuke\"
+    },
+    \"repeating_spell-cantrip_-v9te6ZB2DsOgFwg0nQc_spellathigherlevels\": {
+      \"current\": \"This spell's damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4).\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellcastingtime\": {
+      \"current\": \"Reaction, which you take in response to being damaged by a creature within 60 feet of you that you can see\"
+    },
+    \"repeating_spell-cantrip_-F1RIbHFClIK1vmO0JhN_spelldamagetype\": {
+      \"current\": \"Psychic\"
+    },
+    \"repeating_proficiencies_-A0MROP1zjccPbYc7Jfu_options-flag\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-1_-YHEFSue0fDertSqjnP0_spellduration\": {
+      \"current\": \"Instantaneous\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellcomp_m\": {
+      \"current\": \"0\"
+    },
+    \"repeating_spell-cantrip_-xgRF3PcrBK6x3al0RCk_spellattackid\": {
+      \"current\": \"-Trw2qHQdulrrfTEpL1K\"
+    }
+  },
+  \"other_attributes\": {
+    \"hitdie_final\": {
+      \"current\": \"@{hitdietype}\"
+    },
+    \"base_level\": {
+      \"current\": \"1\"
+    },
+    \"death_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"npc_int_negative\": {
+      \"current\": \"0\"
+    },
+    \"caster_level\": {
+      \"current\": \"0\"
+    },
+    \"flaws\": {
+      \"current\": \"If there's a plan, I'll forget it. If I don't forget it, I'll ignore it.\"
+    },
+    \"ideals\": {
+      \"current\": \"People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care. (Neutral)\"
+    },
+    \"jack\": {
+      \"current\": 1
+    },
+    \"multiclass1_lvl\": {
+      \"current\": \"1\"
+    },
+    \"custom_attack_flag\": {
+      \"current\": \"0\"
+    },
+    \"strength_flag\": {
+      \"current\": \"0\"
+    },
+    \"personality_traits\": {
+      \"current\": \"I always have a plan for what to do when things go wrong.\
+\
+The best way to get me to do something is to tell me I can't do it.\"
+    },
+    \"npc_con_negative\": {
+      \"current\": \"0\"
+    },
+    \"honor_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"npc_dex_negative\": {
+      \"current\": \"0\"
+    },
+    \"armorwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"wisdom_save_prof\": {
+      \"current\": \"(@{pb})\"
+    },
+    \"spellcasting_ability\": {
+      \"current\": \"@{charisma_mod}+\"
+    },
+    \"spell_attack_bonus\": {
+      \"current\": 4
+    },
+    \"customacwarningflag\": {
+      \"current\": \"hide\"
+    },
+    \"lvl1_slots_total\": {
+      \"current\": 1
+    },
+    \"_reporder_repeating_proficiencies\": {
+      \"current\": \"-hBE1fDNIognlqswBBpn,-PYHX6OtQaYHXNzw7yim,-ELfJE1H5ysgFXK9Nx3H,-KRz3059LuaENMSqMg9H\"
+    },
+    \"dexterity_save_bonus\": {
+      \"current\": 1
+    },
+    \"spell_save_dc\": {
+      \"current\": 12
+    },
+    \"race_display\": {
+      \"current\": \"Tiefling - Devil's Tongue\"
+    },
+    \"l1mancer_status\": {
+      \"current\": \"completed\"
+    },
+    \"class_display\": {
+      \"current\": \"Great Old One Warlock 1\"
+    },
+    \"multiclass2_flag\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"hitdietype\": {
+      \"current\": \"8\"
+    },
+    \"npc_wis_negative\": {
+      \"current\": \"0\"
+    },
+    \"hitdieroll\": {
+      \"current\": \"8\"
+    },
+    \"showleveler\": {
+      \"current\": 0
+    },
+    \"invalidXP\": {
+      \"current\": 0
+    },
+    \"version\": {
+      \"current\": 4.21
+    },
+    \"mancer_confirm\": {
+      \"current\": \"on\"
+    },
+    \"queryadvantage\": {
+      \"current\": \"{{query=1}} ?{Advantage?|Normal Roll,&#123&#123normal=1&#125&#125 &#123&#123r2=[[0d20|Advantage,&#123&#123advantage=1&#125&#125 &#123&#123r2=[[@{d20}|Disadvantage,&#123&#123disadvantage=1&#125&#125 &#123&#123r2=[[@{d20}}\"
+    },
+    \"sheet_version\": {
+      \"current\": 1
+    },
+    \"other_tool\": {
+      \"current\": \"Dice Set, Thieves Tools\"
+    },
+    \"other_languages\": {
+      \"current\": \"Common, Infernal\"
+    },
+    \"other_armor\": {
+      \"current\": \"Light Armor\"
+    },
+    \"other_weapon\": {
+      \"current\": \"Simple Weapons\"
+    },
+    \"charisma_save_bonus\": {
+      \"current\": 4
+    },
+    \"custom_class\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_save_bonus\": {
+      \"current\": 2
+    },
+    \"character_backstory\": {
+      \"current\": \"Ik ben opgegroeid op in ‘de grote stad’, wel in een arme stadswijk waar de wacht corrupt was. Daar zag ik al jong dat mensen soms slechte dingen doen uit wanhoop, niet uit slechtheid. Maar óók dat sommige mensen het gewoon leuk vonden om anderen pijn te doen, en niet stoppen tot ze gestopt worden. Dat inzicht vormt inmiddels mijn morele kompas: tweede kansen zijn waardevol, maar niet iedereen verdient het.  \"
+    },
+    \"alignment\": {
+      \"current\": \"Chaotic Good\"
+    },
+    \"hit_dice\": {
+      \"current\": \"1\",
+      \"max\": 1
+    },
+    \"lvl9_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"lvl3_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"encumberance\": {
+      \"current\": \" \"
+    },
+    \"gp\": {
+      \"current\": 20
+    },
+    \"dexterity_flag\": {
+      \"current\": \"0\"
+    },
+    \"lvl6_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"size\": {
+      \"current\": \"Medium\"
+    },
+    \"halflingluck_flag\": {
+      \"current\": \"0\"
+    },
+    \"passive_wisdom\": {
+      \"current\": 10
+    },
+    \"charisma_flag\": {
+      \"current\": \"0\"
+    },
+    \"lvl4_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-personality\": {
+      \"current\": \"0\"
+    },
+    \"multiclass3_flag\": {
+      \"current\": \"0\"
+    },
+    \"sanity_save_bonus\": {
+      \"current\": \"0\"
+    },
+    \"intelligence_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"tab\": {
+      \"current\": \"bio\"
+    },
+    \"options-class-selection\": {
+      \"current\": \"0\"
+    },
+    \"background\": {
+      \"current\": \"Urban Bounty Hunter\"
+    },
+    \"npc_str_negative\": {
+      \"current\": 1
+    },
+    \"spell_attack_mod\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-flaws\": {
+      \"current\": \"0\"
+    },
+    \"arcane_rogue\": {
+      \"current\": \"0\"
+    },
+    \"lvl7_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"multiclass3_lvl\": {
+      \"current\": \"1\"
+    },
+    \"arcane_fighter\": {
+      \"current\": \"0\"
+    },
+    \"strength_save_bonus\": {
+      \"current\": -2
+    },
+    \"intelligence_flag\": {
+      \"current\": \"0\"
+    },
+    \"hero_points\": {
+      \"current\": 5
+    },
+    \"constitution_save_bonus\": {
+      \"current\": 2
+    },
+    \"constitution_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"creaturetype\": {
+      \"current\": \"Humanoid\"
+    },
+    \"multiclass2_lvl\": {
+      \"current\": \"1\"
+    },
+    \"subrace\": {
+      \"current\": \"Tiefling - Devil's Tongue\"
+    },
+    \"lvl5_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-bonds\": {
+      \"current\": \"0\"
+    },
+    \"weighttotal\": {
+      \"current\": 93.9
+    },
+    \"dexterity_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"multiclass1_flag\": {
+      \"current\": \"0\"
+    },
+    \"npc_cha_negative\": {
+      \"current\": \"0\"
+    },
+    \"custom_ac_flag\": {
+      \"current\": \"0\"
+    },
+    \"strength_save_prof\": {
+      \"current\": \"0\"
+    },
+    \"wisdom_flag\": {
+      \"current\": \"0\"
+    },
+    \"lvl2_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"options-flag-ideals\": {
+      \"current\": \"0\"
+    },
+    \"bonds\": {
+      \"current\": \"To my patron. What does it want? I pretend everything is under control, but deep down I am afraid that my choices were never truly mine.\"
+    },
+    \"lvl8_slots_total\": {
+      \"current\": \"0\"
+    },
+    \"age\": {
+      \"current\": \"25\"
+    },
+    \"constitution_flag\": {
+      \"current\": \"0\"
+    },
+    \"charisma_save_prof\": {
+      \"current\": \"(@{pb})\"
+    }
+  }
+}

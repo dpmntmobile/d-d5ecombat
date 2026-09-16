@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Orc",
+  "armor_class": 13,
+  "max_hp": 15,
+  "initiative_bonus": 1,
+  "saving_throw_bonuses": {
+    "str": 3,
+    "dex": 1,
+    "con": 3,
+    "int": -2,
+    "wis": 0,
+    "cha": 0
+  },
+  "ruleset": "D&D 5e Basic Rules (2014)",
+  "source_url": "https://www.dndbeyond.com/monsters/16972-orc",
+  "creature_tags": [
+    "humanoid",
+    "orc"
+  ],
+  "multiattack": [],
+  "unmodeled_traits": [],
+  "attacks": [
+    {
+      "name": "Greataxe",
+      "attack_bonus": 5,
+      "damage_dice": "1d12",
+      "damage_modifier": 3,
+      "damage_type": "slashing",
+      "attack_mode": "melee",
+      "reach_feet": 5,
+      "unmodeled_effects": []
+    },
+    {
+      "name": "Javelin",
+      "attack_bonus": 5,
+      "damage_dice": "1d6",
+      "damage_modifier": 3,
+      "damage_type": "piercing",
+      "attack_mode": "melee_or_ranged",
+      "reach_feet": 5,
+      "normal_range_feet": 30,
+      "long_range_feet": 120,
+      "unmodeled_effects": []
+    }
+  ],
+  "aggressive": true,
+  "passive_perception": 10
+}
