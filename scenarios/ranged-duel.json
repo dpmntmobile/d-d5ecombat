@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "settings": {
+    "trials": 10000,
+    "seed": 42,
+    "workers": 1,
+    "include_advantage": false,
+    "include_disadvantage": false,
+    "starting_distance_feet": 60,
+    "character_speed_feet": 30,
+    "monster_speed_feet": 30,
+    "character_ally_near_target": false,
+    "monster_ally_near_target": false,
+    "character_can_hide": false,
+    "monster_can_hide": false,
+    "rest_before_duel": "long"
+  }
+}

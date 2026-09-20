@@ -8,7 +8,7 @@ from jsonschema import Draft202012Validator
 
 
 CURRENT_PROFILE_SCHEMA_VERSION = 1
-PROFILE_KINDS = frozenset({"native-character", "monster", "roll20-character"})
+PROFILE_KINDS = frozenset({"native-character", "monster", "roll20-character", "scenario"})
 
 
 class ProfileValidationError(ValueError):

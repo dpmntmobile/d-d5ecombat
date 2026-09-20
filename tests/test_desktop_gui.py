@@ -29,6 +29,62 @@ class DesktopGuiTests(unittest.TestCase):
     def setUpClass(cls):
         cls.app = QApplication.instance() or QApplication([])
 
+    def test_scenario_buttons_round_trip_settings_and_keep_profile_selection(self):
+        from dnd5ecombat.scenario_persistence import load_scenario
+
+        with TemporaryDirectory() as directory:
+            settings = QSettings(str(Path(directory) / "settings.ini"), QSettings.Format.IniFormat)
+            window = CombatSimulatorWindow(settings=settings)
+            self.addCleanup(window.close)
+            expected = SimulationSettings(
+                trials=13, seed=5, workers=2, include_advantage=True,
+                starting_distance_feet=90, character_speed_feet=20,
+                monster_speed_feet=45, character_can_hide=True,
+                monster_ally_near_target=True, rest_before_duel="short",
+            )
+            window._apply_scenario_settings(expected)
+            path = str(Path(directory) / "scenario.json")
+            with patch("dnd5ecombat.desktop_gui.QFileDialog.getSaveFileName", return_value=(path, "")):
+                window._save_scenario()
+            self.assertEqual(load_scenario(path), expected)
+            sources = (window._catalog_source(window.character_combo), window._catalog_source(window.monster_combo))
+            window._apply_scenario_settings(SimulationSettings())
+            with patch("dnd5ecombat.desktop_gui.QFileDialog.getOpenFileName", return_value=(path, "")):
+                window._load_scenario()
+            self.assertEqual(window._simulation_settings(), expected)
+            self.assertEqual(sources, (window._catalog_source(window.character_combo), window._catalog_source(window.monster_combo)))
+            window._set_controls_enabled(False)
+            self.assertFalse(window.load_scenario_button.isEnabled())
+            self.assertFalse(window.save_scenario_button.isEnabled())
+            self.assertFalse(window.rest_combo.isEnabled())
+
+    def test_loaded_settings_above_initial_gui_limits_survive_restart(self):
+        with TemporaryDirectory() as directory:
+            settings = QSettings(str(Path(directory) / "settings.ini"), QSettings.Format.IniFormat)
+            window = CombatSimulatorWindow(settings=settings)
+            expected = SimulationSettings(trials=10_000_001, workers=256, starting_distance_feet=100_001)
+            window._apply_scenario_settings(expected)
+            window.close()
+            restored = CombatSimulatorWindow(settings=settings)
+            self.assertEqual(restored._simulation_settings(), expected)
+            restored.close()
+
+    def test_invalid_scenario_leaves_gui_settings_unchanged(self):
+        with TemporaryDirectory() as directory:
+            settings = QSettings(str(Path(directory) / "settings.ini"), QSettings.Format.IniFormat)
+            window = CombatSimulatorWindow(settings=settings)
+            self.addCleanup(window.close)
+            before = window._simulation_settings()
+            path = Path(directory) / "bad.json"
+            path.write_text('{"settings": {"trials": 0}}', encoding="utf-8")
+            with patch("dnd5ecombat.desktop_gui.QFileDialog.getOpenFileName", return_value=(str(path), "")), patch("dnd5ecombat.desktop_gui.QMessageBox.critical") as error:
+                window._load_scenario()
+            error.assert_called_once()
+            self.assertEqual(window._simulation_settings(), before)
+            with self.assertRaisesRegex(ValueError, "seed"):
+                window._apply_scenario_settings(SimulationSettings(trials=5, seed=2**40))
+            self.assertEqual(window._simulation_settings(), before)
+
     def test_monster_editor_preserves_and_can_disable_undead_fortitude(self):
         from dnd5ecombat.monster_profiles import load_monster_profile
 

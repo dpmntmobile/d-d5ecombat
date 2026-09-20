@@ -1,12 +1,18 @@
 """Command-line argument definitions for the console application."""
 
 import argparse
+from dataclasses import asdict
+
+from .scenario_persistence import load_scenario
 
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(
         description="Compare simple D&D 5e combat options with seeded simulations."
     )
+    parser.add_argument("--scenario", help="Load encounter settings from a JSON file.")
+    parser.add_argument("--save-scenario", metavar="FILE",
+                        help="Save encounter settings to JSON and exit without simulating.")
     parser.add_argument(
         "--initiative-bonus",
         type=int,
@@ -39,12 +45,14 @@ def parse_args(argv=None):
     )
     parser.add_argument(
         "--include-advantage",
-        action="store_true",
+        action=argparse.BooleanOptionalAction,
+        default=False,
         help="Add an advantaged variant of each attack to the comparison.",
     )
     parser.add_argument(
         "--include-disadvantage",
-        action="store_true",
+        action=argparse.BooleanOptionalAction,
+        default=False,
         help="Add a disadvantaged variant of each attack to the comparison.",
     )
     parser.add_argument(
@@ -60,6 +68,9 @@ def parse_args(argv=None):
         "--character-speed-feet", type=int, default=30,
         help="Character movement per duel turn in feet (default: 30).",
     )
+    parser.add_argument("--abstract-positioning", dest="starting_distance_feet",
+                        action="store_const", const=None,
+                        help="Disable distance and movement, including a scenario's distance.")
     parser.add_argument(
         "--monster-speed-feet", type=int, default=30,
         help="Monster movement per duel turn in feet (default: 30).",
@@ -106,10 +117,20 @@ def parse_args(argv=None):
         help="Path to a monster JSON profile used by the simulations.",
     )
     for side in ("character", "monster"):
-        parser.add_argument(f"--{side}-ally-near-target", action="store_true",
+        parser.add_argument(f"--{side}-ally-near-target", action=argparse.BooleanOptionalAction, default=False,
                             help="Assume an active ally within 5 feet of the opponent for Pack Tactics/Sneak Attack.")
-        parser.add_argument(f"--{side}-can-hide", action="store_true",
+        parser.add_argument(f"--{side}-can-hide", action=argparse.BooleanOptionalAction, default=False,
                             help="Assume suitable concealment for Nimble Escape Hide attempts.")
     parser.add_argument("--rest-before-duel", choices=("none", "short", "long"), default="none",
                         help="Recover slot capacities before each duel trial.")
-    return parser.parse_args(argv)
+    arguments = parser.parse_args(argv)
+    if (arguments.scenario or arguments.save_scenario) and (arguments.gui or arguments.interactive):
+        parser.error("Scenario options require non-interactive CLI mode; use Load/Save scenario in the GUI.")
+    if arguments.scenario:
+        try:
+            settings = load_scenario(arguments.scenario)
+        except (OSError, ValueError, TypeError) as error:
+            parser.error(str(error))
+        parser.set_defaults(**asdict(settings))
+        arguments = parser.parse_args(argv)
+    return arguments

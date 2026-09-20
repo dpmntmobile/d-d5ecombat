@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reusable encounter settings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "settings"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "trials": {"type": "integer", "minimum": 1},
+        "seed": {"type": "integer"},
+        "workers": {"type": "integer", "minimum": 1},
+        "include_advantage": {"type": "boolean"},
+        "include_disadvantage": {"type": "boolean"},
+        "starting_distance_feet": {"type": ["integer", "null"], "minimum": 0},
+        "character_speed_feet": {"type": "integer", "minimum": 0},
+        "monster_speed_feet": {"type": "integer", "minimum": 0},
+        "character_ally_near_target": {"type": "boolean"},
+        "monster_ally_near_target": {"type": "boolean"},
+        "character_can_hide": {"type": "boolean"},
+        "monster_can_hide": {"type": "boolean"},
+        "rest_before_duel": {"enum": ["none", "short", "long"]}
+      }
+    }
+  }
+}

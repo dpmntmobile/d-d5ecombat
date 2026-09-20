@@ -13,6 +13,7 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 - `src/dnd5ecombat/` - application source package
 - `characters/` - selectable character profiles
 - `monsters/` - selectable enemy profiles
+- `scenarios/` - reusable encounter settings for the CLI and GUI
 - `assets/` - application icons and other static files
 - `tests/` - unit tests and test-only fixtures
 - `scripts/` - build, signing, and Roll20 helper scripts
@@ -20,8 +21,8 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 
 ## Project status and roadmap
 
-Last reviewed: 2026-09-16. All 424 automated tests pass, Ruff reports no
-lint errors, and coverage with branch measurement enabled is 79% (70% CI
+Last reviewed: 2026-09-20. All 439 automated tests pass, Ruff reports no
+lint errors, and coverage with branch measurement enabled is 80% (70% CI
 floor). The Windows 0.4.0 executable builds and passes its packaged smoke test.
 
 This checklist is the project's planning record. Check an item only after its
@@ -128,7 +129,7 @@ is still recorded under 1.0.0.
 
 ### 0.5.0 - Scenario workflow and results
 
-- [ ] Add reusable scenario files for encounter assumptions such as distance,
+- [x] Add reusable scenario files for encounter assumptions such as distance,
   tactical roll modes, resources, and trial settings.
 - [ ] Let the CLI and GUI compare multiple characters and monsters in one run
   without manually repeating simulations.
@@ -159,6 +160,7 @@ Version 1 schemas are bundled with the Python package under
 - `monster.schema.json` defines editable and bundled monster profiles.
 - `roll20-character.schema.json` validates the Roll20 export envelope while
   allowing the exporter to preserve unknown sheet sections.
+- `scenario.schema.json` defines reusable encounter and simulation settings.
 
 New native character and monster files include `"schema_version": 1`.
 Versionless native files remain compatible and are interpreted as version 1;
@@ -212,6 +214,38 @@ Tables support sorting, explanatory tooltips, best-result highlighting, CSV
 export, and a compact chart of the primary metric. The last character, monster,
 simulation settings, selected tab, and window geometry are restored on the next
 launch.
+
+### Reusable scenarios
+
+Use **Save scenario...** and **Load scenario...** in the GUI to reuse encounter
+settings with the currently selected character and monster. The same JSON files
+work in the CLI:
+
+```bash
+python -m dnd5ecombat --save-scenario encounter.json --starting-distance-feet 60 --rest-before-duel long --trials 5000 --seed 7
+python -m dnd5ecombat --scenario encounter.json --character-file characters/tobias_wren.json --monster-file monsters/goblin.json --duels
+python -m dnd5ecombat --scenario scenarios/ranged-duel.json --trials 100 --duels
+```
+
+`--save-scenario` writes the effective settings and exits without running a
+simulation. Combine it with `--scenario` to save a modified copy. Explicit CLI
+options override the loaded file regardless of argument order. Boolean options
+also have negative forms, such as `--no-include-advantage` and
+`--no-character-can-hide`; `--abstract-positioning` resets the starting distance
+to `null`, disabling movement and range rules.
+
+The version 1 format contains `schema_version` and a `settings` object. Missing
+settings use the application defaults; a missing version means version 1.
+Unknown fields, unsupported versions, and invalid values are rejected with the
+filename and JSON field path. Files record trials, seed, workers, advantage and
+disadvantage variants, distance, movement, ally/concealment assumptions, and the
+rest before each duel. Resource amounts and capacities still come from the
+selected profiles; the saved rest determines their recovery. Character/monster
+selection, comparison mode or GUI tab, and generic-target overrides such as
+`--target-hp` are not stored. Choose these separately when reusing a scenario.
+The GUI reports values outside its 32-bit integer range rather than changing
+them silently. CLI scenario options require non-interactive mode; in the GUI,
+use the load/save buttons.
 
 Optional arguments:
 

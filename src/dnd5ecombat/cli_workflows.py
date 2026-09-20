@@ -7,7 +7,6 @@ import sys
 from .resource_models import duel_save_actions
 
 from .application_service import (
-    SimulationSettings,
     evaluate_attacks,
     evaluate_duel_roster,
     evaluate_saving_throws,
@@ -29,6 +28,7 @@ from .models import TargetProfile
 from .monster_profiles import load_monster_profile
 from .scenario_factory import format_damage_profile as format_scenario_damage
 from .simulation import simulate_attacks_to_zero
+from .scenario_persistence import save_scenario, settings_from_arguments
 
 
 def _build_comparison_target(arguments, target_profile=None):
@@ -49,22 +49,7 @@ def _enemy_initiative_bonus(arguments, target_profile=None):
 
 
 def _simulation_settings(arguments):
-    return SimulationSettings(
-        trials=arguments.trials,
-        seed=arguments.seed,
-        workers=arguments.workers,
-        include_advantage=arguments.include_advantage,
-        include_disadvantage=arguments.include_disadvantage,
-        starting_distance_feet=getattr(arguments, "starting_distance_feet", None),
-        character_speed_feet=getattr(arguments, "character_speed_feet", 30),
-        monster_speed_feet=getattr(arguments, "monster_speed_feet", 30),
-        character_ally_near_target=getattr(arguments, "character_ally_near_target", False),
-        monster_ally_near_target=getattr(arguments, "monster_ally_near_target", False),
-        character_can_hide=getattr(arguments, "character_can_hide", False),
-        monster_can_hide=getattr(arguments, "monster_can_hide", False),
-        rest_before_duel=getattr(arguments, "rest_before_duel", "none"),
-
-    )
+    return settings_from_arguments(arguments)
 
 
 def print_initiative_order(
@@ -363,6 +348,14 @@ def run_single_combat_summary(
 
 def main(argv=None):
     arguments = parse_args(argv)
+    if arguments.save_scenario:
+        try:
+            path = save_scenario(_simulation_settings(arguments), arguments.save_scenario)
+        except (OSError, ValueError, TypeError) as error:
+            print(f"Could not save scenario: {error}", file=sys.stderr)
+            return 2
+        print(f"Saved scenario: {path}")
+        return 0
     if arguments.gui:
         from .gui import main as gui_main
 
@@ -418,6 +411,7 @@ def main(argv=None):
     run_default_when_no_selection = (
         not arguments.interactive
         and not arguments.character_file
+        and not arguments.scenario
         and len(sys.argv[1:]) == 0
     )
 

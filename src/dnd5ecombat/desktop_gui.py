@@ -50,6 +50,7 @@ from .profile_catalog import (
     monster_profile_path,
 )
 from .storage_paths import PROJECT_DIR
+from .scenario_persistence import load_scenario, save_scenario
 
 
 TAB_SECTIONS = ("attacks", "turns", "saving_throws", "duels")
@@ -152,6 +153,15 @@ class CombatSimulatorWindow(QMainWindow):
         self.setCentralWidget(central)
         selection_group = QGroupBox("Combat setup")
         selection_layout = QVBoxLayout(selection_group)
+        scenario_row = QHBoxLayout()
+        self.load_scenario_button = QPushButton("Load scenario...")
+        self.save_scenario_button = QPushButton("Save scenario...")
+        scenario_row.addWidget(self.load_scenario_button)
+        scenario_row.addWidget(self.save_scenario_button)
+        scenario_row.addStretch(1)
+        selection_layout.addLayout(scenario_row)
+        self.load_scenario_button.clicked.connect(self._load_scenario)
+        self.save_scenario_button.clicked.connect(self._save_scenario)
         selectors = QFormLayout()
         character_row = QHBoxLayout()
         self.character_combo = QComboBox()
@@ -473,6 +483,10 @@ class CombatSimulatorWindow(QMainWindow):
             self.new_monster_button,
             self.edit_monster_button,
             self.run_button,
+            self.load_scenario_button,
+            self.save_scenario_button,
+            self.rest_combo,
+            *self.tactical_checks.values(),
         ):
             control.setEnabled(enabled)
         self.cancel_button.setEnabled(not enabled)
@@ -482,13 +496,8 @@ class CombatSimulatorWindow(QMainWindow):
             return (TAB_SECTIONS[self.tabs.currentIndex()],)
         return SIMULATION_SECTIONS
 
-    @Slot()
-    def _start_simulation(self):
-        character_item = self.character_combo.currentData()
-        monster_item = self.monster_combo.currentData()
-        if character_item is None or monster_item is None or self._thread is not None:
-            return
-        settings = SimulationSettings(
+    def _simulation_settings(self):
+        return SimulationSettings(
             trials=self.trials_spin.value(),
             seed=self.seed_spin.value(),
             workers=self.workers_spin.value(),
@@ -501,6 +510,65 @@ class CombatSimulatorWindow(QMainWindow):
             **{field: check.isChecked() for field, check in self.tactical_checks.items()},
             rest_before_duel=self.rest_combo.currentText(),
         )
+
+    def _apply_scenario_settings(self, settings):
+        numeric = {
+            field: getattr(settings, field)
+            for field in ("trials", "seed", "workers", "character_speed_feet",
+                          "monster_speed_feet", "starting_distance_feet")
+            if getattr(settings, field) is not None
+        }
+        # Validate every value before changing any controls; never silently clamp.
+        for field, value in numeric.items():
+            if not -2_147_483_648 <= value <= 2_147_483_647:
+                raise ValueError(f"{field}: value exceeds the desktop control's integer range")
+        for field, value in numeric.items():
+            spin = getattr(self, field + "_spin")
+            spin.setRange(min(spin.minimum(), value), max(spin.maximum(), value))
+            spin.setValue(value)
+        self.positioning_check.setChecked(settings.starting_distance_feet is not None)
+        self.advantage_check.setChecked(settings.include_advantage)
+        self.disadvantage_check.setChecked(settings.include_disadvantage)
+        for field, check in self.tactical_checks.items():
+            check.setChecked(getattr(settings, field))
+        self.rest_combo.setCurrentText(settings.rest_before_duel)
+
+    @Slot()
+    def _load_scenario(self):
+        filename, _ = QFileDialog.getOpenFileName(
+            self, "Load scenario settings", "", "JSON files (*.json)"
+        )
+        if not filename:
+            return
+        try:
+            self._apply_scenario_settings(load_scenario(filename))
+        except (OSError, ValueError, TypeError) as error:
+            QMessageBox.critical(self, "Could not load scenario", str(error))
+            return
+        self._save_settings()
+        self.status_label.setText(f"Loaded scenario settings: {Path(filename).name}")
+
+    @Slot()
+    def _save_scenario(self):
+        filename, _ = QFileDialog.getSaveFileName(
+            self, "Save scenario settings", "scenario.json", "JSON files (*.json)"
+        )
+        if not filename:
+            return
+        try:
+            save_scenario(self._simulation_settings(), filename)
+        except (OSError, ValueError, TypeError) as error:
+            QMessageBox.critical(self, "Could not save scenario", str(error))
+            return
+        self.status_label.setText(f"Saved scenario settings: {Path(filename).name}")
+
+    @Slot()
+    def _start_simulation(self):
+        character_item = self.character_combo.currentData()
+        monster_item = self.monster_combo.currentData()
+        if character_item is None or monster_item is None or self._thread is not None:
+            return
+        settings = self._simulation_settings()
         sections = self._selected_sections()
         self._thread = QThread(self)
         self._worker = SimulationWorker(
@@ -585,11 +653,16 @@ class CombatSimulatorWindow(QMainWindow):
         for field, check in self.tactical_checks.items():
             check.setChecked(self._setting_bool(field))
         self.positioning_check.setChecked(self._setting_bool("duel_positioning"))
-        for field in ("starting_distance_feet", "character_speed_feet", "monster_speed_feet"):
-            getattr(self, field + "_spin").setValue(int(self._settings.value(field, 30)))
-        self.trials_spin.setValue(int(self._settings.value("trials", 10_000)))
-        self.seed_spin.setValue(int(self._settings.value("seed", 42)))
-        self.workers_spin.setValue(int(self._settings.value("workers", 1)))
+        for field, default in (
+            ("starting_distance_feet", 30), ("character_speed_feet", 30),
+            ("monster_speed_feet", 30), ("trials", 10_000), ("seed", 42),
+            ("workers", 1),
+        ):
+            spin = getattr(self, field + "_spin")
+            value = int(self._settings.value(field, default))
+            if spin.minimum() <= value <= 2_147_483_647:
+                spin.setMaximum(max(spin.maximum(), value))
+            spin.setValue(value)
         self.advantage_check.setChecked(self._setting_bool("advantage"))
         self.disadvantage_check.setChecked(self._setting_bool("disadvantage"))
         scope_index = self.run_scope_combo.findData(
