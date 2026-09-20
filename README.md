@@ -21,7 +21,7 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 
 ## Project status and roadmap
 
-Last reviewed: 2026-09-20. All 439 automated tests pass, Ruff reports no
+Last reviewed: 2026-09-20. All 449 automated tests pass, Ruff reports no
 lint errors, and coverage with branch measurement enabled is 80% (70% CI
 floor). The Windows 0.4.0 executable builds and passes its packaged smoke test.
 
@@ -131,7 +131,7 @@ is still recorded under 1.0.0.
 
 - [x] Add reusable scenario files for encounter assumptions such as distance,
   tactical roll modes, resources, and trial settings.
-- [ ] Let the CLI and GUI compare multiple characters and monsters in one run
+- [x] Let the CLI and GUI compare multiple characters and monsters in one run
   without manually repeating simulations.
 - [ ] Export complete result metadata alongside tables so a result records its
   seed, trials, profiles, assumptions, and application version.
@@ -247,7 +247,40 @@ The GUI reports values outside its 32-bit integer range rather than changing
 them silently. CLI scenario options require non-interactive mode; in the GUI,
 use the load/save buttons.
 
-Optional arguments:
+### Compare multiple profiles
+
+In the GUI, choose **Compare multiple...**, check the characters and monsters,
+and press **Compare**. Every checked character is compared with every checked
+monster using the current scenario settings and the All tabs/Current tab choice.
+The dialog shows the number of comparisons before starting. Progress and Cancel
+work across the whole run. Each result tab combines the rows with character and
+monster profile columns; sorting and CSV export include those columns. Hover over
+the result note for each pair's assumptions, exclusions, or missing actions.
+Combined tables omit overall best highlighting and charts because different
+opponents do not make a single comparable ranking. Roster selections are temporary
+and are not stored in scenario files.
+
+The CLI accepts lists of paths:
+
+```bash
+python -m dnd5ecombat --character-files characters/tobias_wren.json characters/amara_summerfield.json --monster-files monsters/goblin.json monsters/wolf.json --trials 100 --duels
+```
+
+This runs four independent matchups, not a party-versus-group encounter. Omit
+`--duels` for attack and turn comparisons. You can combine one plural option with
+the other side's singular option, for example `--character-files ... --monster-file
+monsters/goblin.json`, and add `--scenario scenarios/ranged-duel.json`. Both sides
+must be specified; repeated paths are evaluated once. All profiles are loaded
+before simulation, and invalid files stop the run with an error. CLI output is
+tab-separated, with probabilities expressed as fractions from 0 to 1.
+
+Each pair starts from fresh profile resources with the same seed and settings,
+so its results match a separate run and do not depend on roster ordering.
+Increasing the roster multiplies the work; start with a small trial count.
+The selected monster profiles supply target defenses rather than generic-target
+options such as `--target-hp` or `--armor-classes`.
+
+### Other command-line options
 
 ```bash
 python -m dnd5ecombat --trials 5000 --seed 7 --target-hp 30 --armor-classes 12 14 16 18 20

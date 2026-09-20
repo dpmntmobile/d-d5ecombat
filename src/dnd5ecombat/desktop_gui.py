@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
     QComboBox,
+    QDialog,
     QFileDialog,
     QFormLayout,
     QGroupBox,
@@ -51,6 +52,7 @@ from .profile_catalog import (
 )
 from .storage_paths import PROJECT_DIR
 from .scenario_persistence import load_scenario, save_scenario
+from .roster_dialog import RosterDialog
 
 
 TAB_SECTIONS = ("attacks", "turns", "saving_throws", "duels")
@@ -95,6 +97,7 @@ class ResultsPage(QWidget):
     def set_table_data(self, table_data):
         self._table_data = table_data
         self.note.setText(table_data.note)
+        self.note.setToolTip(table_data.details)
         self.export_button.setEnabled(bool(table_data.rows))
         self._model = ResultsTableModel(table_data, self)
         self._proxy = QSortFilterProxyModel(self)
@@ -250,6 +253,9 @@ class CombatSimulatorWindow(QMainWindow):
         self.cancel_button = QPushButton("Cancel")
         self.cancel_button.setEnabled(False)
         controls.addWidget(self.run_button)
+        self.roster_button = QPushButton("Compare multiple...")
+        self.roster_button.clicked.connect(self._choose_roster)
+        controls.addWidget(self.roster_button)
         controls.addWidget(self.cancel_button)
         selection_layout.addLayout(controls)
         outer.addWidget(selection_group)
@@ -483,6 +489,7 @@ class CombatSimulatorWindow(QMainWindow):
             self.new_monster_button,
             self.edit_monster_button,
             self.run_button,
+            self.roster_button,
             self.load_scenario_button,
             self.save_scenario_button,
             self.rest_combo,
@@ -563,7 +570,21 @@ class CombatSimulatorWindow(QMainWindow):
         self.status_label.setText(f"Saved scenario settings: {Path(filename).name}")
 
     @Slot()
+    def _choose_roster(self):
+        if self._thread is not None:
+            return
+        dialog = RosterDialog(
+            self._character_items, self._monster_items,
+            self.character_combo.currentData(), self.monster_combo.currentData(), self,
+        )
+        if dialog.exec() == QDialog.DialogCode.Accepted:
+            self._run_simulation(roster=dialog.selection())
+
+    @Slot()
     def _start_simulation(self):
+        self._run_simulation()
+
+    def _run_simulation(self, roster=None):
         character_item = self.character_combo.currentData()
         monster_item = self.monster_combo.currentData()
         if character_item is None or monster_item is None or self._thread is not None:
@@ -571,9 +592,12 @@ class CombatSimulatorWindow(QMainWindow):
         settings = self._simulation_settings()
         sections = self._selected_sections()
         self._thread = QThread(self)
-        self._worker = SimulationWorker(
-            character_item.value, monster_item.value, settings, sections
-        )
+        if roster is None:
+            self._worker = SimulationWorker(
+                character_item.value, monster_item.value, settings, sections
+            )
+        else:
+            self._worker = SimulationWorker(*roster, settings, sections, roster=True)
         self._worker.moveToThread(self._thread)
         self._thread.started.connect(self._worker.run)
         self._worker.succeeded.connect(self._show_results)

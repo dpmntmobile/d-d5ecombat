@@ -40,6 +40,7 @@ class TableData:
     columns: tuple
     rows: tuple
     note: str = ""
+    details: str = ""
 
 
 @dataclass(frozen=True)

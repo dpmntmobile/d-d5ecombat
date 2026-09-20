@@ -3,6 +3,8 @@
 import os
 import random
 import sys
+from pathlib import Path
+from dataclasses import replace
 
 from .resource_models import duel_save_actions
 
@@ -29,6 +31,8 @@ from .monster_profiles import load_monster_profile
 from .scenario_factory import format_damage_profile as format_scenario_damage
 from .simulation import simulate_attacks_to_zero
 from .scenario_persistence import save_scenario, settings_from_arguments
+from .profile_catalog import CatalogItem, load_character_build
+from .roster_service import run_roster_simulations
 
 
 def _build_comparison_target(arguments, target_profile=None):
@@ -348,6 +352,33 @@ def run_single_combat_summary(
 
 def main(argv=None):
     arguments = parse_args(argv)
+    if arguments.character_files or arguments.monster_files:
+        try:
+            def load_items(paths, loader, initiative_bonus):
+                items = []
+                for path in dict.fromkeys(Path(path).resolve() for path in paths):
+                    value = loader(path)
+                    if initiative_bonus is not None:
+                        value = replace(value, initiative_bonus=initiative_bonus)
+                    items.append(CatalogItem(f"{value.name} — {path}", value, str(path)))
+                return items
+
+            characters = load_items(arguments.character_files or [arguments.character_file], load_character_build, arguments.initiative_bonus)
+            monsters = load_items(arguments.monster_files or [arguments.target_file], load_monster_profile, arguments.enemy_initiative_bonus)
+            sections = ("duels",) if arguments.duels else ("attacks", "turns")
+            tables = run_roster_simulations(characters, monsters, _simulation_settings(arguments), sections)
+        except (OSError, TypeError, ValueError) as error:
+            print(f"Could not compare roster: {error}", file=sys.stderr)
+            return 2
+        for section in sections:
+            table = getattr(tables, section)
+            print(f"\n{section.replace('_', ' ').title()}")
+            print("\t".join(column.title for column in table.columns))
+            for row in table.rows:
+                print("\t".join(f"{value:.6g}" if isinstance(value, float) else str(value) for value in row))
+            print(table.note)
+            print(table.details)
+        return 0
     if arguments.save_scenario:
         try:
             path = save_scenario(_simulation_settings(arguments), arguments.save_scenario)

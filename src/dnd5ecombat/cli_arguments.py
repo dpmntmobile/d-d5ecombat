@@ -11,6 +11,8 @@ def parse_args(argv=None):
         description="Compare simple D&D 5e combat options with seeded simulations."
     )
     parser.add_argument("--scenario", help="Load encounter settings from a JSON file.")
+    parser.add_argument("--character-files", nargs="+", help="Character profiles to compare as a roster.")
+    parser.add_argument("--monster-files", nargs="+", help="Monster profiles to compare against each character.")
     parser.add_argument("--save-scenario", metavar="FILE",
                         help="Save encounter settings to JSON and exit without simulating.")
     parser.add_argument(
@@ -124,6 +126,15 @@ def parse_args(argv=None):
     parser.add_argument("--rest-before-duel", choices=("none", "short", "long"), default="none",
                         help="Recover slot capacities before each duel trial.")
     arguments = parser.parse_args(argv)
+    if arguments.character_files or arguments.monster_files:
+        if arguments.gui or arguments.interactive or arguments.save_scenario:
+            parser.error("Roster options require a non-interactive simulation run.")
+        if arguments.character_files and arguments.character_file:
+            parser.error("Use either --character-file or --character-files.")
+        if arguments.monster_files and arguments.target_file:
+            parser.error("Use either --monster-file or --monster-files.")
+        if not (arguments.character_files or arguments.character_file) or not (arguments.monster_files or arguments.target_file):
+            parser.error("Roster comparisons require character and monster files.")
     if (arguments.scenario or arguments.save_scenario) and (arguments.gui or arguments.interactive):
         parser.error("Scenario options require non-interactive CLI mode; use Load/Save scenario in the GUI.")
     if arguments.scenario:

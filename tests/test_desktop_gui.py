@@ -204,6 +204,57 @@ class DesktopGuiTests(unittest.TestCase):
 
         self.assertEqual(events, ["cancelled"])
 
+    def test_roster_dialog_requires_both_sides_and_returns_checked_profiles(self):
+        from dnd5ecombat.roster_dialog import RosterDialog
+        from PySide6.QtWidgets import QDialogButtonBox
+
+        characters, monsters = discover_characters()[:2], discover_monsters()[:2]
+        dialog = RosterDialog(characters, monsters)
+        button = dialog.buttons.button(QDialogButtonBox.StandardButton.Ok)
+        self.assertFalse(button.isEnabled())
+        for widget in (dialog.character_list, dialog.monster_list):
+            for index in range(widget.count()):
+                widget.item(index).setCheckState(Qt.CheckState.Checked)
+        self.assertTrue(button.isEnabled())
+        self.assertEqual(dialog.selection(), (characters, monsters))
+        self.assertIn("4 comparisons", dialog.summary.text())
+        dialog.close()
+
+    def test_roster_worker_returns_combined_tables_and_honors_cancel(self):
+        worker = SimulationWorker(
+            discover_characters()[:2], discover_monsters()[:2],
+            SimulationSettings(trials=1), ("attacks",), roster=True,
+        )
+        results, cancelled = [], []
+        worker.succeeded.connect(results.append)
+        worker.cancelled.connect(lambda: cancelled.append(True))
+        worker.run()
+        self.assertEqual(len(results), 1)
+        self.assertEqual(len({row[:2] for row in results[0].attacks.rows}), 4)
+        worker.request_cancel()
+        worker.run()
+        self.assertEqual(cancelled, [True])
+        self.assertEqual(len(results), 1)
+
+    def test_compare_multiple_button_dispatches_selected_roster(self):
+        from PySide6.QtWidgets import QDialog
+
+        with TemporaryDirectory() as directory:
+            settings = QSettings(str(Path(directory) / "settings.ini"), QSettings.Format.IniFormat)
+            window = CombatSimulatorWindow(settings=settings)
+            roster = (window._character_items[:2], window._monster_items[:2])
+            with patch("dnd5ecombat.desktop_gui.RosterDialog") as dialog, patch.object(window, "_run_simulation") as run:
+                dialog.return_value.exec.return_value = QDialog.DialogCode.Accepted
+                dialog.return_value.selection.return_value = roster
+                window.roster_button.click()
+                run.assert_called_once_with(roster=roster)
+                run.reset_mock()
+                window.run_button.click()
+                run.assert_called_once_with()
+            window._set_controls_enabled(False)
+            self.assertFalse(window.roster_button.isEnabled())
+            window.close()
+
     def test_monster_editor_preserves_new_conditions_and_duration(self):
         from dataclasses import replace
         from PySide6.QtWidgets import QTableWidgetItem
