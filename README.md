@@ -731,6 +731,9 @@ metadata reads it during installation, while the Windows build derives both
 executable and installer versions from it automatically.
 
 GitHub Actions runs linting and the full test suite on Python 3.10 and 3.12.
+The Linux jobs install the GUI dependencies and use `QT_QPA_PLATFORM=offscreen`
+so the GUI tests run without a display and count toward the 70% coverage floor.
+Use the same environment variable when running the suite on a headless machine.
 
 ## Build a Windows executable
 
