@@ -33,6 +33,7 @@ from .simulation import simulate_attacks_to_zero
 from .scenario_persistence import save_scenario, settings_from_arguments
 from .profile_catalog import CatalogItem, load_character_build
 from .roster_service import run_roster_simulations
+from .result_export import save_results
 
 
 def _build_comparison_target(arguments, target_profile=None):
@@ -352,7 +353,7 @@ def run_single_combat_summary(
 
 def main(argv=None):
     arguments = parse_args(argv)
-    if arguments.character_files or arguments.monster_files:
+    if arguments.character_files or arguments.monster_files or arguments.export_results:
         try:
             def load_items(paths, loader, initiative_bonus):
                 items = []
@@ -367,6 +368,8 @@ def main(argv=None):
             monsters = load_items(arguments.monster_files or [arguments.target_file], load_monster_profile, arguments.enemy_initiative_bonus)
             sections = ("duels",) if arguments.duels else ("attacks", "turns")
             tables = run_roster_simulations(characters, monsters, _simulation_settings(arguments), sections)
+            if arguments.export_results:
+                save_results({section: getattr(tables, section) for section in sections}, arguments.export_results)
         except (OSError, TypeError, ValueError) as error:
             print(f"Could not compare roster: {error}", file=sys.stderr)
             return 2

@@ -163,6 +163,7 @@ class DesktopGuiTests(unittest.TestCase):
                 return_value=(str(destination), "CSV files (*.csv)"),
             ):
                 page.export_csv()
+            self.assertTrue(destination.with_suffix(".csv.json").is_file())
             with open(destination, "r", encoding="utf-8-sig", newline="") as source:
                 rows = tuple(csv.reader(source))
 

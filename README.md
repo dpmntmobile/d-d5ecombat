@@ -21,9 +21,10 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 
 ## Project status and roadmap
 
-Last reviewed: 2026-09-20. All 449 automated tests pass, Ruff reports no
+Last reviewed: 2026-09-22. All 455 automated tests pass, Ruff reports no
 lint errors, and coverage with branch measurement enabled is 80% (70% CI
-floor). The Windows 0.4.0 executable builds and passes its packaged smoke test.
+floor). The Windows 0.4.0 executable previously passed its build and packaged
+smoke test; it has not been rebuilt for the ongoing 0.5.0 changes.
 
 This checklist is the project's planning record. Check an item only after its
 implementation, tests, and relevant documentation are complete. Add newly
@@ -133,7 +134,7 @@ is still recorded under 1.0.0.
   tactical roll modes, resources, and trial settings.
 - [x] Let the CLI and GUI compare multiple characters and monsters in one run
   without manually repeating simulations.
-- [ ] Export complete result metadata alongside tables so a result records its
+- [x] Export complete result metadata alongside tables so a result records its
   seed, trials, profiles, assumptions, and application version.
 - [ ] Improve validation and empty-state guidance in the GUI, including direct
   links from an error to the profile or setting that caused it.
@@ -214,6 +215,37 @@ Tables support sorting, explanatory tooltips, best-result highlighting, CSV
 export, and a compact chart of the primary metric. The last character, monster,
 simulation settings, selected tab, and window geometry are restored on the next
 launch.
+
+### Export results with run metadata
+
+**Export CSV...** saves the selected result table and a companion file named
+`<filename>.csv.json`. Keep the companion with the CSV: it contains the raw
+numeric table values, column descriptions, notes and exclusions, application
+version, seed, trials, workers, and all effective scenario settings. It also
+captures the character and monster combat models, including attacks, defenses,
+resources, and initiative overrides. These snapshots describe the inputs used
+for the completed run; changing GUI controls or editing profiles afterward does
+not change an existing result's metadata.
+
+For CLI comparisons, add `--export-results FILE` with explicit character and
+monster files (singular or roster options):
+
+```bash
+python -m dnd5ecombat --character-file characters/tobias_wren.json --monster-file monsters/goblin.json --trials 100 --seed 7 --export-results results.json
+python -m dnd5ecombat --character-files characters/tobias_wren.json characters/amara_summerfield.json --monster-files monsters/goblin.json monsters/wolf.json --duels --export-results duels.json
+```
+
+This runs the same profile comparison tables as the GUI: attacks and turns by
+default, or duels with `--duels`. CLI export requires non-interactive mode and
+explicit profiles; generic AC sweeps and interactive-menu exports are not
+supported. Each roster pair starts with the recorded seed. Roster labels link
+table rows to their profile snapshots, and empty tables retain their explanatory
+notes. JSON exports use `result_format_version: 1` and a `tables` object whose
+entries contain `columns`, `rows`, `note`, `details`, and `metadata`. Profile
+snapshots are records of simulation models, not importable character/monster
+files. Existing JSON exports are replaced only after the new document is fully
+written. CSV and its companion are separate files; a write error is reported
+and may leave only the companion file updated.
 
 ### Reusable scenarios
 

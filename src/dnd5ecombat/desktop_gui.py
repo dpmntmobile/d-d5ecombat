@@ -1,6 +1,5 @@
 """PySide6 desktop interface for the combat simulator."""
 
-import csv
 import os
 from pathlib import Path
 
@@ -53,6 +52,7 @@ from .profile_catalog import (
 from .storage_paths import PROJECT_DIR
 from .scenario_persistence import load_scenario, save_scenario
 from .roster_dialog import RosterDialog
+from .result_export import save_table_csv
 
 
 TAB_SECTIONS = ("attacks", "turns", "saving_throws", "duels")
@@ -77,6 +77,7 @@ class ResultsPage(QWidget):
         heading.addWidget(self.note, 1)
         self.export_button = QPushButton("Export CSV…")
         self.export_button.setEnabled(False)
+        self.export_button.setToolTip("Save CSV and a .csv.json companion with results and run metadata.")
         self.export_button.clicked.connect(self.export_csv)
         heading.addWidget(self.export_button)
         layout.addLayout(heading)
@@ -123,11 +124,8 @@ class ResultsPage(QWidget):
         if not filename:
             return
         try:
-            with open(filename, "w", encoding="utf-8-sig", newline="") as output:
-                writer = csv.writer(output)
-                writer.writerow(column.title for column in self._table_data.columns)
-                writer.writerows(self._table_data.rows)
-        except OSError as error:
+            save_table_csv(self._table_data, self.export_name, filename)
+        except (OSError, ValueError, TypeError) as error:
             QMessageBox.critical(self, "Export failed", str(error))
 
 

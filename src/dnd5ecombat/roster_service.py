@@ -2,6 +2,8 @@
 
 from dataclasses import replace
 
+from .result_export import result_metadata
+
 from .gui_service import (
     SIMULATION_SECTIONS,
     SimulationTables,
@@ -67,6 +69,12 @@ def run_roster_simulations(
             completed += len(sections)
     if progress_callback is not None:
         progress_callback(total, total, "complete")
+    metadata = result_metadata(
+        settings,
+        ((item.label, item.value) for item in characters),
+        ((item.label, item.value) for item in monsters),
+        sections,
+    )
     return SimulationTables(
         **{
             section: TableData(
@@ -76,6 +84,7 @@ def run_roster_simulations(
                 f"{settings.trials:,} trials per scenario, seed {settings.seed}. "
                 "No overall best across different opponents. Hover here for per-pair notes.",
                 "\n".join(notes[section]),
+                metadata=metadata,
             )
             for section in sections
         }

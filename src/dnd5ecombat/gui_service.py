@@ -5,7 +5,9 @@ models and simulation results into structured tables that can be presented by
 any user interface.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+
+from .result_export import result_metadata
 
 from .resource_models import duel_save_actions
 
@@ -41,6 +43,7 @@ class TableData:
     rows: tuple
     note: str = ""
     details: str = ""
+    metadata: dict = None
 
 
 @dataclass(frozen=True)
@@ -390,4 +393,10 @@ def run_simulations(
 
     if progress_callback is not None:
         progress_callback(len(sections), len(sections), "complete")
-    return SimulationTables(**values)
+    metadata = result_metadata(
+        settings, ((build.name, build),), ((monster.name, monster),), sections
+    )
+    return SimulationTables(**{
+        section: replace(table, metadata=metadata)
+        for section, table in values.items()
+    })

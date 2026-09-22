@@ -11,6 +11,8 @@ def parse_args(argv=None):
         description="Compare simple D&D 5e combat options with seeded simulations."
     )
     parser.add_argument("--scenario", help="Load encounter settings from a JSON file.")
+    parser.add_argument("--export-results", metavar="FILE",
+                        help="Export profile comparison tables and run metadata to JSON; requires character and monster files.")
     parser.add_argument("--character-files", nargs="+", help="Character profiles to compare as a roster.")
     parser.add_argument("--monster-files", nargs="+", help="Monster profiles to compare against each character.")
     parser.add_argument("--save-scenario", metavar="FILE",
@@ -126,6 +128,11 @@ def parse_args(argv=None):
     parser.add_argument("--rest-before-duel", choices=("none", "short", "long"), default="none",
                         help="Recover slot capacities before each duel trial.")
     arguments = parser.parse_args(argv)
+    if arguments.export_results:
+        if arguments.gui or arguments.interactive or arguments.save_scenario:
+            parser.error("Result export requires a non-interactive simulation run.")
+        if not (arguments.character_files or arguments.character_file) or not (arguments.monster_files or arguments.target_file):
+            parser.error("Result export requires character and monster files.")
     if arguments.character_files or arguments.monster_files:
         if arguments.gui or arguments.interactive or arguments.save_scenario:
             parser.error("Roster options require a non-interactive simulation run.")
