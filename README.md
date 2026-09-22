@@ -21,8 +21,8 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 
 ## Project status and roadmap
 
-Last reviewed: 2026-09-22. All 455 automated tests pass, Ruff reports no
-lint errors, and coverage with branch measurement enabled is 80% (70% CI
+Last reviewed: 2026-09-22. All 460 automated tests pass, Ruff reports no
+lint errors, and coverage with branch measurement enabled is 81% (70% CI
 floor). The Windows 0.4.0 executable previously passed its build and packaged
 smoke test; it has not been rebuilt for the ongoing 0.5.0 changes.
 
@@ -136,7 +136,7 @@ is still recorded under 1.0.0.
   without manually repeating simulations.
 - [x] Export complete result metadata alongside tables so a result records its
   seed, trials, profiles, assumptions, and application version.
-- [ ] Improve validation and empty-state guidance in the GUI, including direct
+- [x] Improve validation and empty-state guidance in the GUI, including direct
   links from an error to the profile or setting that caused it.
 
 ### 1.0.0 - Release readiness
@@ -215,6 +215,22 @@ Tables support sorting, explanatory tooltips, best-result highlighting, CSV
 export, and a compact chart of the primary metric. The last character, monster,
 simulation settings, selected tab, and window geometry are restored on the next
 launch.
+
+When profiles cannot be loaded, **Review errors and files** shows the full file
+paths and validation messages, with links to open each file in its associated
+application. Correct the reported fields and press **Refresh**. Characters
+remain managed in Roll20: correct the sheet/export and import the new export.
+Import and scenario-load errors also link to the source file; scenario errors
+that name a setting offer **Review setting** to focus its control. Failed
+simulations retain diagnostic details and links to the profiles used in the run,
+including every selected roster profile.
+
+An empty catalog offers links to import a character or create a monster, and
+disables actions that require missing profiles. Empty result tabs explain how
+to proceed: saving throws require an imported damaging save effect, and duels
+require an eligible monster attack or save action. Their links lead to the
+relevant selector or import action. For roster results, inspect the per-pair
+notes to identify which profiles need changes.
 
 ### Export results with run metadata
 

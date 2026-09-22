@@ -1,6 +1,8 @@
 """PySide6 desktop interface for the combat simulator."""
 
 import os
+import re
+from html import escape
 from pathlib import Path
 
 from PySide6.QtCore import (
@@ -9,6 +11,7 @@ from PySide6.QtCore import (
     Qt,
     QThread,
     Slot,
+    Signal,
 )
 from PySide6.QtGui import QCloseEvent, QIcon
 from PySide6.QtWidgets import (
@@ -53,6 +56,7 @@ from .storage_paths import PROJECT_DIR
 from .scenario_persistence import load_scenario, save_scenario
 from .roster_dialog import RosterDialog
 from .result_export import save_table_csv
+from .gui_guidance import GuidanceDialog
 
 
 TAB_SECTIONS = ("attacks", "turns", "saving_throws", "duels")
@@ -65,6 +69,8 @@ SECTION_LABELS = {
 
 
 class ResultsPage(QWidget):
+    navigate = Signal(str)
+
     def __init__(self, export_name, parent=None):
         super().__init__(parent)
         self.export_name = export_name
@@ -81,6 +87,11 @@ class ResultsPage(QWidget):
         self.export_button.clicked.connect(self.export_csv)
         heading.addWidget(self.export_button)
         layout.addLayout(heading)
+        self.guidance = QLabel('Choose profiles and settings, then <a href="run">run a simulation</a>.')
+        self.guidance.setWordWrap(True)
+        self.guidance.setTextInteractionFlags(Qt.TextInteractionFlag.TextBrowserInteraction)
+        self.guidance.linkActivated.connect(self.navigate.emit)
+        layout.addWidget(self.guidance)
         splitter = QSplitter(Qt.Orientation.Vertical)
         self.table = QTableView()
         self.table.setAlternatingRowColors(True)
@@ -98,8 +109,24 @@ class ResultsPage(QWidget):
     def set_table_data(self, table_data):
         self._table_data = table_data
         self.note.setText(table_data.note)
+        self.note.setTextFormat(Qt.TextFormat.PlainText)
         self.note.setToolTip(table_data.details)
         self.export_button.setEnabled(bool(table_data.rows))
+        if table_data.rows:
+            self.guidance.clear()
+        elif self.export_name == "saving-throw-results":
+            self.guidance.setText(
+                'No damaging save effects to compare. <a href="character">Choose a character</a> '
+                'with a damaging save spell, or add it in Roll20, re-export, and '
+                '<a href="import">import the character</a>. Check each pair\'s notes for roster results.'
+            )
+        elif self.export_name == "duel-results":
+            self.guidance.setText(
+                'No eligible duel actions. <a href="monster">Choose a monster</a> with an attack '
+                'or supported save action; use Edit to add one. Check each pair\'s notes for roster results.'
+            )
+        else:
+            self.guidance.setText('No results. <a href="character">Review the character</a> and <a href="run">run again</a>.')
         self._model = ResultsTableModel(table_data, self)
         self._proxy = QSortFilterProxyModel(self)
         self._proxy.setSourceModel(self._model)
@@ -184,12 +211,15 @@ class CombatSimulatorWindow(QMainWindow):
         self.selection_summary = QLabel()
         self.selection_summary.setWordWrap(True)
         self.selection_summary.setTextInteractionFlags(
-            Qt.TextInteractionFlag.TextSelectableByMouse
+            Qt.TextInteractionFlag.TextBrowserInteraction
         )
+        self.selection_summary.linkActivated.connect(self._navigate)
         selection_layout.addWidget(self.selection_summary)
         self.catalog_warning = QLabel()
         self.catalog_warning.setStyleSheet("color: #b02a37;")
         self.catalog_warning.setWordWrap(True)
+        self.catalog_warning.setTextInteractionFlags(Qt.TextInteractionFlag.TextBrowserInteraction)
+        self.catalog_warning.linkActivated.connect(self._navigate)
         selection_layout.addWidget(self.catalog_warning)
         positioning = QHBoxLayout()
         self.positioning_check = QCheckBox("Duel positioning")
@@ -269,6 +299,8 @@ class CombatSimulatorWindow(QMainWindow):
             "duels": self.duel_page,
         }
         self.tabs.addTab(self.attack_page, "Attacks")
+        for page in self.pages.values():
+            page.navigate.connect(self._navigate)
         self.tabs.addTab(self.turn_page, "Turns")
         self.tabs.addTab(self.save_page, "Saving Throws")
         self.tabs.addTab(self.duel_page, "Duels")
@@ -331,22 +363,67 @@ class CombatSimulatorWindow(QMainWindow):
                 for issue in self._catalog_issues
             )
             self.catalog_warning.setText(
-                f"Ignored {len(self._catalog_issues)} invalid profile file(s)."
+                f'{len(self._catalog_issues)} invalid profile file(s). <a href="issues">Review errors and files</a>.'
             )
             self.catalog_warning.setToolTip(details)
             if show_issues:
-                dialog = QMessageBox(self)
-                dialog.setIcon(QMessageBox.Icon.Warning)
-                dialog.setWindowTitle("Invalid profile files")
-                dialog.setText(self.catalog_warning.text())
-                dialog.setDetailedText(details)
-                dialog.exec()
+                self._review_catalog_issues()
         else:
             self.catalog_warning.clear()
             self.catalog_warning.setToolTip("")
             if show_issues:
                 self.status_label.setText("Character and monster lists refreshed")
         self._selection_changed()
+
+    def _setting_controls(self):
+        return {
+            **{field: getattr(self, field + "_spin") for field in (
+                "trials", "seed", "workers", "starting_distance_feet",
+                "character_speed_feet", "monster_speed_feet",
+            )},
+            "rest_before_duel": self.rest_combo,
+            "include_advantage": self.advantage_check,
+            "include_disadvantage": self.disadvantage_check,
+            **self.tactical_checks,
+        }
+
+    def _navigate(self, action):
+        if self._thread is not None:
+            return
+        callbacks = {"issues": self._review_catalog_issues, "import": self._import_character,
+                     "new_monster": self._new_monster}
+        if action in callbacks:
+            callbacks[action]()
+            return
+        controls = {"character": self.character_combo, "monster": self.monster_combo,
+                    "run": self.run_button, **self._setting_controls()}
+        control = controls.get(action)
+        if control is not None:
+            control.setFocus(Qt.FocusReason.OtherFocusReason)
+            if isinstance(control, QSpinBox):
+                control.selectAll()
+
+    def _review_catalog_issues(self):
+        if not self._catalog_issues:
+            return
+        GuidanceDialog(
+            "Invalid profile files",
+            "These files could not be loaded. Correct the reported field, then Refresh. "
+            "For characters, correct the Roll20 sheet/export and import it again.\n\n" +
+            "\n\n".join(f"{issue.path}\n{issue.message}" for issue in self._catalog_issues),
+            files=tuple(issue.path for issue in self._catalog_issues),
+            parent=self,
+        ).exec()
+
+    def _validation_error(self, title, error, files=()):
+        message = str(error)
+        actions = tuple(
+            (field, "Review setting: " + field.replace("_", " "))
+            for field in self._setting_controls()
+            if re.search(r"\b" + re.escape(field) + r"\b", message)
+        )
+        GuidanceDialog(title, message, files=files, actions=actions,
+                       navigate=self._navigate, parent=self).exec()
 
     @Slot()
     def _import_character(self):
@@ -368,10 +445,10 @@ class CombatSimulatorWindow(QMainWindow):
             try:
                 item = import_character_file(filename, overwrite=True)
             except (OSError, TypeError, ValueError) as retry_error:
-                QMessageBox.critical(self, "Import failed", str(retry_error))
+                self._validation_error("Import failed", retry_error, (filename,))
                 return
         except (OSError, TypeError, ValueError) as error:
-            QMessageBox.critical(self, "Import failed", str(error))
+            self._validation_error("Import failed", error, (filename,))
             return
         self._refresh_catalogs(select_character=item.source)
         self.status_label.setText(f"Imported {item.value.name}")
@@ -425,10 +502,18 @@ class CombatSimulatorWindow(QMainWindow):
     def _selection_changed(self):
         character_item = self.character_combo.currentData()
         monster_item = self.monster_combo.currentData()
+        idle = self._thread is None
+        self.edit_monster_button.setEnabled(idle and monster_item is not None)
+        self.roster_button.setEnabled(idle and bool(self._character_items) and bool(self._monster_items))
         if character_item is None or monster_item is None:
-            self.selection_summary.setText(
-                "Add valid JSON profiles to characters/ and monsters/."
-            )
+            missing = []
+            if character_item is None:
+                missing.append('No valid characters. Export a character from Roll20, then <a href="import">Import character</a>.')
+            if monster_item is None:
+                missing.append('No valid monsters. <a href="new_monster">Create a monster</a> or add a monster JSON file and Refresh.')
+            if self._catalog_issues:
+                missing.append('<a href="issues">Review invalid profile files</a>.')
+            self.selection_summary.setText("<br>".join(missing))
             self.run_button.setEnabled(False)
             return
         build = character_item.value
@@ -455,16 +540,16 @@ class CombatSimulatorWindow(QMainWindow):
             if monster.multiattack
             else "best single attack"
         )
-        description = f" — {build.description}" if build.description else ""
+        description = f" — {escape(build.description)}" if build.description else ""
         self.selection_summary.setText(
-            f"<b>{build.name}</b>{description}<br>"
+            f"<b>{escape(build.name)}</b>{description}<br>"
             f"AC {build.armor_class}; {build.max_hp} HP; initiative "
             f"{build.initiative_bonus:+d}; {build.attacks_per_action} attack(s)/action; "
-            f"attacks: {attacks}; equipment: {equipment}.<br>"
-            f"<b>{monster.name}</b>: AC {monster.armor_class}; {monster.max_hp} HP; "
+            f"attacks: {escape(attacks)}; equipment: {escape(equipment)}.<br>"
+            f"<b>{escape(monster.name)}</b>: AC {monster.armor_class}; {monster.max_hp} HP; "
             f"initiative {monster.initiative_bonus:+d}; "
-            f"{len(monster.attack_profiles)} attack(s); {defense_text}; "
-            f"turn sequence: {multiattack_text}."
+            f"{len(monster.attack_profiles)} attack(s); {escape(defense_text)}; "
+            f"turn sequence: {escape(multiattack_text)}."
         )
         self.run_button.setEnabled(self._thread is None)
 
@@ -548,7 +633,7 @@ class CombatSimulatorWindow(QMainWindow):
         try:
             self._apply_scenario_settings(load_scenario(filename))
         except (OSError, ValueError, TypeError) as error:
-            QMessageBox.critical(self, "Could not load scenario", str(error))
+            self._validation_error("Could not load scenario", error, (filename,))
             return
         self._save_settings()
         self.status_label.setText(f"Loaded scenario settings: {Path(filename).name}")
@@ -563,7 +648,7 @@ class CombatSimulatorWindow(QMainWindow):
         try:
             save_scenario(self._simulation_settings(), filename)
         except (OSError, ValueError, TypeError) as error:
-            QMessageBox.critical(self, "Could not save scenario", str(error))
+            self._validation_error("Could not save scenario", error)
             return
         self.status_label.setText(f"Saved scenario settings: {Path(filename).name}")
 
@@ -587,8 +672,15 @@ class CombatSimulatorWindow(QMainWindow):
         monster_item = self.monster_combo.currentData()
         if character_item is None or monster_item is None or self._thread is not None:
             return
-        settings = self._simulation_settings()
+        try:
+            settings = self._simulation_settings()
+        except (ValueError, TypeError) as error:
+            self._validation_error("Check simulation settings", error)
+            return
         sections = self._selected_sections()
+        self._run_profile_items = (
+            (character_item, monster_item) if roster is None else tuple(roster[0]) + tuple(roster[1])
+        )
         self._thread = QThread(self)
         if roster is None:
             self._worker = SimulationWorker(
@@ -649,12 +741,13 @@ class CombatSimulatorWindow(QMainWindow):
     def _show_error(self, details):
         self.status_label.setText("Simulation failed")
         message = details.strip().splitlines()[-1] if details.strip() else "Unknown error"
-        dialog = QMessageBox(self)
-        dialog.setIcon(QMessageBox.Icon.Critical)
-        dialog.setWindowTitle("Simulation failed")
-        dialog.setText(message)
-        dialog.setDetailedText(details)
-        dialog.exec()
+        files = tuple(dict.fromkeys(
+            item.source for item in getattr(self, "_run_profile_items", ()) if item.source
+        ))
+        self._validation_error(
+            "Simulation failed", message + "\n\nReview the run's profiles and settings.\n\n" + details,
+            files,
+        )
 
     @Slot()
     def _simulation_finished(self):

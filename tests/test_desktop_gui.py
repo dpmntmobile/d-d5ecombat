@@ -77,9 +77,11 @@ class DesktopGuiTests(unittest.TestCase):
             before = window._simulation_settings()
             path = Path(directory) / "bad.json"
             path.write_text('{"settings": {"trials": 0}}', encoding="utf-8")
-            with patch("dnd5ecombat.desktop_gui.QFileDialog.getOpenFileName", return_value=(str(path), "")), patch("dnd5ecombat.desktop_gui.QMessageBox.critical") as error:
+            with patch("dnd5ecombat.desktop_gui.QFileDialog.getOpenFileName", return_value=(str(path), "")), patch("dnd5ecombat.desktop_gui.GuidanceDialog") as error:
                 window._load_scenario()
             error.assert_called_once()
+            self.assertEqual(error.call_args.kwargs["files"], (str(path),))
+            self.assertIn(("trials", "Review setting: trials"), error.call_args.kwargs["actions"])
             self.assertEqual(window._simulation_settings(), before)
             with self.assertRaisesRegex(ValueError, "seed"):
                 window._apply_scenario_settings(SimulationSettings(trials=5, seed=2**40))
@@ -96,6 +98,97 @@ class DesktopGuiTests(unittest.TestCase):
         self.assertFalse(dialog.monster().undead_fortitude)
         dialog.close()
 
+    def test_empty_catalog_guidance_and_controls_recover_after_refresh(self):
+        from dnd5ecombat.profile_catalog import CatalogIssue, CatalogResult
+
+        with TemporaryDirectory() as directory:
+            window = CombatSimulatorWindow(QSettings(str(Path(directory) / "ui.ini"), QSettings.Format.IniFormat))
+            self.addCleanup(window.close)
+            issue = CatalogIssue(str(Path(directory) / "bad.json"), "$.max_hp: must be positive")
+            with patch("dnd5ecombat.desktop_gui.discover_character_catalog", return_value=CatalogResult((), (issue,))), patch("dnd5ecombat.desktop_gui.discover_monster_catalog", return_value=CatalogResult(())):
+                window._refresh_catalogs()
+            self.assertIn('href="import"', window.selection_summary.text())
+            self.assertIn('href="new_monster"', window.selection_summary.text())
+            self.assertIn('href="issues"', window.catalog_warning.text())
+            for control in (window.run_button, window.roster_button, window.edit_monster_button):
+                self.assertFalse(control.isEnabled())
+            with patch("dnd5ecombat.desktop_gui.GuidanceDialog") as dialog:
+                window.catalog_warning.linkActivated.emit("issues")
+            self.assertEqual(dialog.call_args.kwargs["files"], (issue.path,))
+            self.assertIn(issue.message, dialog.call_args.args[1])
+            window._refresh_catalogs()
+            self.assertEqual(window.catalog_warning.text(), "")
+            self.assertTrue(window.run_button.isEnabled())
+            self.assertTrue(window.edit_monster_button.isEnabled())
+            self.assertTrue(window.roster_button.isEnabled())
+
+    def test_error_link_focuses_setting_and_bad_settings_never_start_worker(self):
+        from PySide6.QtCore import QUrl
+        from dnd5ecombat.gui_guidance import GuidanceDialog
+
+        with TemporaryDirectory() as directory:
+            window = CombatSimulatorWindow(QSettings(str(Path(directory) / "ui.ini"), QSettings.Format.IniFormat))
+            self.addCleanup(window.close)
+            dialog = GuidanceDialog("Invalid trials", "trials must be positive",
+                                    actions=(("trials", "Review trials"),), navigate=window._navigate)
+            dialog._activate(QUrl("action:trials"))
+            self.assertEqual(window.focusWidget(), window.trials_spin)
+            with patch.object(window, "_simulation_settings", side_effect=ValueError("workers must be positive")), patch("dnd5ecombat.desktop_gui.GuidanceDialog") as error:
+                window._start_simulation()
+            self.assertIsNone(window._thread)
+            self.assertIn(("workers", "Review setting: workers"), error.call_args.kwargs["actions"])
+            self.assertTrue(window.run_button.isEnabled())
+
+    def test_error_file_links_are_local_and_untrusted_text_is_escaped(self):
+        from PySide6.QtCore import QUrl
+        from dnd5ecombat.gui_guidance import GuidanceDialog
+
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "bad profile.json"
+            path.write_text("{}", encoding="utf-8")
+            message = '<a href="https://example.com">bad field</a>'
+            dialog = GuidanceDialog("Error", message, files=(str(path),))
+            self.assertIn(message, dialog.browser.toPlainText())
+            with patch("dnd5ecombat.gui_guidance.QDesktopServices.openUrl", return_value=True) as open_url:
+                dialog._activate(QUrl("file:0"))
+                self.assertEqual(Path(open_url.call_args.args[0].toLocalFile()), path)
+                dialog._activate(QUrl("https://example.com"))
+                dialog._activate(QUrl("file:-1"))
+                dialog._activate(QUrl("file:bogus"))
+                self.assertEqual(open_url.call_count, 1)
+            path.unlink()
+            with patch("dnd5ecombat.gui_guidance.QMessageBox.warning") as warning:
+                dialog._activate(QUrl("file:0"))
+            warning.assert_called_once()
+
+    def test_empty_result_guidance_navigates_and_clears_when_rows_arrive(self):
+        page = ResultsPage("saving-throw-results")
+        actions = []
+        page.navigate.connect(actions.append)
+        self.assertIn('href="run"', page.guidance.text())
+        page.set_table_data(TableData((), (), "No damaging spells"))
+        self.assertIn("Roll20", page.guidance.text())
+        page.guidance.linkActivated.emit("character")
+        self.assertEqual(actions, ["character"])
+        self.assertFalse(page.export_button.isEnabled())
+        page.set_table_data(TableData((TableColumn("Name"),), (("Spell",),)))
+        self.assertEqual(page.guidance.text(), "")
+        self.assertTrue(page.export_button.isEnabled())
+        duel_page = ResultsPage("duel-results")
+        duel_page.set_table_data(TableData((), (), "Cannot duel"))
+        self.assertIn('href="monster"', duel_page.guidance.text())
+
+    def test_simulation_failure_links_to_original_roster_profiles(self):
+        from dnd5ecombat.profile_catalog import CatalogItem
+
+        with TemporaryDirectory() as directory:
+            window = CombatSimulatorWindow(QSettings(str(Path(directory) / "ui.ini"), QSettings.Format.IniFormat))
+            self.addCleanup(window.close)
+            window._run_profile_items = (CatalogItem("A", None, "a.json"), CatalogItem("B", None, "b.json"))
+            with patch("dnd5ecombat.desktop_gui.GuidanceDialog") as error:
+                window._show_error("ValueError: maximum turns exceeded")
+            self.assertEqual(error.call_args.kwargs["files"], ("a.json", "b.json"))
+            self.assertIn("maximum turns exceeded", error.call_args.args[1])
     def test_monster_editor_preserves_and_edits_attack_resources(self):
         from dataclasses import replace
         from dnd5ecombat.models import TargetProfile, AttackProfile, DamageDice
