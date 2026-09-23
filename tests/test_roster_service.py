@@ -3,6 +3,7 @@ import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from dataclasses import replace
 from pathlib import Path
+from unittest.mock import patch
 
 from dnd5ecombat.cli_arguments import parse_args
 from dnd5ecombat.cli_workflows import main
@@ -55,6 +56,50 @@ class RosterTests(unittest.TestCase):
         self.assertEqual(progress[-1], (16, 16, "complete"))
         self.assertEqual([item[0] for item in progress], list(range(17)))
         self.assertFalse(any(column.best for column in combined.attacks.columns))
+
+    def test_parallel_roster_matches_serial_results_and_order(self):
+        settings = SimulationSettings(trials=3, seed=71)
+        serial = run_roster_simulations(self.characters, self.monsters, settings)
+        progress = []
+        parallel = run_roster_simulations(
+            self.characters, self.monsters, replace(settings, workers=10),
+            progress_callback=lambda *args: progress.append(args),
+        )
+        for section in ("attacks", "turns", "saving_throws", "duels"):
+            expected, actual = getattr(serial, section), getattr(parallel, section)
+            self.assertEqual(actual.rows, expected.rows)
+            self.assertEqual(actual.columns, expected.columns)
+            self.assertEqual(actual.details, expected.details)
+            self.assertEqual(actual.metadata["settings"]["workers"], 10)
+        self.assertEqual([item[0] for item in progress], list(range(17)))
+        self.assertEqual(progress[-1], (16, 16, "complete"))
+
+    def test_parallel_cancellation_before_submission_never_starts_pool(self):
+        with patch("dnd5ecombat.roster_service.ProcessPoolExecutor") as executor:
+            with self.assertRaises(SimulationCancelled):
+                run_roster_simulations(
+                    self.characters, self.monsters, SimulationSettings(trials=2, workers=2),
+                    is_cancelled=lambda: True,
+                )
+            executor.assert_not_called()
+
+    def test_parallel_cancellation_during_run_does_not_publish_completion(self):
+        progress = []
+        with self.assertRaises(SimulationCancelled):
+            run_roster_simulations(
+                self.characters, self.monsters, SimulationSettings(trials=20, workers=2),
+                progress_callback=lambda *args: progress.append(args),
+                is_cancelled=lambda: any(item[0] >= 1 for item in progress),
+            )
+        self.assertEqual([item[0] for item in progress], [0, 1])
+        self.assertNotIn("complete", [item[2] for item in progress])
+
+    def test_parallel_worker_error_reaches_caller(self):
+        with self.assertRaisesRegex(TypeError, "character build"):
+            run_roster_simulations(
+                (CatalogItem("Broken", None),), self.monsters,
+                SimulationSettings(trials=2, workers=2), ("attacks",),
+            )
 
     def test_cancellation_between_pairs_stops_roster(self):
         cancelled = False

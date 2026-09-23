@@ -50,7 +50,7 @@ class AttackResources:
         return min(candidates) if candidates else None
 
     def available(self, attack):
-        return self.remaining.get(attack, 1) > 0 and (
+        return (not self.remaining or self.remaining.get(attack, 1) > 0) and (
             not attack.spell_slot_level or self.slot_for(attack) is not None
         )
 
@@ -75,7 +75,7 @@ class AttackResources:
         if slot:
             level, pool = slot
             (self.pact_slots if pool == "pact" else self.spell_slots)[level] -= 1
-        if attack in self.remaining:
+        if self.remaining and attack in self.remaining:
             self.remaining[attack] -= 1
 
     def rest(self, kind):
@@ -94,7 +94,7 @@ class AttackResources:
         def available(attack):
             level = attack.spell_slot_level
             return (
-                remaining.get(attack, 1) > 0
+                (not remaining or remaining.get(attack, 1) > 0)
                 and (not level or self.slot_for(attack) is not None)
                 and (not sequence or level is None)
             )
@@ -106,7 +106,7 @@ class AttackResources:
                     continue
                 attack = choose(candidates)
             sequence.append(attack)
-            if attack in remaining:
+            if remaining and attack in remaining:
                 remaining[attack] -= 1
             if attack.spell_slot_level is not None:
                 # Casting consumes the action, including for cantrips.

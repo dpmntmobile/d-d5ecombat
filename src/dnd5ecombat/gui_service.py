@@ -8,6 +8,7 @@ any user interface.
 from dataclasses import dataclass, replace
 
 from .result_export import result_metadata
+from .process_execution import with_process_pools
 
 from .resource_models import duel_save_actions
 
@@ -328,6 +329,7 @@ def _duel_table(build, monster, settings, cancellation_check=None):
     )
 
 
+@with_process_pools
 def run_simulations(
     build,
     monster,

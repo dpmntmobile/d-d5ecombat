@@ -1,6 +1,6 @@
 """Shared simulation result types, validation, analytics, and execution helpers."""
 
-from concurrent.futures import ProcessPoolExecutor
+from .process_execution import process_map as _process_map  # noqa: F401 - shared batch API
 from dataclasses import dataclass
 from functools import lru_cache
 import math
@@ -402,14 +402,6 @@ def calculate_attack_analytics(
         expected_damage_per_attack=expected_damage,
         expected_damage_per_hit=expected_damage_per_hit,
     )
-
-def _process_map(function, jobs, workers):
-    jobs = tuple(jobs)
-    if workers == 1 or len(jobs) <= 1:
-        return tuple(function(job) for job in jobs)
-    with ProcessPoolExecutor(max_workers=min(workers, len(jobs))) as executor:
-        return tuple(executor.map(function, jobs))
-
 
 def _validate_bonus_damage_dice(bonus_damage_dice):
     try:

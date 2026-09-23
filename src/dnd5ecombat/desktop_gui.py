@@ -712,7 +712,7 @@ class CombatSimulatorWindow(QMainWindow):
             self._worker.request_cancel()
             self.cancel_button.setEnabled(False)
             self.status_label.setText(
-                "Cancellation requested; waiting for the current category…"
+                "Cancellation requested; waiting for active work to stop…"
             )
 
     @Slot(int, int, str)

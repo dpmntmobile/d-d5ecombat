@@ -21,10 +21,11 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 
 ## Project status and roadmap
 
-Last reviewed: 2026-09-22. All 460 automated tests pass, Ruff reports no
+Last reviewed: 2026-09-23. All 470 automated tests pass, Ruff reports no
 lint errors, and coverage with branch measurement enabled is 81% (70% CI
-floor). The Windows 0.4.0 executable previously passed its build and packaged
-smoke test; it has not been rebuilt for the ongoing 0.5.0 changes.
+floor). The Windows executable has been rebuilt with the current 0.5.0 roadmap
+changes and passes its packaged resource and parallel-simulation smoke test.
+Its application version remains 0.4.0 pending the next release.
 
 This checklist is the project's planning record. Check an item only after its
 implementation, tests, and relevant documentation are complete. Add newly
@@ -201,8 +202,9 @@ not require PySide6 and remains available without installing GUI dependencies.
 
 The GUI can run every result tab or only the currently selected tab. It reports
 progress between simulation categories and supports trial-level cancellation
-when using one worker. Multi-process runs finish the active category before
-cancellation takes effect. Roll20 character JSON files can be imported into
+when using one worker. Multi-process single-pair runs finish the active category
+before cancellation takes effect; roster workers check for cancellation between
+trials. Roll20 character JSON files can be imported into
 `characters/` and refreshed without restarting. Roll20 is the sole source of
 truth for characters: this application intentionally does not create or edit
 them. When a simulation needs additional character information, add it to the
@@ -307,6 +309,34 @@ the result note for each pair's assumptions, exclusions, or missing actions.
 Combined tables omit overall best highlighting and charts because different
 opponents do not make a single comparable ranking. Roster selections are temporary
 and are not stored in scenario files.
+
+With multiple workers, roster comparisons share one process pool across all
+selected character/monster pairs and result categories. Each worker handles one
+pair/category at a time, without creating nested pools. Available workers take
+the next job as they finish; results retain the selected profile order and the
+same seeded values as a single-worker run. Progress counts completed categories
+across the roster. Cancel stops submitting work and asks active workers to stop
+between trials. Worker count is an upper limit: small rosters, startup overhead,
+and the last few long-running jobs can still leave some CPU cores idle.
+
+Single-profile GUI runs and ordinary CLI comparisons also reuse worker processes
+between categories, creating a pool only when there are multiple simulation jobs.
+Pools belong to one run and are closed on completion or failure. Windows limits
+each pool to 61 processes even if a higher worker setting is requested.
+
+Parallelism currently operates on complete scenarios/policies or roster
+pair/categories. A single long scenario still uses one core: splitting its trials
+would require a new reproducible random-stream scheme, since trials currently
+consume one continuous seeded stream. More workers therefore do not always mean
+a faster run. Profile loading, validation, result formatting, and GUI rendering
+remain in the calling process; the CPU-heavy simulation work runs in workers.
+
+A local Windows benchmark on 2026-09-23 (Amara vs Goblin, all tabs, 1,000 trials,
+10 workers, median of three runs) improved from 1.14s to 0.54s by reusing pools.
+A 10,000-trial single-worker duel benchmark improved from 2.15s to 1.99s after
+avoiding repeated attack-profile hashing when no limited-use resources exist.
+All benchmark result values remained identical; timings depend on hardware and
+profiles and do not imply full CPU utilization for every workload.
 
 The CLI accepts lists of paths:
 

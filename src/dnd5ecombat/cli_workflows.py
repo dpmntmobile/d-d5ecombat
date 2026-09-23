@@ -34,6 +34,7 @@ from .scenario_persistence import save_scenario, settings_from_arguments
 from .profile_catalog import CatalogItem, load_character_build
 from .roster_service import run_roster_simulations
 from .result_export import save_results
+from .process_execution import with_process_pools
 
 
 def _build_comparison_target(arguments, target_profile=None):
@@ -351,6 +352,7 @@ def run_single_combat_summary(
     print(f"Total overkill: {result.total_overkill}")
 
 
+@with_process_pools
 def main(argv=None):
     arguments = parse_args(argv)
     if arguments.character_files or arguments.monster_files or arguments.export_results:
