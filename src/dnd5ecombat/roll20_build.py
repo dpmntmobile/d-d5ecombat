@@ -1,6 +1,7 @@
 """Convert mapped Roll20 data into validated character domain models."""
 
 from typing import Optional
+from .support_spells import support_spell_from_dict
 
 from .character_models import CharacterBuild
 from .models import (
@@ -121,6 +122,10 @@ def build_from_roll20_with_attack(
                     allow_upcast=save_attack.get("allow_upcast", False),
                     upcast_damage_dice=parse_damage_dice(save_attack["upcast_damage_dice"]) if save_attack.get("upcast_damage_dice") else (),
                     range_feet=save_attack.get("range_feet"),
+                    reaction_trigger=save_attack.get("reaction_trigger", ""),
+                    next_attack_disadvantage=save_attack.get("next_attack_disadvantage", False),
+                    next_save_penalty=save_attack.get("next_save_penalty", False),
+                    flee_on_failed_save=save_attack.get("flee_on_failed_save", False),
                 )
             )
         except (KeyError, TypeError, ValueError):
@@ -166,6 +171,7 @@ def build_from_roll20_with_attack(
         equipment=equipment,
         attack_profiles=available_profiles or (selected_profile,),
         saving_throw_profiles=tuple(saving_throw_profiles),
+        support_spells=tuple(support_spell_from_dict(s) for s in roll20_data.get("support_spells", ())),
         saving_throw_bonuses=roll20_data.get("saving_throw_bonuses", ()),
         damage_resistances=roll20_data.get("damage_resistances", ()),
         damage_vulnerabilities=roll20_data.get("damage_vulnerabilities", ()),

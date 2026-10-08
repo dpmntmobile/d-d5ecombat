@@ -54,6 +54,7 @@ ATTACK_COLUMNS = (
 
 class MonsterEditorDialog(QDialog):
     def __init__(self, monster=None, parent=None):
+        self.support_spells = []
         super().__init__(parent)
         self.setWindowTitle("Edit monster" if monster is not None else "New monster")
         self.resize(820, 620)
@@ -103,6 +104,7 @@ class MonsterEditorDialog(QDialog):
         self.condition_immunities_edit = QLineEdit()
         self.creature_tags_edit = QLineEdit()
         self.undead_fortitude_check = QCheckBox("Undead Fortitude (2014)")
+        self.undead_fortitude_check.setToolTip("When damage would reduce this monster to zero HP, make a Constitution save to remain at 1 HP. Radiant damage and critical hits bypass this trait.")
         self.multiattack_edit = QLineEdit()
         self.multiattack_edit.setPlaceholderText(
             "Ordered attack names, comma-separated; duplicates allowed"
@@ -117,6 +119,11 @@ class MonsterEditorDialog(QDialog):
         self.structured_trait_checks = {}
         for name in ("pack_tactics", "aggressive", "nimble_escape"):
             check = QCheckBox(name.replace("_", " ").title())
+            check.setToolTip({
+                "pack_tactics": "Gain advantage when the monster's nearby-ally encounter assumption is enabled.",
+                "aggressive": "Use an available bonus action for extra movement toward the opponent in positioned duels.",
+                "nimble_escape": "Use a bonus action to Disengage for ranged repositioning, or attempt Hide when the encounter permits it.",
+            }[name])
             self.structured_trait_checks[name] = check
             defenses.addRow(check)
         self.stealth_spin = self._spin(-20, 40)
@@ -130,6 +137,8 @@ class MonsterEditorDialog(QDialog):
         attack_buttons.addStretch(1)
         add_attack = QPushButton("Add attack")
         remove_attack = QPushButton("Remove selected")
+        add_attack.setToolTip("Add an editable attack row. Set its hit bonus, damage, range, and any supported riders.")
+        remove_attack.setToolTip("Remove attack rows containing selected cells. Changes are saved only when you save the monster.")
         attack_buttons.addWidget(add_attack)
         attack_buttons.addWidget(remove_attack)
         layout.addLayout(attack_buttons)
@@ -165,6 +174,8 @@ class MonsterEditorDialog(QDialog):
             | QDialogButtonBox.StandardButton.Cancel
         )
         buttons.accepted.connect(self._validate_and_accept)
+        buttons.button(QDialogButtonBox.StandardButton.Save).setToolTip("Validate the monster's fields and save this profile. Invalid fields must be corrected first.")
+        buttons.button(QDialogButtonBox.StandardButton.Cancel).setToolTip("Close the editor without saving your changes.")
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
 
@@ -197,21 +208,25 @@ class MonsterEditorDialog(QDialog):
         for column, value in enumerate(values):
             if column in (19, 20, 21):
                 choice = QComboBox()
+                choice.setToolTip({19: "Choose whether this attack uses an action, bonus action, or reaction in duels.", 20: "Choose which spell-slot pool can pay for this attack: Spellcasting, Pact Magic, or either.", 21: "Allow higher-level slots to cast this spell; extra damage uses the recorded dice per slot level."}[column])
                 choice.addItems({19: ("action", "bonus_action", "reaction"), 20: ("spellcasting", "pact", "any"), 21: ("false", "true")}[column])
                 choice.setCurrentText(str(value).lower())
                 self.attacks.setCellWidget(row, column, choice)
             elif column == 5:
                 mode = QComboBox()
+                mode.setToolTip("Choose melee, ranged, or either. This affects reach, range, and positioning penalties; blank leaves the mode unspecified.")
                 mode.addItems(("melee", "ranged", "melee_or_ranged", ""))
                 mode.setCurrentText(str(value))
                 self.attacks.setCellWidget(row, column, mode)
             elif column == 10:
                 condition = QComboBox()
+                condition.setToolTip("Condition applied by this attack's saving-throw rider. Leave blank for no condition; record the rider's save DC and ability separately.")
                 condition.addItems(("", *(item.value for item in Condition)))
                 condition.setCurrentText(str(value))
                 self.attacks.setCellWidget(row, column, condition)
             elif column == 13:
                 repeat = QComboBox()
+                repeat.setToolTip("If true, the affected creature can repeat the condition's saving throw at the end of its turn to end the effect.")
                 repeat.addItems(("false", "true"))
                 repeat.setCurrentText(str(value).lower())
                 self.attacks.setCellWidget(row, column, repeat)
@@ -227,6 +242,7 @@ class MonsterEditorDialog(QDialog):
 
     def _populate(self, monster):
         data = monster_to_dict(monster)
+        self.support_spells = data["support_spells"]
         for name, check in self.structured_trait_checks.items():
             check.setChecked(data[name])
         self.stealth_spin.setValue(data["stealth_bonus"])
@@ -384,6 +400,7 @@ class MonsterEditorDialog(QDialog):
                 "spell_slot_capacity": slot_capacity,
                 "pact_slot_capacity": pact_capacity,
                 "saving_throw_profiles": save_actions,
+                "support_spells": self.support_spells,
             }
         )
 

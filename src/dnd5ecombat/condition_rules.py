@@ -37,6 +37,8 @@ CONDITION_RULES = {
         fails_physical_saves=True,
     ),
     Condition.INCAPACITATED: ConditionRules(prevents_actions=True),
+    Condition.DEAFENED: ConditionRules(),
+    Condition.INVISIBLE: ConditionRules(),
 }
 
 
@@ -51,6 +53,27 @@ class ConditionState:
 
     def __init__(self):
         self.effects = {}
+        self.next_attack_disadvantage = False
+        self.illuminated = False
+        self.blessed = False
+        self.next_save_penalty = False
+
+    @property
+    def invisible(self):
+        return Condition.INVISIBLE in self and not self.illuminated
+
+    def save_bonus(self, bonus, rng):
+        if self.blessed:
+            bonus += rng.randint(1, 4)
+        if self.next_save_penalty:
+            bonus -= rng.randint(1, 4)
+            self.next_save_penalty = False
+        return bonus
+
+    def resolve_save(self, bonus, dc, *, rng, **kwargs):
+        from .combat import resolve_saving_throw
+
+        return resolve_saving_throw(self.save_bonus(bonus, rng), dc, rng=rng, **kwargs)
 
     def __contains__(self, condition):
         return any(
@@ -58,6 +81,10 @@ class ConditionState:
         )
 
     def has_rule(self, rule):
+        if rule == "attack_disadvantage" and self.next_attack_disadvantage:
+            return True
+        if rule == "grants_attack_advantage" and self.illuminated:
+            return True
         return any(
             getattr(CONDITION_RULES[active.effect.condition], rule)
             for active in self.effects.values()
@@ -82,7 +109,7 @@ class ConditionState:
         ):
             return False
         return resolve_save(
-            combatant.get_saving_throw_bonus(effect.save_ability),
+            self.save_bonus(combatant.get_saving_throw_bonus(effect.save_ability), rng),
             effect.difficulty_class,
             disadvantage=effect.save_ability == "dex"
             and self.has_rule("dex_save_disadvantage"),

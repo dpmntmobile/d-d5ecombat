@@ -41,7 +41,7 @@ def plan_attacks(combatant):
     return tuple(s.attack for plan in combatant.turn_plans for s in plan.attacks)
 
 
-def attack_flags(scenario, attacker_conditions, defender_conditions, distance):
+def attack_flags(scenario, attacker_conditions, defender_conditions, distance, target_visible=True):
     attack = scenario.attack
     if isinstance(attack, SavingThrowDamageProfile):
         return distance is None or distance <= attack.range_feet, False, False, False
@@ -55,13 +55,18 @@ def attack_flags(scenario, attacker_conditions, defender_conditions, distance):
             ranged and close and not defender_conditions.has_rule("prevents_actions")
         )
     prone = Condition.PRONE in defender_conditions
+    if not target_visible and defender_conditions.illuminated:
+        defender_conditions = copy(defender_conditions)
+        defender_conditions.illuminated = False
     advantage = (
         scenario.advantage
+        or attacker_conditions.invisible
         or defender_conditions.has_rule("grants_attack_advantage")
         or (prone and close)
     )
     disadvantage = (
         scenario.disadvantage
+        or defender_conditions.invisible
         or (prone and not close)
         or range_disadvantage
         or attacker_conditions.has_rule("attack_disadvantage")
@@ -131,6 +136,7 @@ def score_plan(
     resources=None,
     tactical_advantage=False,
     nearby_ally=False,
+    save_utility=None,
 ):
     if distance is not None and entries:
         distance, can_attack = approach(
@@ -149,6 +155,9 @@ def score_plan(
             )
     if resources is not None:
         resources = copy_resources(resources)
+    # Forecast the rider on one attack only, without consuming live state.
+    attacker_conditions = copy(attacker_conditions)
+    defender_conditions = copy(defender_conditions)
     unused_bonus_probability = 1.0
     damage = 0.0
     weapon_action = False
@@ -186,7 +195,11 @@ def score_plan(
             from .save_action_policy import expected_save_damage
 
             damage += expected_save_damage(attack, defender, defender_conditions)
+            if save_utility is not None:
+                damage += save_utility(attack)
+            defender_conditions.next_save_penalty = False
             continue
+        attacker_conditions.next_attack_disadvantage = False
         options = dict(
             advantage=advantage,
             disadvantage=disadvantage,
@@ -194,6 +207,7 @@ def score_plan(
             damage_resistances=defender.damage_resistances,
             damage_vulnerabilities=defender.damage_vulnerabilities,
             damage_immunities=defender.damage_immunities,
+            blessed=attacker_conditions.blessed,
         )
         base = _attack_analytics(
             attack,
@@ -228,10 +242,20 @@ def _attack_analytics(
     damage_vulnerabilities,
     damage_immunities,
     critical_on_hit,
+    blessed=False,
 ):
     # Local import keeps domain validation independent of the models facade.
     from .simulation_core import calculate_attack_analytics
 
+    if blessed:
+        outcomes = [calculate_attack_analytics(
+            replace(attack, attack_bonus=attack.attack_bonus + die), target_ac,
+            bonus_damage_dice, advantage, disadvantage, damage_resistances,
+            damage_vulnerabilities, damage_immunities, critical_on_hit=critical_on_hit,
+        ) for die in range(1, 5)]
+        return replace(outcomes[0],
+                       expected_damage_per_attack=sum(o.expected_damage_per_attack for o in outcomes) / 4,
+                       hit_probability=sum(o.hit_probability for o in outcomes) / 4)
     return calculate_attack_analytics(
         attack,
         target_ac,
@@ -259,6 +283,7 @@ def choose_turn_plan(
     bonus_attacks=(),
     tactical_advantage=False,
     nearby_ally=False,
+    save_utility=None,
 ):
     entries = tuple((i, AttackScenario(a.name, a)) for i, a in enumerate(sequence))
     bonus = None
@@ -274,6 +299,7 @@ def choose_turn_plan(
         resources,
         tactical_advantage,
         nearby_ally,
+        save_utility,
     )
     plans = tuple(plans) + mixed_plans(sequence, plans, saves, bonus_attacks)
     for plan in plans:
@@ -290,6 +316,7 @@ def choose_turn_plan(
             resources,
             tactical_advantage,
             nearby_ally,
+            save_utility,
         )
         if damage > best_damage:
             entries, bonus, best_damage = candidate, plan.first_hit_bonus_damage, damage
@@ -312,6 +339,7 @@ def copy_resources(resources):
     result.remaining = resources.remaining.copy()
     result.spell_slots = resources.spell_slots.copy()
     result.pact_slots = resources.pact_slots.copy()
+    result.free_casts = resources.free_casts.copy()
     return result
 
 

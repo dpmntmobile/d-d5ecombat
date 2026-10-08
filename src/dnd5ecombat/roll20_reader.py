@@ -5,6 +5,7 @@ import os
 import re
 
 from .profile_schema import validate_profile
+from .roll20_support_spells import map_support_spells
 from .roll20_feature_rules import map_traits, map_sneak_attack, map_turn_plans
 from .roll20_spell_resources import (
     spell_level as parse_spell_level,
@@ -265,17 +266,17 @@ def import_from_roll20(roll20_json_file):
                 str(fields.get("saveeffect", "")) + " " + spell_description
             ).lower()
             unmodeled_effects = list(scaling_warnings)
-            if "move as far as" in spell_description.lower():
+            if "move as far as" in spell_description.lower() and name_val.lower() != "dissonant whispers":
                 unmodeled_effects.append("Forced movement is not modeled.")
-            if "disadvantage on the next attack roll" in spell_description.lower():
+            if "disadvantage on the next attack roll" in spell_description.lower() and name_val.lower() != "vicious mockery":
                 unmodeled_effects.append(
                     "Disadvantage on the target's next attack is not modeled."
                 )
-            if "subtract 1d4 from the next saving throw" in spell_description.lower():
+            if "subtract 1d4 from the next saving throw" in spell_description.lower() and name_val.lower() != "mind sliver":
                 unmodeled_effects.append(
                     "The target's next-saving-throw penalty is not modeled."
                 )
-            if "automatically succeeds on the save" in spell_description.lower():
+            if "automatically succeeds on the save" in spell_description.lower() and name_val.lower() != "dissonant whispers":
                 unmodeled_effects.append(
                     "Automatic save success for specially immune targets is not modeled."
                 )
@@ -293,6 +294,10 @@ def import_from_roll20(roll20_json_file):
                         "half_damage" if "half" in save_effect else "no_damage"
                     ),
                     "action_type": action_type,
+                    "reaction_trigger": "damaged_by_visible_creature" if name_val.lower() == "hellish rebuke" and action_type == "reaction" else "",
+                    "next_attack_disadvantage": name_val.lower() == "vicious mockery",
+                    "next_save_penalty": name_val.lower() == "mind sliver",
+                    "flee_on_failed_save": name_val.lower() == "dissonant whispers",
                     "spell_slot_level": spell_level,
                     "spell_slot_pool": "any" if spell_level else "spellcasting",
                     "allow_upcast": bool(spell_level) and not scaling_warnings,
@@ -377,6 +382,7 @@ def import_from_roll20(roll20_json_file):
         "attacks": attacks,
         "primary_attack_name": primary_attack_name,
         "saving_throw_attacks": saving_throw_attacks,
+        "support_spells": map_support_spells(data, stat_lookup),
         "spell_slots": ordinary_slots,
         "pact_slots": pact_slots,
         "spell_slot_capacity": ordinary_capacity,

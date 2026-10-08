@@ -12,6 +12,8 @@ from PySide6.QtCore import (
     QThread,
     Slot,
     Signal,
+    QElapsedTimer,
+    QTimer,
 )
 from PySide6.QtGui import QCloseEvent, QIcon
 from PySide6.QtWidgets import (
@@ -30,6 +32,7 @@ from PySide6.QtWidgets import (
     QProgressBar,
     QPushButton,
     QSpinBox,
+    QScrollArea,
     QSplitter,
     QTabWidget,
     QTableView,
@@ -94,6 +97,7 @@ class ResultsPage(QWidget):
         layout.addWidget(self.guidance)
         splitter = QSplitter(Qt.Orientation.Vertical)
         self.table = QTableView()
+        self.table.setAccessibleName(export_name.replace("-", " "))
         self.table.setAlternatingRowColors(True)
         self.table.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
         self.table.setSortingEnabled(True)
@@ -171,6 +175,8 @@ class CombatSimulatorWindow(QMainWindow):
         self._monster_items = ()
         self._catalog_issues = ()
         self._build_ui()
+        self._configure_accessibility()
+        self._configure_tooltips()
         self._refresh_catalogs(show_issues=False)
         self._restore_settings()
         self._selection_changed()
@@ -216,7 +222,6 @@ class CombatSimulatorWindow(QMainWindow):
         self.selection_summary.linkActivated.connect(self._navigate)
         selection_layout.addWidget(self.selection_summary)
         self.catalog_warning = QLabel()
-        self.catalog_warning.setStyleSheet("color: #b02a37;")
         self.catalog_warning.setWordWrap(True)
         self.catalog_warning.setTextInteractionFlags(Qt.TextInteractionFlag.TextBrowserInteraction)
         self.catalog_warning.linkActivated.connect(self._navigate)
@@ -280,13 +285,21 @@ class CombatSimulatorWindow(QMainWindow):
         self.run_button.setDefault(True)
         self.cancel_button = QPushButton("Cancel")
         self.cancel_button.setEnabled(False)
-        controls.addWidget(self.run_button)
+        action_row = QHBoxLayout()
+        action_row.addStretch(1)
+        action_row.addWidget(self.run_button)
         self.roster_button = QPushButton("Compare multiple...")
         self.roster_button.clicked.connect(self._choose_roster)
-        controls.addWidget(self.roster_button)
-        controls.addWidget(self.cancel_button)
+        action_row.addWidget(self.roster_button)
+        action_row.addWidget(self.cancel_button)
         selection_layout.addLayout(controls)
-        outer.addWidget(selection_group)
+        self.setup_scroll = QScrollArea()
+        self.setup_scroll.setWidgetResizable(True)
+        self.setup_scroll.setWidget(selection_group)
+        self.setup_scroll.setMinimumHeight(120)
+        self.setup_scroll.setAccessibleName("Combat setup")
+        outer.addWidget(self.setup_scroll, 1)
+        outer.addLayout(action_row)
         self.tabs = QTabWidget()
         self.attack_page = ResultsPage("attack-results")
         self.turn_page = ResultsPage("turn-results")
@@ -304,13 +317,20 @@ class CombatSimulatorWindow(QMainWindow):
         self.tabs.addTab(self.turn_page, "Turns")
         self.tabs.addTab(self.save_page, "Saving Throws")
         self.tabs.addTab(self.duel_page, "Duels")
-        outer.addWidget(self.tabs, 1)
+        outer.addWidget(self.tabs, 2)
         status_row = QHBoxLayout()
         self.status_label = QLabel("Ready")
+        self.status_label.setWordWrap(True)
+        self.elapsed_label = QLabel()
+        self._elapsed = QElapsedTimer()
+        self._elapsed_timer = QTimer(self)
+        self._elapsed_timer.setInterval(1000)
+        self._elapsed_timer.timeout.connect(self._update_elapsed)
         self.progress = QProgressBar()
         self.progress.setMaximumWidth(240)
         self.progress.hide()
         status_row.addWidget(self.status_label)
+        status_row.addWidget(self.elapsed_label)
         status_row.addStretch(1)
         status_row.addWidget(self.progress)
         outer.addLayout(status_row)
@@ -324,6 +344,92 @@ class CombatSimulatorWindow(QMainWindow):
         )
         self.run_button.clicked.connect(self._start_simulation)
         self.cancel_button.clicked.connect(self._cancel_simulation)
+
+    def _configure_accessibility(self):
+        controls = {
+            "Character": self.character_combo,
+            "Monster": self.monster_combo,
+            "Run scope": self.run_scope_combo,
+            "Starting distance": self.starting_distance_feet_spin,
+            "Character speed": self.character_speed_feet_spin,
+            "Monster speed": self.monster_speed_feet_spin,
+            **{field.replace("_", " ").capitalize(): control
+               for field, control in self._setting_controls().items()},
+        }
+        for name, control in controls.items():
+            control.setAccessibleName(name)
+        # Labels beside layouts need explicit buddies, unlike direct form fields.
+        for label in self.findChildren(QLabel):
+            control = controls.get(label.text())
+            if control is not None:
+                label.setBuddy(control)
+        for button, shortcut, description in (
+            (self.run_button, "Ctrl+Return", "Run selected simulations"),
+            (self.cancel_button, "Esc", "Cancel the active simulation"),
+            (self.import_button, "Ctrl+I", "Import a character profile"),
+            (self.load_scenario_button, "Ctrl+O", "Load scenario settings"),
+            (self.save_scenario_button, "Ctrl+S", "Save scenario settings"),
+        ):
+            if shortcut != "Esc":
+                button.setShortcut(shortcut)
+            button.setAccessibleName(description)
+            button.setToolTip(f"{description} ({shortcut})")
+        self.progress.setAccessibleName("Completed simulation sections")
+        self.progress.setFormat("%v of %m sections")
+        self.progress.setToolTip("Completed sections; individual sections may take different amounts of time.")
+        self.tabs.setAccessibleName("Simulation results")
+
+    def _update_elapsed(self):
+        if self._elapsed.isValid():
+            self.elapsed_label.setText(f"Elapsed: {self._elapsed.elapsed() // 1000:,} s")
+
+    def _configure_tooltips(self):
+        descriptions = (
+            (self.character_combo, "Choose the character whose attacks, spells, and resources will be simulated."),
+            (self.monster_combo, "Choose the target monster. Duels also use its attacks, saving throws, and resources."),
+            (self.import_button, "Import a Roll20 character JSON export or native character profile into the character list. (Ctrl+I)"),
+            (self.refresh_button, "Reload character and monster files and report profiles that cannot be loaded."),
+            (self.new_monster_button, "Create a monster profile with defenses, attacks, save actions, and turn plans."),
+            (self.edit_monster_button, "Edit the selected monster and save its profile for future simulations."),
+            (self.load_scenario_button, "Load saved simulation settings and encounter assumptions. Character and monster selections stay the same. (Ctrl+O)"),
+            (self.save_scenario_button, "Save the current simulation settings and encounter assumptions to a reusable JSON scenario. (Ctrl+S)"),
+            (self.positioning_check, "Use starting distance, movement speed, reach, and weapon ranges in duels. When unchecked, duels use abstract positioning."),
+            (self.starting_distance_feet_spin, "Distance between combatants at the start of each duel, in feet. Used when Duel positioning is checked."),
+            (self.character_speed_feet_spin, "Character movement speed per turn, in feet. Used for positioned duels."),
+            (self.monster_speed_feet_spin, "Monster movement speed per turn, in feet. Used for positioned duels."),
+            (self.rest_combo, "Apply no rest, a short rest, or a long rest before each duel. Rests restore supported resources according to their recovery rules."),
+            (self.trials_spin, "Number of independent simulations per comparison. More trials reduce sampling uncertainty but take longer."),
+            (self.seed_spin, "Random seed for repeatable results with the same inputs and application version."),
+            (self.workers_spin, "Number of worker processes. More workers can speed up large runs but add overhead and use more CPU."),
+            (self.advantage_check, "Include advantage comparisons alongside normal rolls: roll two d20s and keep the higher result."),
+            (self.disadvantage_check, "Include disadvantage comparisons alongside normal rolls: roll two d20s and keep the lower result."),
+            (self.run_scope_combo, "Run all result tabs, or only the currently selected tab. This also applies to multiple-profile comparisons."),
+            (self.run_button, "Simulate the selected character and monster using the current settings and run scope. (Ctrl+Enter)"),
+            (self.roster_button, "Choose several characters and monsters, then compare every checked character with every checked monster using the current settings."),
+            (self.cancel_button, "Request cancellation of the active run. Parallel runs wait for active worker batches to finish, which can take longer with many trials. Previous results remain available. (Escape)"),
+        )
+        for control, description in descriptions:
+            control.setToolTip(description)
+        for field, check in self.tactical_checks.items():
+            side = "character" if field.startswith("character_") else "monster"
+            if field.endswith("ally_near_target"):
+                description = (
+                    f"Assume the {side} has an ally within 5 feet of its target who is not incapacitated. "
+                    "Enables supported Pack Tactics and nearby-ally damage riders; the ally takes no turns."
+                )
+            else:
+                description = (
+                    f"Assume the {side} has suitable concealment to attempt Hide with supported Nimble Escape. "
+                    "Success depends on Stealth versus the opponent's passive Perception."
+                )
+            check.setToolTip(description)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_Escape and self.cancel_button.isEnabled():
+            self._cancel_simulation()
+            event.accept()
+            return
+        super().keyPressEvent(event)
 
     def _catalog_source(self, combo):
         item = combo.currentData()
@@ -704,6 +810,10 @@ class CombatSimulatorWindow(QMainWindow):
         self.progress.setValue(0)
         self.progress.show()
         self.status_label.setText("Starting simulations…")
+        self._elapsed.start()
+        self._update_elapsed()
+        self._elapsed_timer.start()
+        self.cancel_button.setFocus(Qt.FocusReason.OtherFocusReason)
         self._thread.start()
 
     @Slot()
@@ -713,13 +823,15 @@ class CombatSimulatorWindow(QMainWindow):
             self.cancel_button.setEnabled(False)
             self.status_label.setText(
                 "Cancellation requested; waiting for active work to stop…"
+                if self.workers_spin.value() == 1 else
+                "Cancellation requested; waiting for active worker batches to finish…"
             )
 
     @Slot(int, int, str)
     def _show_progress(self, completed, total, section):
         self.progress.setRange(0, total)
         self.progress.setValue(completed)
-        if section != "complete":
+        if section != "complete" and self.cancel_button.isEnabled():
             self.status_label.setText(
                 f"Running {SECTION_LABELS.get(section, section)} "
                 f"({completed + 1} of {total})…"
@@ -751,11 +863,14 @@ class CombatSimulatorWindow(QMainWindow):
 
     @Slot()
     def _simulation_finished(self):
+        self._elapsed_timer.stop()
+        self._update_elapsed()
         self._thread = None
         self._worker = None
         self.progress.hide()
         self._set_controls_enabled(True)
         self._selection_changed()
+        self.run_button.setFocus(Qt.FocusReason.OtherFocusReason)
 
     def _setting_bool(self, key, default=False):
         value = self._settings.value(key, default)

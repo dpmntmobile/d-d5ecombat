@@ -46,6 +46,8 @@ class RosterDialog(QDialog):
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
         )
         self.buttons.button(QDialogButtonBox.StandardButton.Ok).setText("Compare")
+        self.buttons.button(QDialogButtonBox.StandardButton.Ok).setToolTip("Compare every checked character with every checked monster using the main window's settings and run scope.")
+        self.buttons.button(QDialogButtonBox.StandardButton.Cancel).setToolTip("Close without starting a comparison or changing the main profile selections.")
         self.buttons.accepted.connect(self.accept)
         self.buttons.rejected.connect(self.reject)
         layout.addWidget(self.buttons)
@@ -55,6 +57,7 @@ class RosterDialog(QDialog):
 
     def _list(self, items, selected):
         widget = QListWidget()
+        widget.setToolTip("Check profiles to include. Choose at least one character and one monster; every checked pair is simulated.")
         for item in items:
             row = QListWidgetItem(item.label, widget)
             row.setData(Qt.ItemDataRole.UserRole, item)

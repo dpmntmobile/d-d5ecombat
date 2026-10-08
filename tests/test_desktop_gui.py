@@ -29,6 +29,51 @@ class DesktopGuiTests(unittest.TestCase):
     def setUpClass(cls):
         cls.app = QApplication.instance() or QApplication([])
 
+    def test_keyboard_cancel_preserves_feedback_and_setup_can_scroll(self):
+        from PySide6.QtTest import QTest
+        from unittest.mock import Mock
+
+        with TemporaryDirectory() as directory:
+            window = CombatSimulatorWindow(QSettings(str(Path(directory) / "ui.ini"), QSettings.Format.IniFormat))
+            self.addCleanup(window.close)
+            window.resize(640, 480)
+            window.show()
+            window.activateWindow()
+            self.app.processEvents()
+            self.assertLessEqual(window.width(), 640)
+            self.assertGreater(window.setup_scroll.horizontalScrollBar().maximum(), 0)
+            self.assertEqual(window.character_combo.accessibleName(), "Character")
+            worker = Mock()
+            window._worker = worker
+            window._set_controls_enabled(False)
+            window.cancel_button.setFocus()
+            self.app.processEvents()
+            QTest.keyClick(window.cancel_button, Qt.Key.Key_Escape)
+            worker.request_cancel.assert_called_once()
+            message = window.status_label.text()
+            window._show_progress(0, 4, "attacks")
+            self.assertEqual(window.status_label.text(), message)
+            self.assertFalse(window.cancel_button.isEnabled())
+            window._worker = None
+
+    def test_best_result_has_accessible_text_and_chart_renders_large_fonts(self):
+        from PySide6.QtGui import QFont
+        from dnd5ecombat.gui_results import ResultsBarChart
+
+        data = TableData(
+            (TableColumn("Name"), TableColumn("Score", "float", best="min", chart=True)),
+            tuple((f"A long result name {index}", float(index)) for index in range(20)),
+        )
+        model = ResultsTableModel(data)
+        self.assertIn("best result", model.data(model.index(0, 1), Qt.ItemDataRole.AccessibleTextRole))
+        chart = ResultsBarChart()
+        chart.set_table_data(data)
+        chart.setFont(QFont("Arial", 24))
+        chart.resize(400, 150)
+        self.assertFalse(chart.grab().isNull())
+        self.assertIn("results table", chart.accessibleDescription())
+        chart.close()
+
     def test_scenario_buttons_round_trip_settings_and_keep_profile_selection(self):
         from dnd5ecombat.scenario_persistence import load_scenario
 
@@ -238,6 +283,10 @@ class DesktopGuiTests(unittest.TestCase):
 
         self.assertIsNone(model.data(normal, Qt.ItemDataRole.BackgroundRole))
         self.assertIsNotNone(model.data(best, Qt.ItemDataRole.BackgroundRole))
+        self.assertEqual(model.data(best, Qt.ItemDataRole.BackgroundRole).color(),
+                         self.app.palette().highlight().color())
+        self.assertEqual(model.data(best, Qt.ItemDataRole.ForegroundRole).color(),
+                         self.app.palette().highlightedText().color())
 
     def test_csv_export_writes_headers_and_raw_values(self):
         table = TableData(

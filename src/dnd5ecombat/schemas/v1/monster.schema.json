@@ -138,6 +138,131 @@
         "minimum": 0
       },
       "maxProperties": 1
+    },
+    "support_spells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "effect"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "effect": {
+            "enum": [
+              "healing",
+              "faerie_fire",
+              "bless",
+              "misty_step"
+            ]
+          },
+          "damage_dice": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "number",
+                "sides"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "number": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "sides": {
+                  "type": "integer",
+                  "minimum": 2
+                }
+              }
+            }
+          },
+          "upcast_damage_dice": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "number",
+                "sides"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "number": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "sides": {
+                  "type": "integer",
+                  "minimum": 2
+                }
+              }
+            }
+          },
+          "damage_modifier": {
+            "type": "integer"
+          },
+          "difficulty_class": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "duration_turns": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "range_feet": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "save_ability": {
+            "const": "dex"
+          },
+          "action_type": {
+            "enum": [
+              "action",
+              "bonus_action"
+            ]
+          },
+          "spell_slot_level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9
+          },
+          "spell_slot_pool": {
+            "enum": [
+              "spellcasting",
+              "pact",
+              "any"
+            ]
+          },
+          "allow_upcast": {
+            "type": "boolean"
+          },
+          "limited_uses": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "recharge_min_roll": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 2,
+            "maximum": 6
+          },
+          "free_casts": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
     }
   },
   "$defs": {
@@ -223,7 +348,9 @@
             "poisoned",
             "restrained",
             "stunned",
-            "incapacitated"
+            "incapacitated",
+            "invisible",
+            "deafened"
           ]
         },
         "repeat_save_at_end_of_turn": {
@@ -454,6 +581,21 @@
         },
         "upcast_damage_dice": {
           "type": "string"
+        },
+        "reaction_trigger": {
+          "enum": [
+            "",
+            "damaged_by_visible_creature"
+          ]
+        },
+        "next_attack_disadvantage": {
+          "type": "boolean"
+        },
+        "next_save_penalty": {
+          "type": "boolean"
+        },
+        "flee_on_failed_save": {
+          "type": "boolean"
         }
       },
       "allOf": [
@@ -574,5 +716,118 @@
         }
       }
     }
-  }
+  },
+  "examples": [
+    {
+      "schema_version": 1,
+      "armor_class": 14,
+      "max_hp": 28,
+      "initiative_bonus": 2,
+      "saving_throw_bonuses": {
+        "str": 2,
+        "dex": 2,
+        "con": 3,
+        "int": 0,
+        "wis": 3,
+        "cha": 0
+      },
+      "damage_resistances": [
+        "fire"
+      ],
+      "damage_vulnerabilities": [],
+      "damage_immunities": [],
+      "condition_immunities": [],
+      "creature_tags": [
+        "humanoid"
+      ],
+      "spell_slots": {
+        "1": 2
+      },
+      "spell_slot_capacity": {
+        "1": 3
+      },
+      "pact_slots": {},
+      "pact_slot_capacity": {},
+      "support_spells": [
+        {
+          "name": "Cure Wounds",
+          "effect": "healing",
+          "damage_dice": [
+            {
+              "number": 1,
+              "sides": 8
+            }
+          ],
+          "damage_modifier": 3,
+          "range_feet": 5,
+          "spell_slot_level": 1,
+          "spell_slot_pool": "any",
+          "allow_upcast": true,
+          "upcast_damage_dice": [
+            {
+              "number": 1,
+              "sides": 8
+            }
+          ]
+        }
+      ],
+      "pack_tactics": false,
+      "aggressive": false,
+      "nimble_escape": false,
+      "stealth_bonus": 2,
+      "passive_perception": 13,
+      "name": "Example sentinel",
+      "ruleset": "Synthetic simulator example",
+      "source_url": "",
+      "unmodeled_traits": [
+        "No terrain or ally actions are simulated."
+      ],
+      "attacks": [
+        {
+          "name": "Staff",
+          "attack_bonus": 4,
+          "damage_dice": "1d6",
+          "damage_modifier": 2,
+          "damage_type": "bludgeoning",
+          "attack_mode": "melee",
+          "reach_feet": 5,
+          "action_type": "action",
+          "condition_effect": {
+            "difficulty_class": 12,
+            "save_ability": "str",
+            "condition": "prone",
+            "duration_turns": 1,
+            "repeat_save_at_end_of_turn": false,
+            "immune_creature_tags": []
+          }
+        }
+      ],
+      "saving_throw_profiles": [
+        {
+          "name": "Ember burst",
+          "difficulty_class": 13,
+          "damage_dice": "2d6",
+          "damage_modifier": 0,
+          "damage_on_success": "half_damage",
+          "save_ability": "dex",
+          "damage_type": "fire",
+          "action_type": "action",
+          "spell_slot_level": 1,
+          "spell_slot_pool": "any",
+          "allow_upcast": true,
+          "upcast_damage_dice": "1d6",
+          "range_feet": 60,
+          "unmodeled_effects": [
+            "Only the duel opponent is targeted."
+          ]
+        }
+      ],
+      "multiattack": [
+        "Staff",
+        "Staff"
+      ],
+      "undead_fortitude": false,
+      "turn_plans": []
+    }
+  ]
 }

@@ -31,6 +31,7 @@ class GuidanceDialog(QDialog):
         self.browser.anchorClicked.connect(self._activate)
         layout.addWidget(self.browser)
         buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Close)
+        buttons.button(QDialogButtonBox.StandardButton.Close).setToolTip("Close this message and return to the simulator.")
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
 

@@ -8,6 +8,8 @@ from .combat import (
     resolve_saving_throw_damage,
 )
 from .condition_rules import ConditionState
+from .duel_spells import DuelSpellState
+from dataclasses import replace
 from .action_resources import AttackResources
 from .save_action_policy import expected_save_damage, save_flags
 from .attack_policy import expected_attacks_to_defeat
@@ -260,6 +262,7 @@ def simulate_duel(
                 combatant.attack_sequence
                 + combatant.fallback_attacks
                 + combatant.saving_throw_profiles
+                + combatant.support_spells
                 + combatant.bonus_attacks
                 + plan_attacks(combatant),
                 combatant.spell_slots,
@@ -273,6 +276,7 @@ def simulate_duel(
             for state in resources.values():
                 state.rest(matchup.rest_before_duel)
         hidden = {"character": False, "monster": False}
+        spells = DuelSpellState(combatants, hit_points, conditions, resources, hidden, random_source)
         distance = matchup.starting_distance_feet
         trial_rounds = 0
         while hit_points["character"] > 0 and hit_points["monster"] > 0:
@@ -288,6 +292,7 @@ def simulate_duel(
                 defender_key = "monster" if attacker_key == "character" else "character"
                 attacker = combatants[attacker_key]
                 defender = combatants[defender_key]
+                spells.start_turn(attacker_key)
 
                 attacker_conditions = conditions[attacker_key]
                 can_act = not attacker_conditions.has_rule("prevents_actions")
@@ -328,6 +333,7 @@ def simulate_duel(
                     attacker.turn_plans
                     or attacker.saving_throw_profiles
                     or attacker.bonus_attacks
+                    or attacker.support_spells
                 ):
                     entries, bonus_policy, attack_damage = choose_turn_plan(
                         attack_sequence,
@@ -343,11 +349,31 @@ def simulate_duel(
                         bonus_attacks=attacker.bonus_attacks,
                         tactical_advantage=tactical_advantage,
                         nearby_ally=nearby_ally,
+                        save_utility=lambda effect: spells.mockery_value(
+                            effect, attacker_key, defender_key, distance,
+                            defender.pack_tactics and getattr(matchup, f"{defender_key}_ally_near_target"),
+                        ),
                     )
                     attack_sequence = tuple(s.attack for _, s in entries)
+                support = None
+                if can_act and attacker.support_spells:
+                    support = spells.choose_support(
+                        attacker_key, defender_key, distance, attack_damage, tactical_advantage
+                    )
+                    if support is not None:
+                        # A support spell spends the action. No off-hand attack or
+                        # bonus spell can accompany this leveled action spell.
+                        entries = ()
+                        attack_sequence = ()
                 bonus_used = any(
                     s.attack.action_type == "bonus_action" for _, s in entries
                 )
+                if can_act and support is None and not bonus_used:
+                    teleport = spells.choose_teleport(attacker_key, entries, distance, movement)
+                    if teleport is not None:
+                        teleport_spell, distance = teleport
+                        spells.cast_support(attacker_key, defender_key, teleport_spell)
+                        bonus_used = True
                 if can_act and not bonus_used and positioned and attack_sequence:
                     preferred = min(attack_range(a)[0] for a in attack_sequence)
                     if attacker.aggressive and distance - movement > preferred:
@@ -398,6 +424,8 @@ def simulate_duel(
                     bonus_used = True
                 if not can_act:
                     entries = ()
+                if support is not None:
+                    spells.cast_support(attacker_key, defender_key, support)
                 first_hit_available = True
                 weapon_action_attempted = False
                 for attack_index, scenario in entries:
@@ -408,9 +436,10 @@ def simulate_duel(
                         attacker_conditions,
                         defender_conditions,
                         distance,
+                        target_visible=spells.visible(defender_key),
                     )
-                    advantage = advantage or tactical_advantage or hidden[attacker_key]
-                    disadvantage = disadvantage or hidden[defender_key]
+                    advantage = advantage or tactical_advantage or not spells.visible(attacker_key)
+                    disadvantage = disadvantage or not spells.visible(defender_key)
                     if not in_range:
                         continue
                     if (
@@ -427,6 +456,10 @@ def simulate_duel(
                     ):
                         weapon_action_attempted = True
                     if isinstance(attack, SavingThrowDamageProfile):
+                        if (attack.next_save_penalty or attack.next_attack_disadvantage) and not spells.visible(defender_key):
+                            continue
+                        if attack.action_type == "bonus_action" and attack.spell_slot_level is not None:
+                            spells.bonus_spell_turn = attacker_key
                         prepared = attacker_resources.prepare(attack)
                         attacker_resources.spend(attack)
                         automatic_failure, save_disadvantage = save_flags(
@@ -438,6 +471,9 @@ def simulate_duel(
                             hit_points[defender_key],
                             disadvantage=save_disadvantage,
                             automatic_failure=automatic_failure,
+                            automatic_success=(prepared.flee_on_failed_save or prepared.next_attack_disadvantage)
+                            and Condition.DEAFENED in defender_conditions,
+                            saving_throw_resolver=defender_conditions.resolve_save,
                             damage_resistances=defender.damage_resistances,
                             damage_vulnerabilities=defender.damage_vulnerabilities,
                             damage_immunities=defender.damage_immunities,
@@ -448,7 +484,13 @@ def simulate_duel(
                             rng=random_source,
                         )
                         hit_points[defender_key] = result.remaining_hp
-                        if result.remaining_hp == 0:
+                        if prepared.next_attack_disadvantage or prepared.next_save_penalty or prepared.flee_on_failed_save:
+                            distance = spells.apply_save_riders(
+                                prepared, attacker_key, defender_key, result.saving_throw.success,
+                                distance, getattr(matchup, f"{defender_key}_speed_feet"))
+                        if spells.handles_damage:
+                            spells.damaged(defender_key, attacker_key, result.applied_damage, distance)
+                        if hit_points[defender_key] == 0 or hit_points[attacker_key] == 0:
                             break
                         continue
                     conditional_bonus = first_hit_dice(
@@ -460,8 +502,13 @@ def simulate_duel(
                         nearby_ally,
                     )
                     hidden[attacker_key] = False
+                    attacker_conditions.next_attack_disadvantage = False
+                    if attack.action_type == "bonus_action" and attack.spell_slot_level is not None:
+                        spells.bonus_spell_turn = attacker_key
                     prepared = attacker_resources.prepare(attack)
                     attacker_resources.spend(attack)
+                    if attacker_conditions.blessed:
+                        prepared = replace(prepared, attack_bonus=prepared.attack_bonus + random_source.randint(1, 4))
                     result = resolve_attack_sequence(
                         prepared,
                         defender.armor_class,
@@ -476,12 +523,14 @@ def simulate_duel(
                         damage_immunities=defender.damage_immunities,
                         undead_fortitude=defender.undead_fortitude,
                         constitution_save_bonus=defender.get_saving_throw_bonus("con"),
+                        saving_throw_resolver=defender_conditions.resolve_save,
                         rng=random_source,
                     )
                     if conditional_bonus and result.attack.hit:
                         first_hit_available = False
                     hit_points[defender_key] = result.remaining_hp
-                    if hit_points[defender_key] == 0:
+                    if hit_points[defender_key] == 0 or hit_points[attacker_key] == 0:
+                        spells.check_incapacitated()
                         break
 
                     effect = attack.condition_effect
@@ -500,11 +549,17 @@ def simulate_duel(
                                 defender_conditions.apply(
                                     effect, (attacker_key, attack)
                                 )
+                                spells.check_incapacitated()
+                    if spells.handles_damage:
+                        spells.damaged(defender_key, attacker_key, result.damage, distance)
+                    if hit_points[attacker_key] == 0:
+                        break
 
+                spells.end_turn(attacker_key)
                 attacker_conditions.end_turn(
                     attacker, resolve_saving_throw, random_source
                 )
-                if hit_points[defender_key] == 0:
+                if hit_points[defender_key] == 0 or hit_points[attacker_key] == 0:
                     break
 
         total_rounds += trial_rounds

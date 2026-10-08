@@ -1,5 +1,7 @@
 """Persistence for native character-build JSON files."""
 
+from .support_spells import support_spell_from_dict, support_spell_to_dict
+
 import json
 import os
 
@@ -99,6 +101,7 @@ def save_custom_build(build, filename=None):
         "stealth_bonus": build.stealth_bonus,
         "passive_perception": build.passive_perception,
 
+        "support_spells": [support_spell_to_dict(s) for s in build.support_spells],
         "saving_throw_profiles": [
             {
                 "name": profile.name,
@@ -119,6 +122,10 @@ def save_custom_build(build, filename=None):
                 "allow_upcast": profile.allow_upcast,
                 "upcast_damage_dice": [dict(number=d.number, sides=d.sides) for d in profile.upcast_damage_dice],
                 "range_feet": profile.range_feet,
+                "reaction_trigger": profile.reaction_trigger,
+                "next_attack_disadvantage": profile.next_attack_disadvantage,
+                "next_save_penalty": profile.next_save_penalty,
+                "flee_on_failed_save": profile.flee_on_failed_save,
                 "unmodeled_effects": list(profile.unmodeled_effects),
             }
             for profile in build.saving_throw_profiles
@@ -282,6 +289,10 @@ def load_custom_build(filename):
                     allow_upcast=profile_data.get("allow_upcast", False),
                     upcast_damage_dice=tuple(DamageDice(**d) for d in profile_data.get("upcast_damage_dice", ())),
                     range_feet=profile_data.get("range_feet"),
+                    reaction_trigger=profile_data.get("reaction_trigger", ""),
+                    next_attack_disadvantage=profile_data.get("next_attack_disadvantage", False),
+                    next_save_penalty=profile_data.get("next_save_penalty", False),
+                    flee_on_failed_save=profile_data.get("flee_on_failed_save", False),
                     unmodeled_effects=profile_data.get("unmodeled_effects", ()),
                 )
             )
@@ -336,6 +347,7 @@ def load_custom_build(filename):
         equipment=tuple(data.get("equipment", [])),
         attack_profiles=tuple(loaded_profiles) if loaded_profiles else (primary_profile,),
         saving_throw_profiles=tuple(loaded_save_profiles),
+        support_spells=tuple(support_spell_from_dict(s) for s in data.get("support_spells", ())),
         spell_slots=data.get("spell_slots", ()),
         pact_slots=data.get("pact_slots", ()),
         spell_slot_capacity=data.get("spell_slot_capacity", ()),

@@ -229,7 +229,7 @@ class Roll20SpellResourcesTests(unittest.TestCase):
             self.assertIsNone(spell_range(value))
         self.assertEqual(spell_range("120 ft."), 120)
 
-    def test_bundled_felicity_maps_cantrips_and_preserves_unmodeled_riders(self):
+    def test_bundled_felicity_maps_cantrips_and_whispers_rider(self):
         path = Path(__file__).resolve().parents[1] / "characters/felicity.json"
         data = import_from_roll20(path)
         build = load_character_build(path)
@@ -238,7 +238,8 @@ class Roll20SpellResourcesTests(unittest.TestCase):
         whisper = next(p for p in build.saving_throw_profiles if p.name == "Dissonant Whispers")
         self.assertEqual(whisper.spell_slot_level, 1)
         self.assertEqual(whisper.range_feet, 60)
-        self.assertIn("Forced movement is not modeled.", whisper.unmodeled_effects)
+        self.assertTrue(whisper.flee_on_failed_save)
+        self.assertFalse(whisper.unmodeled_effects)
 
 
 if __name__ == "__main__":

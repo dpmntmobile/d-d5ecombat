@@ -1,6 +1,7 @@
 """Character-domain models shared by every application interface."""
 
 from dataclasses import dataclass
+from .support_spells import validate_support_spells
 from .tactical_rules import validate_traits
 
 from .resource_models import normalize_spell_slots
@@ -41,7 +42,10 @@ class CharacterBuild:
     stealth_bonus: int = 0
     passive_perception: int = 10
 
+    support_spells: tuple = ()
+
     def __post_init__(self):
+        validate_support_spells(self)
         validate_traits(self)
         object.__setattr__(self, "spell_slots", normalize_spell_slots(self.spell_slots))
         object.__setattr__(self, "pact_slots", normalize_spell_slots(self.pact_slots))

@@ -16,6 +16,8 @@ class AttackResources:
         self.pact_slots = dict(pact_slots)
         self.maximum_spell_slots = dict(spell_slot_capacity or self.spell_slots)
         self.maximum_pact_slots = dict(pact_slot_capacity or self.pact_slots)
+        self.free_casts = {a: a.free_casts for a in attacks if getattr(a, "free_casts", 0)}
+        self.maximum_free_casts = self.free_casts.copy()
         # Identical profiles referenced repeatedly by a multiattack share uses.
         self.remaining = {
             attack: (1 if attack.recharge_min_roll is not None else attack.limited_uses)
@@ -51,11 +53,14 @@ class AttackResources:
 
     def available(self, attack):
         return (not self.remaining or self.remaining.get(attack, 1) > 0) and (
-            not attack.spell_slot_level or self.slot_for(attack) is not None
+            self.free_casts.get(attack, 0) > 0
+            or not attack.spell_slot_level or self.slot_for(attack) is not None
         )
 
     def prepare(self, attack):
         """Resolve the current casting level without spending a resource."""
+        if self.free_casts.get(attack, 0) > 0:
+            return attack
         slot = self.slot_for(attack)
         if slot is None:
             return attack
@@ -71,7 +76,10 @@ class AttackResources:
     def spend(self, attack):
         if not self.available(attack):
             raise ValueError(f"no uses remaining for {attack.name}")
-        slot = self.slot_for(attack)
+        free = self.free_casts.get(attack, 0) > 0
+        slot = None if free else self.slot_for(attack)
+        if free:
+            self.free_casts[attack] -= 1
         if slot:
             level, pool = slot
             (self.pact_slots if pool == "pact" else self.spell_slots)[level] -= 1
@@ -85,6 +93,7 @@ class AttackResources:
         self.pact_slots = self.maximum_pact_slots.copy()
         if kind == "long":
             self.spell_slots = self.maximum_spell_slots.copy()
+            self.free_casts = self.maximum_free_casts.copy()
 
     def plan(self, preferred, fallbacks, choose):
         """Reserve uses locally; real spending happens only on attempted attacks."""

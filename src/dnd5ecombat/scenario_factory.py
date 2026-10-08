@@ -157,6 +157,7 @@ def build_duel_policy_matchups(
 
                     bonus_attacks=tuple(a for a in build.attack_profiles if a.action_type == "bonus_action" and a.spell_slot_level is not None),
                     saving_throw_profiles=duel_save_actions(getattr(build, "saving_throw_profiles", ())),
+                    support_spells=getattr(build, "support_spells", ()),
                     fallback_attacks=tuple(a for a in legal_character_attacks if a.action_type == "action"),
                     turn_plans=getattr(build, "turn_plans", ()),
                 ),
@@ -188,6 +189,7 @@ def build_duel_policy_matchups(
 
                     bonus_attacks=tuple(a for a in monster.attack_profiles if a.action_type == "bonus_action"),
                     saving_throw_profiles=monster_saves,
+                    support_spells=monster.support_spells,
                     fallback_attacks=tuple(a for a in monster.attack_profiles if a.action_type == "action"),
                 ),
                 starting_distance_feet=starting_distance_feet,

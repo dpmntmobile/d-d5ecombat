@@ -17,15 +17,15 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 - `assets/` - application icons and other static files
 - `tests/` - unit tests and test-only fixtures
 - `scripts/` - build, signing, and Roll20 helper scripts
+- `docs/` - supported rules, profile format guide, and generated examples
 - `packaging/` - PyInstaller and Windows installer configuration
 
 ## Project status and roadmap
 
-Last reviewed: 2026-09-23. All 470 automated tests pass, Ruff reports no
-lint errors, and coverage with branch measurement enabled is 81% (70% CI
-floor). The Windows executable has been rebuilt with the current 0.5.0 roadmap
-changes and passes its packaged resource and parallel-simulation smoke test.
-Its application version remains 0.4.0 pending the next release.
+Last reviewed: 2026-10-08. The spell-extension checkpoint below records the
+current source validation. The Windows executable was rebuilt and smoke
+tested on 2026-10-07 and includes the spell extension.
+The application version remains 0.4.0 pending the next release.
 
 This checklist is the project's planning record. Check an item only after its
 implementation, tests, and relevant documentation are complete. Add newly
@@ -142,18 +142,124 @@ is still recorded under 1.0.0.
 
 ### 1.0.0 - Release readiness
 
-- [ ] Document the supported rules subset and both profile formats with complete
+- [x] Document the supported rules subset and both profile formats with complete
   examples generated from the schemas.
-- [ ] Add migration tests for every released profile-schema version and document
+- [x] Add migration tests for every released profile-schema version and document
   the compatibility policy for deprecated CLI and Python APIs.
 - [ ] Run automated Windows installer and packaged-application smoke tests on
   release candidates, including clean install, upgrade, and uninstall paths.
 - [ ] Complete an accessibility and usability pass for keyboard navigation,
   scaling, chart readability, and long-running simulation feedback.
-- [ ] Resolve all remaining recorded combat exclusions selected for 1.0, or list
+- [x] Resolve all remaining recorded combat exclusions selected for 1.0, or list
   them explicitly in the release notes as supported limitations.
+  See the [unreleased notes and exclusion audit](docs/release-notes.md).
+
+### Resume checkpoint - duel spells (2026-10-07)
+
+Validation: all 514 automated tests pass on local Windows/Python 3.10 and Ruff
+reports no lint errors. The offline Windows executable rebuild and packaged
+smoke test pass, including resource/profile/schema loading and serial/parallel
+simulation consistency. Coverage was last measured on 2026-09-28 at 81% with
+branch measurement enabled (70% CI floor); it was not remeasured for this
+checkpoint. The Linux/Python 3.12 CI matrix has not been run locally.
+
+The latest work extends duel spell handling for the bundled Roll20 characters:
+Hellish Rebuke and Vicious Mockery for Felicity, and Cure Wounds and Faerie Fire
+for Tobias Wren. Source changes include slot spending and upcasting, reaction
+timing, a next-attack disadvantage rider, self-healing, and Faerie Fire
+concentration. Native character and monster profiles preserve the new fields;
+the monster save-action editor preserves reaction and rider metadata.
+
+- [x] Implement the spell effects, Roll20 mappings, and profile persistence.
+- [x] Cover reaction eligibility and interruption, rider expiry, healing,
+  concentration, import round trips, and deterministic parallel duels.
+- [x] Document the supported subset and policy limitations below.
+- [x] Rebuild the Windows executable and run its packaged smoke test with these
+  spell changes before distributing it.
+
+The spell changes are local and uncommitted at this checkpoint. No release or
+tag has been created. The refreshed executable is available at
+`dist/Dnd5eCombatSimulator.exe`. The first 1.0.0 documentation item is complete:
+[supported rules](docs/supported-rules.md), [profile formats](docs/profile-formats.md),
+and [schema-generated field reference and examples](docs/profile-reference.md).
+Examples pass schema validation and application loader/persistence round trips;
+automated checks detect stale generated documentation. The compatibility item
+is also complete: [policy and supported interfaces](docs/compatibility.md),
+frozen version-1 fixtures, versionless normalization, loader/save round trips,
+new-field defaults, invalid-version rejection, and CLI/Python compatibility checks.
+Only schema version 1 exists in the available history; no release tags are present.
+The next 1.0.0 item is Windows installer lifecycle validation (clean install,
+upgrade, uninstall), which requires Inno Setup and an isolated test environment.
+
+Installer automation checkpoint (2026-10-08): the release workflow now runs
+[`scripts/test_windows_installer.ps1`](scripts/test_windows_installer.ps1)
+before uploading release binaries or publishing a tagged release. On a disposable
+GitHub Actions Windows runner, it installs a synthetic version-0.0.0 baseline,
+checks the installed payload and packaged smoke test, upgrades to the candidate,
+checks its registered version and payload, then uninstalls and verifies removal
+of application files and installer registration. Diagnostic logs are uploaded
+even when validation fails. The baseline uses the current executable: this tests
+installer upgrade mechanics, not compatibility with historical binaries.
+Shortcuts are disabled for this automated check and still need a manual usability
+pass. The script refuses local execution to avoid changing an existing installation.
+Local validation: all 514 Python tests, Ruff, generated-documentation freshness,
+and the lifecycle script's PowerShell syntax and local-execution guard pass.
+Inno Setup remains unavailable locally, and the workflow has not been run for
+this change; the installer checklist item remains unchecked until it passes.
+
+Accessibility checkpoint (2026-10-08): setup controls now scroll on small
+displays, with Simulate/Compare/Cancel kept visible. Named controls, keyboard
+shortcuts, accessible best-result text, font-aware chart sizing, elapsed-time
+feedback, and preserved cancellation status are implemented. The 22 GUI tests
+pass offscreen at normal and 200% Qt scaling; Ruff passes. See
+[keyboard controls and the manual validation checklist](docs/accessibility.md).
+The accessibility item remains unchecked pending a rebuilt executable and
+manual keyboard, Windows scaling, Narrator, theme, and long-run checks.
+
+Release-readiness checkpoint (2026-10-08): the executable was rebuilt offline
+with the accessibility and tooltip changes, and its packaged smoke test passed.
+It is available at `dist/Dnd5eCombatSimulator.exe`. Recorded combat exclusions
+and broader simulation limits are explicit in the [unreleased release notes](docs/release-notes.md),
+completing the final roadmap documentation item. Installer workflow validation
+and manual accessibility checks remain outstanding; no release was published.
 
 ### Profile schema contracts
+
+Installer preparation checkpoint (2026-10-08): fixed PowerShell argument grouping
+so an installation directory containing spaces is passed as one `/DIR` argument.
+The script's parsed assignment was exercised locally, and its syntax and
+local-execution guard pass. Both Windows workflows explicitly add the Inno Setup
+compiler to PATH. A dedicated
+[installer validation workflow](.github/workflows/windows-installer.yml) now
+runs on relevant pull requests or manual dispatch, with read-only repository
+permissions and diagnostic log uploads. It builds and checks the installer
+without publishing a release. The changes are local; the workflow still needs
+to run on GitHub before the installer milestone can be checked off.
+
+Latest theme validation: all 516 tests and Ruff pass. The rebuilt executable
+passes its packaged smoke test. The real-worker GUI lifecycle regression was
+removed after intermittent offscreen process exits; cancellation/restart remains
+a manual release check. Earlier 517-test/coverage counts are historical.
+
+
+Theme checkpoint (2026-10-08): result highlights use the application's matched
+foreground/background palette colors; chart bars and profile warnings also
+follow the theme. Light, dark, and high-contrast offscreen renders were inspected
+for colors. Their missing font glyphs prevent text-readability validation, so
+the manual Windows theme and Narrator checks remain outstanding.
+
+Local validation checkpoint (2026-10-08): all 517 tests pass with 83% branch-aware
+coverage, and Ruff passes. Real GUI background runs cover serial and parallel
+cancellation followed by a successful new run. Parallel cancellation feedback
+now explains the wait for active worker batches. The executable was rebuilt
+with this change and passed its packaged smoke test. Installer validation still
+requires the isolated workflow; Inno Setup and the GitHub CLI are unavailable
+in this checkout. Manual Narrator, theme, and Windows desktop checks remain open.
+
+See the [profile format guide](docs/profile-formats.md) for complete loadable
+examples, dice-format differences, resource fields, and regeneration commands.
+The [supported-rules guide](docs/supported-rules.md) distinguishes each simulation
+mode and records the implemented spell subset and policy limits.
 
 Version 1 schemas are bundled with the Python package under
 [`src/dnd5ecombat/schemas/v1/`](src/dnd5ecombat/schemas/v1/):
@@ -573,8 +679,10 @@ One-sided comparisons have no ally assumption and retain the advantage rule.
 Finesse/ranged eligibility comes from the exported weapon metadata, and extra
 weapon attacks share one rider across the turn. Exported off-hand attacks and
 bonus-action attack spells produce legal combined plans automatically; Extra
-Attack repeats only the main weapon attacks. Reactions, non-damaging bonus actions other than the structured traits below,
-and arbitrary free-text prerequisites remain unsupported.
+Attack repeats only the main weapon attacks. General reactions, non-damaging
+bonus actions other than supported Misty Step and the structured traits below,
+and arbitrary free-text prerequisites remain unsupported. Named spell exceptions
+are described under reactions and support spells below.
 
 Monsters and native characters can declare starting slots by level, for example
 `"spell_slots": {"1": 2, "2": 1}`. Their `saving_throw_profiles` can specify
@@ -655,22 +763,86 @@ Simple `spellhldmg` dice strings and linear `hldmg` casting-level dice macros
 provide extra damage per level. Unrecognized nonempty upcast formulas disable automatic upcasting for that
 spell and appear in its `unmodeled_effects`; they are never evaluated as code.
 
-Only save profiles with `action_type: "action"` or `"bonus_action"`, a named saving throw ability,
-and explicit slot/uses/recharge metadata enter duel selection. Existing
+Save profiles with `action_type: "action"` or `"bonus_action"`, a named saving throw ability,
+and explicit slot/uses/recharge metadata enter ordinary duel selection. Reaction
+profiles with `reaction_trigger: "damaged_by_visible_creature"` use the separate
+reaction handling described below. Existing
 unmapped imports stay comparison-only. Each turn, available save actions
 compete as legal action/bonus-action combinations by expected immediate damage;
 ties retain the baseline and then profile order. Casting an action spell replaces
 the Attack action, including extra weapon attacks. If it cannot cast, the combatant uses its
-available weapon plan. Slot conservation and future turns are not optimized.
+available weapon plan. Vicious Mockery also receives an estimate of the damage
+prevented by its next-attack disadvantage. Slot conservation and future turns
+are not optimized.
 
 Save actions apply damage defenses, save-success damage, Undead Fortitude,
 and condition-based automatic failures or disadvantage. Positioning requires
 `range_feet`; the combatant approaches that range and may Dash instead of
-casting. Actions affect only the opposing combatant: area damage, concentration,
-ongoing spell effects, and components are not modeled. A save-only monster is
+casting. Damaging save actions affect only the opposing combatant. Area damage,
+components, and ongoing effects beyond the explicit spell subset below are not
+modeled. A save-only monster is
 supported, but a duel can reach its round limit if depleted resources leave
 neither side able to finish. Resource limits do not apply to the one-sided
 save comparison table.
+
+#### Reactions and support spells in duels
+
+Roll20 imports recognize these named spells in the existing 2014 spell data:
+
+| Spell | Duel behavior |
+| --- | --- |
+| Hellish Rebuke | React to positive damage from a visible opponent within range, spend a slot, and apply the saving throw and fire damage before the next attack. |
+| Vicious Mockery | A failed save also imposes disadvantage on the next attack roll, expiring at the end of the target's next turn. |
+| Cure Wounds | Spend an action and a slot to heal the caster, capped at maximum HP; higher slots add healing dice. |
+| Faerie Fire | Spend an action and a slot for a Dexterity save; a failed save grants attack advantage and suppresses modeled invisibility benefits while concentration lasts. |
+| Bless | Concentrate on self to add 1d4 to attack rolls and supported saving throws. |
+| Misty Step | Use a bonus action to teleport up to 30 feet for the supported approach or ranged repositioning policy. |
+| Mind Sliver | A failed save subtracts 1d4 from the next supported saving throw, expiring at the end of the caster's next turn. |
+| Dissonant Whispers | A failed save spends the target's available reaction to flee; positioned duels can trigger one melee opportunity attack from the caster. |
+
+A reaction refreshes at the start of the combatant's turn. Dead or incapacitated
+combatants cannot react, and a bonus-action spell prevents another reaction
+spell during that same turn. Both sides can react to each other's damage, each
+within its own reaction and resource limits. Damage immunity does not spend a
+reaction slot when the predicted reaction damage is zero.
+
+Bless and Faerie Fire default to ten caster turns. Concentration ends on death,
+incapacitation, replacement, or a failed Constitution save after positive damage.
+The save DC is the greater of 10 and half the damage taken, rounded down after
+damage defenses. Vicious Mockery's disadvantage is consumed by an attempted
+attack even when advantage cancels it.
+
+Support spells use a bounded policy: Cure Wounds is considered at half HP or
+below, excludes undead and constructs, and competes with predicted attack damage.
+Bless and Faerie Fire estimate the gain from future weapon attacks with a discount
+for survival and concentration loss. These policies do not forecast optimal play.
+Support action spells replace the entire selected attack plan, including bonus
+attacks. Healing allies, Healing Word, area targeting, general concentration
+spells, and other reaction triggers remain outside this subset. Faerie Fire's
+policy skips hidden or out-of-range targets. The source also supports visibility
+restrictions, automatic save success for deafened targets against Vicious Mockery
+and Dissonant Whispers, and Fey Touched free support-spell casts. See the
+[spell rules and limits](docs/supported-rules.md#explicit-duel-spells) for details.
+
+Native characters and monsters accept `support_spells`; for example, this entry
+uses the shared dice and spell-slot fields for self-healing:
+
+```json
+"support_spells": [{
+  "name": "Cure Wounds",
+  "effect": "healing",
+  "damage_dice": [{"number": 1, "sides": 8}],
+  "damage_modifier": 3,
+  "range_feet": 5,
+  "spell_slot_level": 1,
+  "spell_slot_pool": "any",
+  "allow_upcast": true,
+  "upcast_damage_dice": [{"number": 1, "sides": 8}]
+}]
+```
+
+These support effects run in duels only. The one-sided damage comparison tables
+do not simulate healing, concentration, reactions, or the next-attack rider.
 
 These monster profiles also contain their official attacks. Each attack records
 its attack bonus, damage formula and type, melee reach and/or ranged bands, plus
@@ -719,10 +891,13 @@ Supported combat modifiers follow the
 | Stunned | No actions or movement; attackers gain advantage; Strength and Dexterity saves automatically fail. |
 | Incapacitated | No actions, including Dash; ordinary movement remains available. |
 | Paralyzed | Stunned combat modifiers, plus hits within 5 feet become critical hits. |
+| Invisible | Attack advantage, opposing attack disadvantage, and visibility restrictions; illumination suppresses these benefits. |
+| Deafened | Automatic save success against supported Vicious Mockery and Dissonant Whispers effects. |
 
 Abstract duels retain their melee/ranged approximation for prone and paralysis.
-Ability checks, speech, reactions, and condition-driven spellcasting restrictions
-are outside the current duel action model. The other simulation tabs do not
+Ability checks beyond the existing Hide policy, speech, and spellcasting
+restrictions beyond incapacitation and action economy are outside the current
+duel action model. Reactions use the explicit spell subset above. The other simulation tabs do not
 apply condition riders.
 
 Every `condition_effect` can optionally specify `duration_turns`, a positive
@@ -765,7 +940,9 @@ simulator's affected-turn timing convention.
 
 Terrain, general retreat/opportunity-attack policies, and arbitrary free-text
 traits or attack riders remain outside the duel model. The supported Nimble
-Escape movement is always accompanied by Disengage. Any recorded `unmodeled_traits` and
+Escape movement is always accompanied by Disengage. Dissonant Whispers has a
+specific fleeing/opportunity-attack implementation; this does not add a general
+opportunity-attack policy. Any recorded `unmodeled_traits` and
 `unmodeled_effects` are printed with duel results so those exclusions remain
 visible.
 

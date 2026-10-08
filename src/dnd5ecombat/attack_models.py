@@ -15,6 +15,8 @@ class Condition(Enum):
     RESTRAINED = "restrained"
     STUNNED = "stunned"
     INCAPACITATED = "incapacitated"
+    DEAFENED = "deafened"
+    INVISIBLE = "invisible"
 
 
 @dataclass(frozen=True)
@@ -220,8 +222,21 @@ class SavingThrowDamageProfile:
     allow_upcast: bool = False
     upcast_damage_dice: tuple = ()
     range_feet: int = None
+    reaction_trigger: str = ""
+    next_attack_disadvantage: bool = False
+    next_save_penalty: bool = False
+    flee_on_failed_save: bool = False
 
     def __post_init__(self):
+        if self.reaction_trigger not in {"", "damaged_by_visible_creature"}:
+            raise ValueError("unsupported reaction trigger")
+        if self.reaction_trigger and self.action_type != "reaction":
+            raise ValueError("reaction_trigger requires a reaction")
+        if not isinstance(self.next_attack_disadvantage, bool):
+            raise TypeError("next_attack_disadvantage must be a boolean")
+        for field in ("next_save_penalty", "flee_on_failed_save"):
+            if not isinstance(getattr(self, field), bool):
+                raise TypeError(f"{field} must be a boolean")
         validate_save_resources(self)
         validate_casting(self)
         if not isinstance(self.name, str):
