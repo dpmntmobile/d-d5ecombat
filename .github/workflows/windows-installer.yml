@@ -41,6 +41,7 @@ jobs:
         shell: powershell
         run: .\scripts\build_windows.ps1 -Installer
       - name: Validate clean install, upgrade, and uninstall
+        timeout-minutes: 15
         shell: powershell
         run: .\scripts\test_windows_installer.ps1
       - name: Upload diagnostic logs

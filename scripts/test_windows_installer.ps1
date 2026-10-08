@@ -19,6 +19,7 @@ if (Test-Path -LiteralPath $RegistryPath) {
 New-Item -ItemType Directory -Path $TestRoot | Out-Null
 
 function Invoke-CheckedProcess([string]$File, [string[]]$Arguments) {
+    Write-Output "Starting: $File"
     $Process = Start-Process -FilePath $File -ArgumentList $Arguments -WindowStyle Hidden -PassThru
     if (-not $Process.WaitForExit(300000)) {
         $Process.Kill()
@@ -28,9 +29,11 @@ function Invoke-CheckedProcess([string]$File, [string[]]$Arguments) {
     if ($Process.ExitCode -ne 0) {
         throw "Process failed ($($Process.ExitCode)): $File"
     }
+    Write-Output "Completed: $File"
 }
 
 function Assert-Installation([string]$Version) {
+    Write-Output "Checking installed version $Version and running packaged smoke test"
     $Executable = Join-Path $InstallDirectory "Dnd5eCombatSimulator.exe"
     if (-not (Test-Path -LiteralPath $Executable)) {
         throw "Installed executable is missing."
@@ -53,17 +56,21 @@ try {
     $Compiler = Get-Command ISCC.exe -ErrorAction Stop
     # A synthetic older installer exercises the same AppId's upgrade path.
     # Its payload is the current build; historical binary compatibility is separate.
-    & $Compiler.Source "/DAppVersion=0.0.0" "/O$TestRoot" packaging\installer.iss
-    if ($LASTEXITCODE -ne 0) { throw "Baseline installer compilation failed." }
+    Write-Output "Compiling synthetic baseline installer"
+    Invoke-CheckedProcess $Compiler.Source @("/DAppVersion=0.0.0",
+        ('/O"' + $TestRoot + '"'), "packaging\installer.iss")
     $Baseline = Join-Path $TestRoot "Dnd5eCombatSimulator-Setup-0.0.0.exe"
     $Candidate = Join-Path $ProjectDirectory "dist\installer\Dnd5eCombatSimulator-Setup-$Version.exe"
     $Common = @("/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART", "/SP-",
         ('/DIR="' + $InstallDirectory + '"'), "/NOICONS", "/TASKS=!desktopicon")
+    Write-Output "Phase: clean install"
     Invoke-CheckedProcess $Baseline ($Common + ('/LOG="' + $TestRoot + '\clean-install.log"'))
     Assert-Installation "0.0.0"
+    Write-Output "Phase: upgrade"
     Invoke-CheckedProcess $Candidate ($Common + ('/LOG="' + $TestRoot + '\upgrade.log"'))
     Assert-Installation $Version
     $Uninstaller = Join-Path $InstallDirectory "unins000.exe"
+    Write-Output "Phase: uninstall"
     Invoke-CheckedProcess $Uninstaller @("/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART",
         ('/LOG="' + $TestRoot + '\uninstall.log"'))
     # Inno's uninstaller can delegate deletion to a child process.
@@ -77,6 +84,7 @@ try {
     Write-Output "Clean install, synthetic-baseline upgrade, installed smoke tests, and uninstall passed."
 }
 finally {
+    Write-Output "Collecting installer logs from $TestRoot"
     Copy-Item -Path (Join-Path $TestRoot "*.log") -Destination (Join-Path $ProjectDirectory "dist") -ErrorAction SilentlyContinue
     Pop-Location
 }
