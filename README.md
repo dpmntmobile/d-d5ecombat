@@ -146,8 +146,10 @@ is still recorded under 1.0.0.
   examples generated from the schemas.
 - [x] Add migration tests for every released profile-schema version and document
   the compatibility policy for deprecated CLI and Python APIs.
-- [ ] Run automated Windows installer and packaged-application smoke tests on
+- [x] Run automated Windows installer and packaged-application smoke tests on
   release candidates, including clean install, upgrade, and uninstall paths.
+  Draft PR #1's Windows run passed on 2026-10-08, including the synthetic-baseline
+  upgrade. Historical binary upgrade compatibility remains unverified.
 - [ ] Complete an accessibility and usability pass for keyboard navigation,
   scaling, chart readability, and long-running simulation feedback.
 - [x] Resolve all remaining recorded combat exclusions selected for 1.0, or list

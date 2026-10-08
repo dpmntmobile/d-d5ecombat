@@ -9,7 +9,7 @@ from unittest.mock import patch
 PYSIDE_AVAILABLE = importlib.util.find_spec("PySide6") is not None
 
 if PYSIDE_AVAILABLE:
-    from PySide6.QtCore import QSettings, Qt
+    from PySide6.QtCore import QCoreApplication, QEvent, QSettings, Qt
     from PySide6.QtWidgets import QApplication
 
     from dnd5ecombat.desktop_gui import (
@@ -28,6 +28,19 @@ class DesktopGuiTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.app = QApplication.instance() or QApplication([])
+
+    def setUp(self):
+        # Registered first so this runs after each test's own close cleanups.
+        self.addCleanup(self._destroy_widgets)
+
+    def _destroy_widgets(self):
+        # Destroy native widgets while QApplication is still alive, rather than
+        # leaving Python/Qt ownership cycles for interpreter shutdown.
+        for widget in self.app.topLevelWidgets():
+            widget.close()
+            widget.deleteLater()
+        QCoreApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)
+        self.app.processEvents()
 
     def test_keyboard_cancel_preserves_feedback_and_setup_can_scroll(self):
         from PySide6.QtTest import QTest
