@@ -240,6 +240,10 @@ Narrator check works. Theme and remaining dialog/export checks are still open.
 Theme validation checkpoint (2026-10-08): the user reported that the theme
 check works. Dialog and CSV-export keyboard navigation remains to be checked.
 
+Export validation checkpoint (2026-10-08): the user confirmed CSV export works
+in the rebuilt executable after the condition-enum serialization fix. The fix
+passed Linux test and Windows installer CI on draft PR #1.
+
 ### Profile schema contracts
 
 Installer preparation checkpoint (2026-10-08): fixed PowerShell argument grouping

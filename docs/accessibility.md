@@ -69,7 +69,7 @@ Before closing the README accessibility milestone, perform this manual pass
 on the rebuilt Windows application:
 
 - [ ] Navigate import, scenario loading, monster editing, and roster selection,
-  and CSV export with keyboard alone. Confirm visible focus and no trapped
+  with keyboard alone. CSV export now succeeds after the serializer fix. Confirm visible focus and no trapped
   controls; Escape should close dialogs.
 - [ ] Confirm any Windows scaling levels not exercised in the visual pass; inspect small and maximized windows,
   large text, long profile names, tables, and charts for clipping. Verify setup
@@ -90,4 +90,6 @@ outstanding.
 Manual CSV export finding (2026-10-08): exporting metadata containing a
 Condition enum failed with a JSON serialization error. The export serializer
 now writes enum values, covered by Wolf/prone and Ghoul/paralyzed JSON and CSV
-companion regressions. Packaged-app export must be retried after rebuilding.
+companion regressions. The executable was rebuilt and smoke-tested; the user confirmed that
+packaged-app export works on retry. The fix also passed Linux test and Windows
+installer CI on draft PR #1.
