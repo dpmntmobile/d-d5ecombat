@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 from threading import Barrier
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import ANY, MagicMock, patch
 
 from dnd5ecombat.process_execution import process_map, process_worker_limit, with_process_pools
 from dnd5ecombat.gui_service import SimulationSettings, run_simulations
@@ -25,7 +25,8 @@ class ProcessExecutionTests(unittest.TestCase):
         with patch("dnd5ecombat.process_execution.ProcessPoolExecutor") as pool:
             pool.return_value.map.side_effect = lambda f, jobs: map(f, jobs)
             run()
-            pool.assert_called_once_with(max_workers=4)
+            pool.assert_called_once_with(max_workers=4, mp_context=ANY)
+            self.assertEqual(pool.call_args.kwargs["mp_context"].get_start_method(), "spawn")
             self.assertEqual(pool.return_value.map.call_count, 2)
             pool.return_value.shutdown.assert_called_once_with(wait=True, cancel_futures=True)
             run()

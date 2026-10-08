@@ -223,6 +223,8 @@ def resolve_saving_throw_damage(
     undead_fortitude=False,
     constitution_save_bonus=0,
     automatic_failure=False,
+    automatic_success=False,
+    saving_throw_resolver=None,
 ):
     """Resolve a single-target saving throw through damage and HP reduction."""
     if not isinstance(effect, SavingThrowDamageProfile):
@@ -232,7 +234,8 @@ def resolve_saving_throw_damage(
         raise TypeError("automatic_failure must be a boolean")
 
     validated_hp = reduce_hit_points(current_hp, 0)
-    saving_throw = SavingThrowResult(0, 0, False, ()) if automatic_failure else resolve_saving_throw(
+    resolver = saving_throw_resolver or resolve_saving_throw
+    saving_throw = SavingThrowResult(0, 0, True, ()) if automatic_success else SavingThrowResult(0, 0, False, ()) if automatic_failure else resolver(
         save_bonus,
         effect.difficulty_class,
         advantage=advantage,
@@ -279,6 +282,7 @@ def resolve_saving_throw_damage(
             validated_hp, applied_damage, effect.damage_type,
             undead_fortitude=undead_fortitude,
             constitution_save_bonus=constitution_save_bonus, rng=rng,
+            saving_throw_resolver=saving_throw_resolver,
         ),
     )
 
@@ -347,6 +351,7 @@ def reduce_hit_points(current_hp, damage):
 def resolve_damage_hit_points(
     current_hp, damage, damage_type="", *, critical=False,
     undead_fortitude=False, constitution_save_bonus=0, rng=None,
+    saving_throw_resolver=None,
 ):
     """Apply damage already adjusted for defenses, including survival traits."""
     remaining_hp = reduce_hit_points(current_hp, damage)
@@ -357,7 +362,7 @@ def resolve_damage_hit_points(
         and remaining_hp == 0 and not critical
         and damage_type.strip().lower() != "radiant"
     ):
-        saving_throw = resolve_saving_throw(
+        saving_throw = (saving_throw_resolver or resolve_saving_throw)(
             constitution_save_bonus, 5 + damage, rng=rng
         )
         if saving_throw.success:
@@ -418,6 +423,7 @@ def resolve_attack_sequence(
     rng=None,
     undead_fortitude=False,
     constitution_save_bonus=0,
+    saving_throw_resolver=None,
 ):
     """Resolve one attack from its d20 roll through target HP reduction."""
     if not isinstance(attack, AttackProfile):
@@ -475,6 +481,7 @@ def resolve_attack_sequence(
         critical=attack_result.critical or critical_on_hit,
         undead_fortitude=undead_fortitude,
         constitution_save_bonus=constitution_save_bonus, rng=rng,
+        saving_throw_resolver=saving_throw_resolver,
     )
     return AttackSequenceResult(
         attack=attack_result,

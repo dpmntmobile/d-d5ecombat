@@ -12,6 +12,7 @@ from .attack_models import (
 )
 from .combatant_models import DuelCombatant, DuelMatchup, TargetProfile
 from .turn_models import AttackScenario, FirstHitBonusDamage, TurnPlan
+from .support_spells import SupportSpell
 
 
 __all__ = tuple(name for name in globals() if not name.startswith("_"))

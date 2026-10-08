@@ -1,8 +1,8 @@
 """Reusable Qt models and charts for simulation result tables."""
 
 from PySide6.QtCore import QAbstractTableModel, QModelIndex, Qt
-from PySide6.QtGui import QBrush, QColor, QFont, QPainter
-from PySide6.QtWidgets import QWidget
+from PySide6.QtGui import QBrush, QFont, QPainter
+from PySide6.QtWidgets import QApplication, QWidget
 
 from .gui_service import TableData
 
@@ -53,11 +53,16 @@ class ResultsTableModel(QAbstractTableModel):
         is_best = (index.row(), index.column()) in self._best_cells
         if role == Qt.ItemDataRole.UserRole:
             return value
+        if role == Qt.ItemDataRole.AccessibleTextRole:
+            suffix = "; best result (ties included)" if is_best else ""
+            return f"{column.title}: {format_table_value(value, column.kind)}{suffix}"
         if role == Qt.ItemDataRole.ToolTipRole:
             suffix = " Best result (ties included)." if is_best else ""
             return (column.tooltip + suffix).strip() or None
         if role == Qt.ItemDataRole.BackgroundRole and is_best:
-            return QBrush(QColor("#d8f3dc"))
+            return QBrush(QApplication.palette().highlight())
+        if role == Qt.ItemDataRole.ForegroundRole and is_best:
+            return QBrush(QApplication.palette().highlightedText())
         if role == Qt.ItemDataRole.FontRole and is_best:
             font = QFont()
             font.setBold(True)
@@ -88,9 +93,13 @@ class ResultsBarChart(QWidget):
         super().__init__(parent)
         self._table_data = TableData((), ())
         self.setMinimumHeight(150)
+        self.setAccessibleName("Result chart")
 
     def set_table_data(self, table_data):
         self._table_data = table_data
+        self.setAccessibleDescription(
+            "Visual summary of the first results. All values and full labels are available in the results table."
+        )
         self.update()
 
     def paintEvent(self, event):
@@ -114,18 +123,23 @@ class ResultsBarChart(QWidget):
             )
             return
         column = self._table_data.columns[chart_index]
-        rows = self._table_data.rows[:12]
+        metrics = painter.fontMetrics()
+        row_height = max(24, metrics.height() + 10)
+        top = metrics.height() + 16
+        capacity = max(0, (self.height() - top - 8) // row_height)
+        rows = self._table_data.rows[:min(12, capacity)]
         values = [max(0.0, float(row[chart_index])) for row in rows]
         maximum = max(values) if values else 1.0
         maximum = maximum if maximum > 0 else 1.0
         painter.setPen(self.palette().text().color())
-        painter.drawText(12, 20, column.title)
-        top = 30
-        row_height = max(19, (self.height() - top - 8) // max(1, len(rows)))
+        title = f"{column.title} — showing {len(rows)} of {len(self._table_data.rows)}; full values in table"
+        painter.drawText(12, metrics.ascent() + 6,
+                         metrics.elidedText(title, Qt.TextElideMode.ElideRight, max(0, self.width() - 24)))
         label_width = min(230, max(110, self.width() // 3))
         bar_left = label_width + 18
-        bar_width = max(20, self.width() - bar_left - 75)
-        metrics = painter.fontMetrics()
+        value_width = max((metrics.horizontalAdvance(format_table_value(row[chart_index], column.kind))
+                           for row in rows), default=0) + 16
+        bar_width = max(0, self.width() - bar_left - value_width)
         for index, (row, value) in enumerate(zip(rows, values)):
             y = top + index * row_height
             label = metrics.elidedText(
@@ -139,7 +153,7 @@ class ResultsBarChart(QWidget):
                 y + 3,
                 width,
                 max(8, row_height - 7),
-                QColor("#457b9d"),
+                self.palette().highlight(),
             )
             display = format_table_value(row[chart_index], column.kind)
             painter.drawText(bar_left + width + 6, y + row_height - 5, display)

@@ -38,7 +38,8 @@ def duel_save_actions(profiles):
     return tuple(
         effect
         for effect in profiles
-        if effect.action_type in {"action", "bonus_action"}
+        if (effect.action_type in {"action", "bonus_action"}
+            or effect.reaction_trigger == "damaged_by_visible_creature")
         and effect.save_ability
         and any(
             value is not None

@@ -1,6 +1,7 @@
 """Validation and JSON persistence for monster profiles."""
 
 import json
+from .support_spells import support_spell_from_dict, support_spell_to_dict
 import os
 from pathlib import Path
 
@@ -143,6 +144,7 @@ def monster_from_dict(data):
         "spell_slots", "pact_slots", "spell_slot_capacity", "pact_slot_capacity",
         "pack_tactics", "aggressive", "nimble_escape", "stealth_bonus", "passive_perception",
         "saving_throw_profiles",
+        "support_spells",
         "undead_fortitude",
     }
     unsupported = sorted(set(data) - supported)
@@ -187,6 +189,7 @@ def monster_from_dict(data):
         passive_perception=data.get("passive_perception", 10),
 
         saving_throw_profiles=tuple(save_action_from_dict(effect) for effect in data.get("saving_throw_profiles", ())),
+        support_spells=tuple(support_spell_from_dict(s) for s in data.get("support_spells", ())),
         undead_fortitude=data.get("undead_fortitude", False),
     )
 
@@ -233,6 +236,7 @@ def monster_to_dict(monster):
         "passive_perception": monster.passive_perception,
 
         "saving_throw_profiles": [save_action_to_dict(effect) for effect in monster.saving_throw_profiles],
+        "support_spells": [support_spell_to_dict(s) for s in monster.support_spells],
         "undead_fortitude": monster.undead_fortitude,
         "attacks": [
             {
@@ -299,6 +303,10 @@ def save_action_from_dict(data):
         action_type=data.get("action_type", "action"),
         limited_uses=data.get("limited_uses"), recharge_min_roll=data.get("recharge_min_roll"),
         spell_slot_level=data.get("spell_slot_level"), range_feet=data.get("range_feet"),
+        reaction_trigger=data.get("reaction_trigger", ""),
+        next_attack_disadvantage=data.get("next_attack_disadvantage", False),
+        next_save_penalty=data.get("next_save_penalty", False),
+        flee_on_failed_save=data.get("flee_on_failed_save", False),
         spell_slot_pool=data.get("spell_slot_pool", "spellcasting"),
         allow_upcast=data.get("allow_upcast", False),
         upcast_damage_dice=parse_damage_dice(data["upcast_damage_dice"]) if data.get("upcast_damage_dice") else (),
@@ -314,6 +322,10 @@ def save_action_to_dict(effect):
                 action_type=effect.action_type, limited_uses=effect.limited_uses,
                 recharge_min_roll=effect.recharge_min_roll,
                 spell_slot_level=effect.spell_slot_level, range_feet=effect.range_feet,
+                reaction_trigger=effect.reaction_trigger,
+                next_attack_disadvantage=effect.next_attack_disadvantage,
+                next_save_penalty=effect.next_save_penalty,
+                flee_on_failed_save=effect.flee_on_failed_save,
                 unmodeled_effects=list(effect.unmodeled_effects), **casting_to_dict(effect))
 
 

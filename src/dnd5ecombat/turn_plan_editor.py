@@ -28,6 +28,8 @@ class TurnPlanEditor(QWidget):
         buttons = QHBoxLayout()
         add = QPushButton("Add turn plan")
         remove = QPushButton("Remove selected plans")
+        add.setToolTip("Add an ordered sequence of named attacks, optionally with a once-per-turn first-hit damage rider.")
+        remove.setToolTip("Remove turn-plan rows containing selected cells. Save the monster to keep these changes.")
         buttons.addWidget(add)
         buttons.addWidget(remove)
         layout.addLayout(buttons)
@@ -68,6 +70,10 @@ class TurnPlanEditor(QWidget):
         for column, value in enumerate(values):
             if column >= 5:
                 choice = QComboBox()
+                choice.setToolTip({
+                    5: "If true, the first-hit damage rider requires advantage unless its nearby-ally alternative qualifies.",
+                    6: "If true, the nearby-ally encounter assumption can qualify this rider without advantage. Disadvantage still prevents qualifying riders.",
+                }[column])
                 choice.addItems(("false", "true"))
                 choice.setCurrentText(value)
                 self.table.setCellWidget(row, column, choice)

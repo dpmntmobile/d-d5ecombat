@@ -9,10 +9,15 @@ class SaveActionEditor(QWidget):
     fields = ("name", "difficulty_class", "save_ability", "damage_dice",
               "damage_modifier", "damage_type", "damage_on_success", "range_feet",
               "limited_uses", "recharge_min_roll", "spell_slot_level", "action_type",
-              "unmodeled_effects", "spell_slot_pool", "allow_upcast", "upcast_damage_dice")
+              "unmodeled_effects", "spell_slot_pool", "allow_upcast", "upcast_damage_dice",
+              "reaction_trigger", "next_attack_disadvantage", "next_save_penalty", "flee_on_failed_save")
     choices = {
         "spell_slot_pool": ("spellcasting", "pact", "any"),
         "allow_upcast": ("false", "true"),
+        "reaction_trigger": ("", "damaged_by_visible_creature"),
+        "next_attack_disadvantage": ("false", "true"),
+        "next_save_penalty": ("false", "true"),
+        "flee_on_failed_save": ("false", "true"),
         "save_ability": ("str", "dex", "con", "int", "wis", "cha"),
         "damage_on_success": ("no_damage", "half_damage"),
         "action_type": ("action", "bonus_action", "reaction"),
@@ -58,13 +63,16 @@ class SaveActionEditor(QWidget):
         buttons = QHBoxLayout()
         add = QPushButton("Add save action")
         remove = QPushButton("Remove selected save actions")
+        add.setToolTip("Add an action that deals damage through a saving throw, with optional spell-slot costs and supported riders.")
+        remove.setToolTip("Remove save-action rows containing selected cells. Save the monster to keep these changes.")
         buttons.addWidget(add)
         buttons.addWidget(remove)
         layout.addLayout(buttons)
         self.table = QTableWidget(0, len(self.fields))
         self.table.setHorizontalHeaderLabels(("Name", "DC", "Save", "Damage dice", "Modifier",
             "Damage type", "On save", "Range (ft)", "Uses", "Recharge minimum", "Slot level",
-            "Action type", "Unmodeled effects", "Slot pool", "Allow upcast", "Extra dice per slot level"))
+            "Action type", "Unmodeled effects", "Slot pool", "Allow upcast", "Extra dice per slot level",
+            "Reaction trigger", "Next attack disadvantage", "Next save penalty", "Flee on failed save"))
         layout.addWidget(self.table)
         add.clicked.connect(lambda: self.add_action())
         remove.clicked.connect(self.remove_selected)
@@ -80,6 +88,17 @@ class SaveActionEditor(QWidget):
             value = data.get(field)
             if field in self.choices:
                 widget = QComboBox()
+                widget.setToolTip({
+                    "save_ability": "Ability the target uses for its saving throw against this action's DC.",
+                    "damage_on_success": "Choose whether a successful save deals no damage or half damage, rounded down.",
+                    "action_type": "Choose whether casting uses an action, bonus action, or supported reaction.",
+                    "spell_slot_pool": "Choose Spellcasting, Pact Magic, or either pool to pay the spell's slot cost.",
+                    "allow_upcast": "Allow casting with higher-level slots; additional damage comes from the extra dice per slot level.",
+                    "reaction_trigger": "For reaction spells, choose damage from a visible creature as the trigger; blank specifies no trigger.",
+                    "next_attack_disadvantage": "On a failed save, impose disadvantage on the target's next attack, expiring at the end of its next turn.",
+                    "next_save_penalty": "On a failed save, subtract 1d4 from the target's next supported saving throw, expiring at the end of the caster's next turn.",
+                    "flee_on_failed_save": "On a failed save, make the target spend its available reaction to move away; supported opportunity attacks may occur.",
+                }[field])
                 widget.addItems(self.choices[field])
                 widget.setCurrentText(str(value).lower() if isinstance(value, bool) else value or self.choices[field][0])
                 self.table.setCellWidget(row, column, widget)
@@ -124,7 +143,7 @@ class SaveActionEditor(QWidget):
                     value = self.table.cellWidget(row, column).currentText()
                 else:
                     value = self.table.item(row, column).text().strip()
-                if field == "allow_upcast":
+                if field in {"allow_upcast", "next_attack_disadvantage", "next_save_penalty", "flee_on_failed_save"}:
                     value = value == "true"
                 elif field in {"difficulty_class", "damage_modifier"}:
                     value = int(value)

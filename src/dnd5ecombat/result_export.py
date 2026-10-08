@@ -5,6 +5,7 @@ import json
 import os
 import tempfile
 from dataclasses import asdict
+from enum import Enum
 from pathlib import Path
 
 from . import __version__
@@ -32,12 +33,19 @@ def result_metadata(settings, characters, monsters, sections):
     }
 
 
+def _json_default(value):
+    if isinstance(value, Enum):
+        return value.value
+    raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")
+
+
 def save_results(tables, path):
     """Write named tables and their run metadata as one atomic JSON document."""
     document = {"result_format_version": 1, "tables": {
         name: asdict(table) for name, table in tables.items() if table is not None
     }}
-    content = json.dumps(document, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
+    content = json.dumps(document, indent=2, ensure_ascii=False, allow_nan=False,
+                         default=_json_default) + "\n"
     path = Path(path)
     temporary = None
     try:

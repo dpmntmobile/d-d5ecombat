@@ -1,6 +1,6 @@
 """Expected damage for single-target saving-throw duel actions."""
 from .combat import apply_damage_defenses
-from .models import SaveSuccessDamage
+from .models import SaveSuccessDamage, Condition
 from .simulation_core import _damage_roll_distribution
 
 
@@ -13,11 +13,17 @@ def save_flags(effect, conditions):
 def expected_save_damage(effect, defender, conditions):
     automatic_failure, disadvantage = save_flags(effect, conditions)
     required = effect.difficulty_class - defender.get_saving_throw_bonus(effect.save_ability)
-    success = max(0, min(20, 21 - required)) / 20
+    bonuses = range(1, 5) if conditions.blessed else (0,)
+    penalties = range(1, 5) if conditions.next_save_penalty else (0,)
+    chances = [max(0, min(20, 21 - required + bonus - penalty)) / 20
+               for bonus in bonuses for penalty in penalties]
+    success = sum(c * c if disadvantage else c for c in chances) / len(chances)
     if automatic_failure:
         success = 0
-    elif disadvantage:
-        success *= success
+    if (effect.flee_on_failed_save or effect.next_attack_disadvantage) and Condition.DEAFENED in conditions:
+        success = 1
+    if (effect.next_save_penalty or effect.next_attack_disadvantage) and conditions.invisible:
+        return 0.0
     total = 0.0
     for damage, probability in _damage_roll_distribution(effect.damage_dice, effect.damage_modifier, 1):
         for passed, chance in ((False, 1 - success), (True, success)):

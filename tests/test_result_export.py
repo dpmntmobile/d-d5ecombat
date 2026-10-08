@@ -48,6 +48,22 @@ class ResultExportTests(unittest.TestCase):
         self.assertEqual(metadata["monsters"][0]["profile"]["max_hp"], self.monster.max_hp)
         self.assertEqual(table["note"], tables.attacks.note)
 
+    def test_condition_riders_export_to_json_and_csv_companion(self):
+        for name, condition in (("wolf", "prone"), ("ghoul", "paralyzed")):
+            with self.subTest(monster=name), TemporaryDirectory() as directory:
+                monster = load_monster_profile(ROOT / f"monsters/{name}.json")
+                table = run_simulations(self.build, monster, self.settings, ("attacks",)).attacks
+                path = Path(directory) / "results.json"
+                save_results({"attacks": table}, path)
+                csv_path = Path(directory) / "results.csv"
+                save_table_csv(table, "attacks", csv_path)
+                for record_path in (path, csv_path.with_suffix(".csv.json")):
+                    record = json.loads(record_path.read_text(encoding="utf-8"))
+                    attacks = record["tables"]["attacks"]["metadata"]["monsters"][0]["profile"]["attack_profiles"]
+                    self.assertIn(condition, [attack["condition_effect"]["condition"]
+                                              for attack in attacks if attack["condition_effect"]])
+                self.assertTrue(csv_path.read_text(encoding="utf-8-sig").strip())
+
     def test_roster_identifies_duplicate_names_and_keeps_empty_pair_notes(self):
         harmless = replace(self.monster, attack_profiles=(), multiattack=())
         tables = run_roster_simulations(

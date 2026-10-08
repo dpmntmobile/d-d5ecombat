@@ -129,7 +129,7 @@ def _normalize_save_ability(raw_value):
 
 def _roll20_action_type(casting_time, attack_name=""):
     text = str(casting_time or "").strip().lower()
-    if text.startswith("reaction"):
+    if text.startswith("reaction") or text.startswith("1 reaction"):
         return "reaction"
     if text.startswith("bonus action") or text.startswith("1 bonus action"):
         return "bonus_action"

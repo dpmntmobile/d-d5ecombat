@@ -3,6 +3,7 @@
 from concurrent.futures import ProcessPoolExecutor
 from contextvars import ContextVar
 from functools import wraps
+from multiprocessing import get_context
 import sys
 
 
@@ -42,9 +43,11 @@ def process_map(function, jobs, workers):
     pools = _run_pools.get()
     workers = process_worker_limit(workers)
     if pools is None:
-        with ProcessPoolExecutor(max_workers=min(workers, len(jobs))) as executor:
+        with ProcessPoolExecutor(max_workers=min(workers, len(jobs)),
+                                 mp_context=get_context("spawn")) as executor:
             return tuple(executor.map(function, jobs))
     if workers not in pools:
         # Keep capacity for later, larger batches instead of sizing to the first.
-        pools[workers] = ProcessPoolExecutor(max_workers=workers)
+        pools[workers] = ProcessPoolExecutor(max_workers=workers,
+                                             mp_context=get_context("spawn"))
     return tuple(pools[workers].map(function, jobs))

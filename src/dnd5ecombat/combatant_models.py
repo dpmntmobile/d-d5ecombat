@@ -1,6 +1,7 @@
 """Target and duel combatant domain models."""
 
 from dataclasses import dataclass
+from .support_spells import validate_support_spells
 from .tactical_rules import validate_traits, validate_assumptions
 
 from .resource_models import normalize_spell_slots
@@ -44,7 +45,10 @@ class TargetProfile:
     saving_throw_profiles: tuple = ()
     turn_plans: tuple = ()
 
+    support_spells: tuple = ()
+
     def __post_init__(self):
+        validate_support_spells(self)
         validate_traits(self)
         object.__setattr__(self, "spell_slots", normalize_spell_slots(self.spell_slots))
         object.__setattr__(self, "pact_slots", normalize_spell_slots(self.pact_slots))
@@ -189,7 +193,10 @@ class DuelCombatant:
     bonus_attacks: tuple = ()
     turn_plans: tuple = ()
 
+    support_spells: tuple = ()
+
     def __post_init__(self):
+        validate_support_spells(self)
         validate_traits(self)
         object.__setattr__(self, "spell_slots", normalize_spell_slots(self.spell_slots))
         object.__setattr__(self, "pact_slots", normalize_spell_slots(self.pact_slots))
@@ -207,7 +214,7 @@ class DuelCombatant:
         saves = tuple(self.saving_throw_profiles)
         if not all(isinstance(effect, SavingThrowDamageProfile) for effect in saves):
             raise TypeError("saving_throw_profiles must contain SavingThrowDamageProfile instances")
-        if any(effect.action_type not in {"action", "bonus_action"} or effect.save_ability not in {"str", "dex", "con", "int", "wis", "cha"} for effect in saves):
+        if any((effect.action_type not in {"action", "bonus_action"} and not effect.reaction_trigger) or effect.save_ability not in {"str", "dex", "con", "int", "wis", "cha"} for effect in saves):
             raise ValueError("duel save actions need action type and a valid saving throw ability")
         object.__setattr__(self, "saving_throw_profiles", saves)
         if not isinstance(self.undead_fortitude, bool):
