@@ -68,10 +68,10 @@ listed, so high-contrast coverage is not independently confirmed.
 Before closing the README accessibility milestone, perform this manual pass
 on the rebuilt Windows application:
 
-- [ ] Navigate import, scenario loading, monster editing, and roster selection,
+- [x] Navigate import, scenario loading, monster editing, and roster selection,
   with keyboard alone. CSV export now succeeds after the serializer fix. Confirm visible focus and no trapped
   controls; Escape should close dialogs.
-- [ ] Confirm any Windows scaling levels not exercised in the visual pass; inspect small and maximized windows,
+- [x] Confirm Windows 150% and 200% scaling; inspect small and maximized windows,
   large text, long profile names, tables, and charts for clipping. Verify setup
   scrolling keeps every field reachable and action buttons remain visible.
 - [x] With Windows Narrator, check profile selectors, numeric settings, validation
@@ -97,3 +97,10 @@ installer CI on draft PR #1.
 User cancellation validation (2026-10-08): the user confirmed the one-worker
 and two-worker cancellation checks work, including a successful 100-trial run
 after cancellation.
+
+Final manual confirmation (2026-10-08): the user confirmed keyboard navigation
+through Import, Load scenario, Edit monster, and Compare multiple, and successful
+checks at 150% and 200% Windows scaling. This completes the recorded manual
+accessibility/usability pass. The export issue found during the pass was fixed
+and successfully retried. Earlier outstanding notes above describe prior
+checkpoints; they are superseded by these confirmations.

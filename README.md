@@ -150,7 +150,7 @@ is still recorded under 1.0.0.
   release candidates, including clean install, upgrade, and uninstall paths.
   Draft PR #1's Windows run passed on 2026-10-08, including the synthetic-baseline
   upgrade. Historical binary upgrade compatibility remains unverified.
-- [ ] Complete an accessibility and usability pass for keyboard navigation,
+- [x] Complete an accessibility and usability pass for keyboard navigation,
   scaling, chart readability, and long-running simulation feedback.
 - [x] Resolve all remaining recorded combat exclusions selected for 1.0, or list
   them explicitly in the release notes as supported limitations.
@@ -247,6 +247,13 @@ passed Linux test and Windows installer CI on draft PR #1.
 Cancellation checkpoint (2026-10-08): the user confirmed cancellation and
 successful restart with both one and two workers. Remaining manual items are
 dialog keyboard navigation and confirmation of display scaling coverage.
+
+Accessibility completion (2026-10-08): the user confirmed the remaining dialog
+keyboard-navigation checks and 150%/200% Windows scaling checks. Together with
+the recorded keyboard, visual, Narrator, theme, export, and serial/parallel
+cancellation results, this completes the manual pass. All 1.0 readiness
+checklist items are now complete; application version remains 0.4.0, and draft
+PR #1 still requires review and merging before a release is prepared.
 
 ### Profile schema contracts
 
