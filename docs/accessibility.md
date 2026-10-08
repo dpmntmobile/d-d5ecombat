@@ -80,7 +80,7 @@ on the rebuilt Windows application:
   detailed live-announcement behavior was not separately described.
 - [x] Inspect light, dark, and high-contrast themes. Confirm focus, errors, selected
   rows, and best results remain readable without relying on color alone.
-- [ ] Start a large single-worker and multi-worker run, inspect elapsed/status
+- [x] Start a large single-worker and multi-worker run, inspect elapsed/status
   feedback, request cancellation, and confirm a new run can start afterward.
 
 The executable was rebuilt on 2026-10-08 with the GUI and tooltip changes and
@@ -93,3 +93,7 @@ now writes enum values, covered by Wolf/prone and Ghoul/paralyzed JSON and CSV
 companion regressions. The executable was rebuilt and smoke-tested; the user confirmed that
 packaged-app export works on retry. The fix also passed Linux test and Windows
 installer CI on draft PR #1.
+
+User cancellation validation (2026-10-08): the user confirmed the one-worker
+and two-worker cancellation checks work, including a successful 100-trial run
+after cancellation.

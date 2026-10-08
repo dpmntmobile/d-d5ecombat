@@ -244,6 +244,10 @@ Export validation checkpoint (2026-10-08): the user confirmed CSV export works
 in the rebuilt executable after the condition-enum serialization fix. The fix
 passed Linux test and Windows installer CI on draft PR #1.
 
+Cancellation checkpoint (2026-10-08): the user confirmed cancellation and
+successful restart with both one and two workers. Remaining manual items are
+dialog keyboard navigation and confirmation of display scaling coverage.
+
 ### Profile schema contracts
 
 Installer preparation checkpoint (2026-10-08): fixed PowerShell argument grouping
