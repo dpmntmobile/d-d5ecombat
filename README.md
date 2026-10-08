@@ -225,6 +225,21 @@ and broader simulation limits are explicit in the [unreleased release notes](doc
 completing the final roadmap documentation item. Installer workflow validation
 and manual accessibility checks remain outstanding; no release was published.
 
+Manual validation checkpoint (2026-10-08): the user reported that the rebuilt
+application's initial keyboard, simulation, results-navigation, cancellation,
+and restart check works fine. Dialog/export navigation, Windows scaling,
+Narrator, and theme checks remain open in the accessibility checklist.
+
+User visual checkpoint (2026-10-08): the resize/scaling/readability and tooltip
+pass was reported to look good, with no issues reported. Exact scaling levels
+were not specified. Narrator and theme checks remain outstanding.
+
+Narrator checkpoint (2026-10-08): the user reported that the packaged-app
+Narrator check works. Theme and remaining dialog/export checks are still open.
+
+Theme validation checkpoint (2026-10-08): the user reported that the theme
+check works. Dialog and CSV-export keyboard navigation remains to be checked.
+
 ### Profile schema contracts
 
 Installer preparation checkpoint (2026-10-08): fixed PowerShell argument grouping
