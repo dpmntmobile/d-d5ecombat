@@ -63,11 +63,13 @@ keyboard, Narrator, theme, Windows scaling, and long-run checks remain in the
 [accessibility checklist](accessibility.md). The Windows executable was rebuilt
 on 2026-11-03 and passed its expanded packaged smoke test. All 540 tests pass,
 Ruff passes, and coverage is 83%; the desktop and party tests also pass with
-200% Qt scaling. Inno Setup is unavailable locally, so no 0.5.0 installer was
-built. See the [0.5.0 review record](release-review-0.5.0.md) for the remaining
-interactive checks and commit/release scope.
+200% Qt scaling. Inno Setup 6.7.3 was installed and the 0.5.0 installer compiled
+successfully. Both Linux/Python 3.10 and 3.12 CI jobs passed in draft PR #2.
+See the [0.5.0 review record](release-review-0.5.0.md) for validation evidence
+and commit/release scope.
 
 User validation (2026-11-03): the rebuilt executable's party-dialog flow passed
 multiple-profile selection, save/load, run/export, cancellation, and close.
-No issues were reported. Installer validation, Linux CI, and the separate
-accessibility checks remain pending.
+The user also confirmed keyboard/Escape, 150% and 200% Windows scaling,
+light/dark/high-contrast themes, and Narrator checks all passed. No issues were
+reported. Isolated installer lifecycle validation is running in draft PR #2.

@@ -1,7 +1,9 @@
 # 0.5.0 review record
 
-Prepared 2026-11-03. Changes are local and uncommitted; no release tag or push
-has been made. The existing 1.0.0 readiness milestone remains later work.
+Prepared 2026-11-03. Candidate `3daa41e` is committed and pushed on
+`review/party-combat-0.5.0` in [draft PR #2](https://github.com/dpmntmobile/d-d5ecombat/pull/2).
+No merge or release tag has been made. The existing 1.0.0 readiness milestone
+remains later work.
 
 ## Change scope
 
@@ -25,8 +27,8 @@ has been made. The existing 1.0.0 readiness milestone remains later work.
 The complete tracked diff and new source/test/scenario files were reviewed
 together. Existing duel tests and the one-on-one party/duel comparison pass.
 Build output under `build/` and `dist/` is ignored and is not part of the source
-commit. Include the new party modules, smoke module, tests, example scenario,
-and this record when preparing the commit.
+commit. The candidate commit includes the new party modules, smoke module,
+tests, example scenario, and this review record.
 
 ## Validation
 
@@ -45,6 +47,18 @@ Windows, Python 3.10.6, project `.venv`:
   the packaged smoke test: resources/schemas/version, serial/parallel agreement,
   seeded party repeatability, and offscreen party-dialog completion, persistence,
   export, cancellation, and safe close.
+- The local installer compiled successfully with Inno Setup 6.7.3:
+  `dist/installer/Dnd5eCombatSimulator-Setup-0.5.0.exe`.
+- [Linux CI](https://github.com/dpmntmobile/d-d5ecombat/actions/runs/41704841952)
+  passed both Python 3.10 and 3.12 jobs for candidate `3daa41e`.
+- The user confirmed the remaining accessibility checks all passed on
+  2026-11-03: keyboard navigation/Escape, 150% and 200% Windows scaling,
+  light/dark/high-contrast themes, and Narrator counts/settings/buttons/results.
+- The first isolated Windows job built the executable and installer, then
+  timed out during lifecycle validation without retained logs. The lifecycle
+  process runner now uses direct process handles, bounded waits, progress
+  messages, and a transcript. Local probes verify successful exits, nonzero
+  exit rejection, timeout termination, and PowerShell syntax. CI is being retried.
 
 The automated dialog smoke uses the persistence helpers and loaded-composition
 state; the source GUI tests exercise the file-dialog callbacks with selected
@@ -59,17 +73,17 @@ flow; a separate manual source-GUI run was not reported.
   battle...**, select multiple characters/monster types, save/load a composition,
   run trials, export, change counts, cancel a longer run, and close the dialog.
   Confirm the next-run summary and completed-result composition are clear.
-- [ ] Check keyboard access, Windows display scaling,
+- [x] Check keyboard access, Windows display scaling,
   Narrator, and themes using the [accessibility checklist](accessibility.md).
 - [ ] Build the installer when Inno Setup is available. Run clean install,
   upgrade, and uninstall validation on a disposable Windows environment;
   `scripts/test_windows_installer.ps1` deliberately requires a GitHub Actions
   runner. Synthetic-baseline upgrade tests do not prove historical binary
   compatibility.
-- [ ] Run the Linux/Python 3.12 CI matrix, which was not run locally.
+- [x] Run the Linux/Python 3.10 and 3.12 CI matrix.
 
-Inno Setup was absent from PATH and the conventional installation location on
-this machine. Installer creation/lifecycle remains unverified, so README step
-6 remains open. The packaged party-dialog flow is user-validated; the separate
-accessibility checks above remain open. Creating/pushing a release tag publishes
+Inno Setup was installed during the final validation pass; installer compilation
+now passes. Isolated installer lifecycle checks are running on the draft PR,
+so README step 6 remains open pending their result. The packaged party-dialog
+flow and accessibility checks are user-validated. Creating/pushing a release tag publishes
 artifacts through the release workflow and requires approval after review.

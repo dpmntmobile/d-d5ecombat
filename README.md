@@ -104,14 +104,16 @@ Ruff passes, and total coverage is 83%. The editable package and rebuilt
 Windows executable are version 0.5.0. The executable passes its packaged
 smoke test, including party simulation and offscreen dialog checks.
 The user confirmed the packaged party-dialog flow works on 2026-11-03.
-Installer creation and the remaining accessibility checks are pending.
+The user also confirmed keyboard, Narrator, theme, and Windows scaling checks.
+The installer is built; isolated installer lifecycle validation is running.
 
 ### Next session - Party combat follow-up (recorded 2026-10-30)
 
 Current checkpoint: **0.5.0**, updated 2026-11-03. Source, editable package,
 and `dist/Dnd5eCombatSimulator.exe` include the party-combat follow-up.
-Changes remain uncommitted. See the [release review](docs/release-review-0.5.0.md)
-for validation evidence and remaining manual checks.
+The candidate is committed on `review/party-combat-0.5.0` in
+[draft PR #2](https://github.com/dpmntmobile/d-d5ecombat/pull/2).
+See the [release review](docs/release-review-0.5.0.md) for validation evidence.
 
 Work through these steps in order:
 
@@ -167,7 +169,11 @@ battle completed 1,000 seeded CLI trials with JSON export. The small-window
 regression exposed by the added party button is fixed by placing comparison
 buttons in their own row. The executable was rebuilt and passed its expanded
 packaged smoke test. The 22 desktop tests and 18 party tests also pass at
-200% Qt scaling. Inno Setup is unavailable locally; no installer was built.
+200% Qt scaling. Inno Setup 6.7.3 is now installed, and the 0.5.0 installer
+compiled successfully to `dist/installer/Dnd5eCombatSimulator-Setup-0.5.0.exe`.
+The Linux/Python 3.10 and 3.12 CI jobs passed for the candidate. The user
+confirmed the remaining keyboard, Narrator, theme, and native Windows scaling
+checks all passed; see [accessibility validation](docs/accessibility.md).
 Target/action selection (step 3) is complete: attacks retarget in file order,
 ordinary attack choices use the current opponent's defenses, and regressions
 cover mixed immunities, explicit multiattacks, limited uses, spell action
@@ -176,9 +182,9 @@ Group-state regressions (step 4) now cover Pack Tactics and Sneak Attack ally
 eligibility after death/incapacitation, condition isolation on retargeting,
 concentration cleanup after death/incapacitation/failed saves, and reaction
 budgets shared across multiple opponents and refreshed on the next turn.
-Steps 1–5 and 7 are complete. Step 6 retains installer creation/lifecycle
-validation; the release review also records outstanding accessibility and
-Linux CI checks. No commit, release tag, or push was made.
+Steps 1–5 and 7 are complete. Step 6 retains isolated installer lifecycle
+validation, now running on the draft PR. The source candidate is committed
+and pushed for review. No merge, release tag, or release publication was made.
 Use `.\.venv\Scripts\python.exe` for this checkout: the system Python does
 not currently have the application or development dependencies installed.
 
