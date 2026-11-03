@@ -105,7 +105,8 @@ Windows executable are version 0.5.0. The executable passes its packaged
 smoke test, including party simulation and offscreen dialog checks.
 The user confirmed the packaged party-dialog flow works on 2026-11-03.
 The user also confirmed keyboard, Narrator, theme, and Windows scaling checks.
-The installer is built; isolated installer lifecycle validation is running.
+The installer is built, and isolated Windows install/upgrade/uninstall
+validation passes. The Linux/Python 3.10 and 3.12 CI matrix also passes.
 
 ### Next session - Party combat follow-up (recorded 2026-10-30)
 
@@ -136,14 +137,14 @@ Work through these steps in order:
    `python -m coverage run -m unittest discover -s tests -q`, and
    `python -m coverage report`. Also run the bundled
    `scenarios/party-battle.json` through the CLI with JSON export.
-6. [ ] Rebuild the Windows executable using `scripts/build_windows.ps1` (use
+6. [x] Rebuild the Windows executable using `scripts/build_windows.ps1` (use
    `-SkipDependencyInstall` when dependencies are already available), run its
    packaged smoke test, and manually check the packaged party dialog. Build and
    validate the installer when Inno Setup is available.
    - [x] Rebuild and run the packaged resource, parallel-simulation, party,
      and offscreen dialog smoke checks.
    - [x] Complete interactive packaged-dialog review on Windows.
-   - [ ] Build and validate an installer when Inno Setup and an isolated
+   - [x] Build and validate an installer when Inno Setup and an isolated
      Windows environment are available.
 7. [x] Update the validation checkpoint and release notes, review the complete
    diff, and prepare the 0.5.0 changes for commit/release review. Keep the
@@ -182,9 +183,12 @@ Group-state regressions (step 4) now cover Pack Tactics and Sneak Attack ally
 eligibility after death/incapacitation, condition isolation on retargeting,
 concentration cleanup after death/incapacitation/failed saves, and reaction
 budgets shared across multiple opponents and refreshed on the next turn.
-Steps 1–5 and 7 are complete. Step 6 retains isolated installer lifecycle
-validation, now running on the draft PR. The source candidate is committed
-and pushed for review. No merge, release tag, or release publication was made.
+All seven follow-up steps are complete. Linux/Python 3.10 and 3.12 CI passes,
+and [isolated Windows validation](https://github.com/dpmntmobile/d-d5ecombat/actions/runs/41714576790)
+passes clean install, synthetic-baseline upgrade, installed smoke tests, and
+uninstall after hardening the lifecycle subprocess runner's timeout handling.
+The candidate is committed and pushed in draft PR #2 for review. No merge,
+release tag, or release publication was made.
 Use `.\.venv\Scripts\python.exe` for this checkout: the system Python does
 not currently have the application or development dependencies installed.
 

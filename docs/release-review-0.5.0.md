@@ -1,6 +1,7 @@
 # 0.5.0 review record
 
-Prepared 2026-11-03. Candidate `3daa41e` is committed and pushed on
+Completed 2026-11-03. Implementation `3daa41e` and installer-runner follow-up
+`c22ae9e` are committed and pushed on
 `review/party-combat-0.5.0` in [draft PR #2](https://github.com/dpmntmobile/d-d5ecombat/pull/2).
 No merge or release tag has been made. The existing 1.0.0 readiness milestone
 remains later work.
@@ -49,8 +50,8 @@ Windows, Python 3.10.6, project `.venv`:
   export, cancellation, and safe close.
 - The local installer compiled successfully with Inno Setup 6.7.3:
   `dist/installer/Dnd5eCombatSimulator-Setup-0.5.0.exe`.
-- [Linux CI](https://github.com/dpmntmobile/d-d5ecombat/actions/runs/41704841952)
-  passed both Python 3.10 and 3.12 jobs for candidate `3daa41e`.
+- [Linux CI](https://github.com/dpmntmobile/d-d5ecombat/actions/runs/41714576695)
+  passed both Python 3.10 and 3.12 jobs for candidate `c22ae9e`.
 - The user confirmed the remaining accessibility checks all passed on
   2026-11-03: keyboard navigation/Escape, 150% and 200% Windows scaling,
   light/dark/high-contrast themes, and Narrator counts/settings/buttons/results.
@@ -58,7 +59,10 @@ Windows, Python 3.10.6, project `.venv`:
   timed out during lifecycle validation without retained logs. The lifecycle
   process runner now uses direct process handles, bounded waits, progress
   messages, and a transcript. Local probes verify successful exits, nonzero
-  exit rejection, timeout termination, and PowerShell syntax. CI is being retried.
+  exit rejection, timeout termination, and PowerShell syntax. The retry passed.
+- [Isolated Windows CI](https://github.com/dpmntmobile/d-d5ecombat/actions/runs/41714576790)
+  passed executable/installer builds, clean install, synthetic-baseline upgrade,
+  installed smoke tests, uninstall, and diagnostic log upload for `c22ae9e`.
 
 The automated dialog smoke uses the persistence helpers and loaded-composition
 state; the source GUI tests exercise the file-dialog callbacks with selected
@@ -67,7 +71,7 @@ party flow worked on 2026-11-03: multiple profiles, save/load, run/export,
 cancellation, and close. No issues were reported. This validates the packaged
 flow; a separate manual source-GUI run was not reported.
 
-## Remaining checks before distribution
+## Completed review checks
 
 - [x] Review the rebuilt executable interactively. Open **Party
   battle...**, select multiple characters/monster types, save/load a composition,
@@ -75,15 +79,17 @@ flow; a separate manual source-GUI run was not reported.
   Confirm the next-run summary and completed-result composition are clear.
 - [x] Check keyboard access, Windows display scaling,
   Narrator, and themes using the [accessibility checklist](accessibility.md).
-- [ ] Build the installer when Inno Setup is available. Run clean install,
+- [x] Build the installer when Inno Setup is available. Run clean install,
   upgrade, and uninstall validation on a disposable Windows environment;
   `scripts/test_windows_installer.ps1` deliberately requires a GitHub Actions
   runner. Synthetic-baseline upgrade tests do not prove historical binary
   compatibility.
 - [x] Run the Linux/Python 3.10 and 3.12 CI matrix.
 
-Inno Setup was installed during the final validation pass; installer compilation
-now passes. Isolated installer lifecycle checks are running on the draft PR,
-so README step 6 remains open pending their result. The packaged party-dialog
-flow and accessibility checks are user-validated. Creating/pushing a release tag publishes
-artifacts through the release workflow and requires approval after review.
+All README follow-up tasks are complete. The packaged party-dialog flow and
+accessibility checks are user-validated; installer compilation, lifecycle
+checks, and the Linux matrix pass. Synthetic-baseline upgrade testing does not
+establish compatibility with historical binaries, and installer shortcut
+usability was not separately tested. No merge or release publication occurred.
+Creating/pushing a release tag publishes artifacts through the release workflow
+and requires approval after review.

@@ -55,11 +55,14 @@ actions had no nonempty effect-exclusion entries. This audits recorded entries,
 not every preserved Roll20 feature. The [rules guide](supported-rules.md)
 defines the implemented subset and additional spell-policy constraints.
 
-## Outstanding release validation
+## Release validation checkpoint: 2026-11-03
 
-Installer validation needs an isolated Windows workflow run. Its synthetic older
-installer uses the current payload and does not test historical binaries. Manual
-keyboard, Narrator, theme, Windows scaling, and long-run checks remain in the
+Isolated Windows installer validation passed in
+[draft PR #2](https://github.com/dpmntmobile/d-d5ecombat/pull/2), including clean
+install, synthetic-baseline upgrade, installed smoke tests, and uninstall.
+The synthetic older installer uses the current payload and does not test
+historical binaries. Keyboard, Narrator, themes, Windows scaling, and the
+party-dialog flow are user-validated; see the
 [accessibility checklist](accessibility.md). The Windows executable was rebuilt
 on 2026-11-03 and passed its expanded packaged smoke test. All 540 tests pass,
 Ruff passes, and coverage is 83%; the desktop and party tests also pass with
@@ -72,4 +75,7 @@ User validation (2026-11-03): the rebuilt executable's party-dialog flow passed
 multiple-profile selection, save/load, run/export, cancellation, and close.
 The user also confirmed keyboard/Escape, 150% and 200% Windows scaling,
 light/dark/high-contrast themes, and Narrator checks all passed. No issues were
-reported. Isolated installer lifecycle validation is running in draft PR #2.
+reported. All recorded party-combat follow-up tasks are complete. The initial
+installer CI job timed out without diagnostics; the subprocess runner now uses
+direct process handles, bounded waits, progress messages, and transcript logs,
+and the retry passes. No merge or release publication has occurred.
