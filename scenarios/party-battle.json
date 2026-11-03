@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "party": ["../characters/amara_summerfield.json", "../characters/tobias_wren.json"],
+  "encounter": [
+    {"monster": "../monsters/goblin.json", "count": 3},
+    {"monster": "../monsters/wolf.json", "count": 1}
+  ]
+}

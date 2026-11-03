@@ -39,6 +39,19 @@ def run_smoke_test():
             raise RuntimeError("packaged parallel results differ from serial results")
         if tuple(row[2:] for row in getattr(serial, section).rows) != getattr(single_profile, section).rows:
             raise RuntimeError("packaged shared-pool results differ from serial results")
+    from .party_combat import MonsterGroup, PartyBattle, simulate_party_battle
+
+    battle = PartyBattle(tuple(c.value for c in characters.items[:2]),
+                         tuple(MonsterGroup(m.value, 2) for m in monsters.items[:2]))
+    result = simulate_party_battle(battle, trials=2, seed=42)
+    if result != simulate_party_battle(battle, trials=2, seed=42):
+        raise RuntimeError("packaged party results are not repeatable")
+    from importlib.util import find_spec
+
+    if find_spec("PySide6") is not None:
+        from .party_smoke import run_party_smoke_test
+
+        run_party_smoke_test()
     return 0
 
 

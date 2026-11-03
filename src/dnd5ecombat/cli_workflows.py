@@ -355,6 +355,27 @@ def run_single_combat_summary(
 @with_process_pools
 def main(argv=None):
     arguments = parse_args(argv)
+    if arguments.party_battle:
+        import json
+        from .party_combat import (
+            battle_report, load_battle, save_battle_results, simulate_party_battle,
+        )
+        from .result_export import _json_default
+
+        try:
+            battle = load_battle(arguments.party_battle)
+            result = simulate_party_battle(battle, arguments.trials, arguments.seed,
+                                          arguments.max_battle_rounds)
+            report = battle_report(battle, result, arguments.seed,
+                                   arguments.max_battle_rounds)
+            report["battle"] = str(Path(arguments.party_battle).resolve())
+            if arguments.export_results:
+                save_battle_results(report, arguments.export_results)
+        except (OSError, TypeError, ValueError) as error:
+            print(f"Could not simulate party battle: {error}", file=sys.stderr)
+            return 2
+        print(json.dumps(report, indent=2, default=_json_default))
+        return 0
     if arguments.character_files or arguments.monster_files or arguments.export_results:
         try:
             def load_items(paths, loader, initiative_bonus):

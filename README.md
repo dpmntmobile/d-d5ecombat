@@ -7,6 +7,71 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 - damage rolls and hit point reduction
 - saving throw effects with half-damage or no-damage outcomes
 - comparing attack scenarios and turn plans using repeated simulations
+- party-versus-encounter battles with multiple characters and monster counts
+
+## Party combat (0.5.0)
+
+Open the desktop app and click **Party battle...**. Set a count for each
+available character and monster type, then choose **Simulate battle**. The
+dialog supports saved battle files, trial counts, seeds, a round limit, and
+cancellation. Results show win/draw percentages and average rounds, HP, and
+survivors across all trials. **Export results...** saves JSON with the completed
+run's seed, round limit, application version, and full profile composition;
+changing the controls afterward does not change those exported inputs.
+The **Next run** summary identifies the selected composition independently of
+the completed results. **Load battle...** also accepts profiles outside the catalog;
+the loaded composition appears in the result panel. Changing a catalog count
+switches back to the catalog composition.
+
+Run the included example from the project directory:
+
+```powershell
+python -m dnd5ecombat --party-battle scenarios/party-battle.json --trials 1000 --seed 42
+python -m dnd5ecombat --party-battle scenarios/party-battle.json --trials 1000 --export-results battle-results.json
+```
+
+Battle files reference existing character profiles (native or Roll20) and
+monster profiles. Paths are relative to the battle file, so files saved from
+the desktop dialog can also be run from the CLI:
+
+```json
+{
+  "version": 1,
+  "party": ["../characters/amara_summerfield.json", "../characters/tobias_wren.json"],
+  "encounter": [
+    {"monster": "../monsters/goblin.json", "count": 3},
+    {"monster": "../monsters/wolf.json", "count": 1}
+  ]
+}
+```
+
+Each creature rolls initiative once per trial and retains its own HP,
+conditions, action uses, spell slots, concentration, and reactions. Repeated
+names and repeated profiles remain separate combatants. Every trial starts
+with fresh state. Results include win/draw rates and average rounds, remaining
+HP, and survivors for both sides, averaged over all trials.
+
+This first party mode uses abstract positioning and one worker. Combatants
+focus the first living opponent in file order and transfer remaining attacks
+to the next living opponent after a kill.
+Active allies count as nearby for Pack Tactics and eligible Sneak Attack.
+Existing damage, multiattack, save-action, condition, resource, and supported
+spell rules apply. Support spells retain the duel targeting rules: healing
+and Bless target self; hostile effects target one opponent. Area effects,
+ally healing/buff selection, terrain, death saves, and resurrection are not
+modeled. Battles still in progress at `--max-battle-rounds` (default 100) count
+as draws. Ordinary attack actions choose available attacks against the current
+opponent's AC, damage defenses, and supported survival traits. Remaining weapon
+attacks can choose another weapon after retargeting; they cannot become extra
+spell casts. Explicit turn plans and monster multiattacks keep their selected
+entries, with the existing resource/fallback rules. First-hit bonuses, action
+uses, spell slots, and bonus actions do not reset when targets change. Save,
+bonus-action, and support choices are scored at the start of the turn; plans
+are not rebuilt after a kill. Results do not establish optimal tactics.
+Other duel/scenario flags do not configure party battles.
+
+The source version is 0.5.0. Historical release checkpoints below describe
+earlier versions; no new release tag is created by these changes.
 
 ## Project layout
 
@@ -22,10 +87,100 @@ A lightweight Python project for modeling simple D&D 5e combat outcomes, includi
 
 ## Project status and roadmap
 
-Last reviewed: 2026-10-08. The spell-extension checkpoint below records the
-current source validation. The Windows executable was rebuilt and smoke
-tested on 2026-10-07 and includes the spell extension.
-The application version remains 0.4.0 pending the next release.
+### 0.5.0 - Party combat (implementation steps)
+
+1. [x] Define reusable parties from existing character files and encounters
+   from monster files with a positive count per type.
+2. [x] Extend the combat engine to run all members in one initiative order,
+   keeping independent HP, conditions, resources, and reactions per creature.
+3. [x] Report party wins, encounter wins, draws, rounds, survivors, and HP
+   across repeatable seeded trials, with cancellation and a round limit.
+4. [x] Add CLI and desktop entry points and reusable battle JSON files.
+5. [x] Test group combat, repeated monster instances, persistence, and existing
+   duel compatibility; document usage and supported assumptions.
+
+Validated on 2026-11-03 with Python 3.10 on Windows: all 540 tests pass,
+Ruff passes, and total coverage is 83%. The editable package and rebuilt
+Windows executable are version 0.5.0. The executable passes its packaged
+smoke test, including party simulation and offscreen dialog checks.
+The user confirmed the packaged party-dialog flow works on 2026-11-03.
+Installer creation and the remaining accessibility checks are pending.
+
+### Next session - Party combat follow-up (recorded 2026-10-30)
+
+Current checkpoint: **0.5.0**, updated 2026-11-03. Source, editable package,
+and `dist/Dnd5eCombatSimulator.exe` include the party-combat follow-up.
+Changes remain uncommitted. See the [release review](docs/release-review-0.5.0.md)
+for validation evidence and remaining manual checks.
+
+Work through these steps in order:
+
+1. [x] Manually review the desktop flow in the source GUI or rebuilt executable:
+   open **Party battle...**, select multiple characters and monster types,
+   save/load a battle, run trials, cancel a longer run, and close the dialog.
+   Check that the loaded composition and the next composition to run are clear.
+2. [x] Improve the battle results display: show readable win/draw percentages,
+   average rounds, HP, and survivors; add desktop result export and retain the
+   seed, composition, and round limit with exported results.
+3. [x] Improve target and action selection: allow remaining attacks to retarget
+   after a kill and choose attacks against the current opponent's defenses.
+   Keep explicit multiattack and resource limits legal, document the target
+   policy, and add focused regressions for mixed monster types.
+4. [x] Extend group-state tests for ally eligibility after death/incapacitation,
+   concentration cleanup, conditions, and reactions across multiple opponents.
+   Preserve seeded repeatability and existing one-on-one duel behavior.
+5. [x] Revalidate after changes:
+   `python -m ruff check .`,
+   `python -m coverage run -m unittest discover -s tests -q`, and
+   `python -m coverage report`. Also run the bundled
+   `scenarios/party-battle.json` through the CLI with JSON export.
+6. [ ] Rebuild the Windows executable using `scripts/build_windows.ps1` (use
+   `-SkipDependencyInstall` when dependencies are already available), run its
+   packaged smoke test, and manually check the packaged party dialog. Build and
+   validate the installer when Inno Setup is available.
+   - [x] Rebuild and run the packaged resource, parallel-simulation, party,
+     and offscreen dialog smoke checks.
+   - [x] Complete interactive packaged-dialog review on Windows.
+   - [ ] Build and validate an installer when Inno Setup and an isolated
+     Windows environment are available.
+7. [x] Update the validation checkpoint and release notes, review the complete
+   diff, and prepare the 0.5.0 changes for commit/release review. Keep the
+   existing 1.0.0 readiness milestone as later work. Creating/pushing a release
+   tag publishes artifacts through the release workflow and requires approval
+   after review.
+
+Later party-combat extensions: ally healing and buff targeting, area effects,
+configurable targeting policies, battlefield positioning, and parallel trials.
+These remain future scope; the current targeting and spell limits are documented
+in the Party combat section above.
+
+Follow-up progress (2026-11-03): step 2 is implemented for desktop and CLI
+exports, including full effective profile snapshots. Automated desktop checks
+cover selection, save/load, background completion, cancellation/close safety,
+and exporting the completed run after controls change. The user confirmed the
+rebuilt executable's party-dialog review passed: multiple profiles, save/load,
+run/export, cancellation, and close all worked. This completes step 1 and the
+interactive packaged-dialog portion of step 6.
+Validation after step 4: all 540 tests pass on Windows/Python 3.10 with Qt offscreen,
+Ruff and `git diff --check` pass, and total coverage is 83%. The bundled
+battle completed 1,000 seeded CLI trials with JSON export. The small-window
+regression exposed by the added party button is fixed by placing comparison
+buttons in their own row. The executable was rebuilt and passed its expanded
+packaged smoke test. The 22 desktop tests and 18 party tests also pass at
+200% Qt scaling. Inno Setup is unavailable locally; no installer was built.
+Target/action selection (step 3) is complete: attacks retarget in file order,
+ordinary attack choices use the current opponent's defenses, and regressions
+cover mixed immunities, explicit multiattacks, limited uses, spell action
+budgets, first-hit riders, reaction interruption, and seeded repeatability.
+Group-state regressions (step 4) now cover Pack Tactics and Sneak Attack ally
+eligibility after death/incapacitation, condition isolation on retargeting,
+concentration cleanup after death/incapacitation/failed saves, and reaction
+budgets shared across multiple opponents and refreshed on the next turn.
+Steps 1–5 and 7 are complete. Step 6 retains installer creation/lifecycle
+validation; the release review also records outstanding accessibility and
+Linux CI checks. No commit, release tag, or push was made.
+Use `.\.venv\Scripts\python.exe` for this checkout: the system Python does
+not currently have the application or development dependencies installed.
 
 This checklist is the project's planning record. Check an item only after its
 implementation, tests, and relevant documentation are complete. Add newly

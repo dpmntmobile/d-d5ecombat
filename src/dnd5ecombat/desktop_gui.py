@@ -181,6 +181,10 @@ class CombatSimulatorWindow(QMainWindow):
         self._restore_settings()
         self._selection_changed()
 
+    def _party_battle(self):
+        from .party_dialog import PartyBattleDialog
+        PartyBattleDialog(self).exec()
+
     def _build_ui(self):
         central = QWidget()
         outer = QVBoxLayout(central)
@@ -288,9 +292,14 @@ class CombatSimulatorWindow(QMainWindow):
         action_row = QHBoxLayout()
         action_row.addStretch(1)
         action_row.addWidget(self.run_button)
+        comparison_row = QHBoxLayout()
+        comparison_row.addStretch(1)
         self.roster_button = QPushButton("Compare multiple...")
         self.roster_button.clicked.connect(self._choose_roster)
-        action_row.addWidget(self.roster_button)
+        comparison_row.addWidget(self.roster_button)
+        self.party_button = QPushButton("Party battle...")
+        self.party_button.clicked.connect(self._party_battle)
+        comparison_row.addWidget(self.party_button)
         action_row.addWidget(self.cancel_button)
         selection_layout.addLayout(controls)
         self.setup_scroll = QScrollArea()
@@ -299,6 +308,7 @@ class CombatSimulatorWindow(QMainWindow):
         self.setup_scroll.setMinimumHeight(120)
         self.setup_scroll.setAccessibleName("Combat setup")
         outer.addWidget(self.setup_scroll, 1)
+        outer.addLayout(comparison_row)
         outer.addLayout(action_row)
         self.tabs = QTabWidget()
         self.attack_page = ResultsPage("attack-results")
