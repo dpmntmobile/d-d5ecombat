@@ -1,7 +1,24 @@
 # Release readiness notes ? unreleased
 
-The application remains version 0.4.0. These notes record local work for the
-1.0 readiness milestone; no release or tag has been created.
+The source application version is 0.5.0. Party combat adds saved character
+parties, counted monster groups, shared initiative, independent creature state,
+seeded trial statistics, CLI JSON export, and a cancellable desktop dialog.
+The party dialog now shows win/draw percentages and average rounds, HP, and
+survivors, with a separate next-run composition summary. Desktop and CLI JSON
+exports retain the completed run's seed, round limit, application version,
+and full effective character/monster profiles. Desktop settings are disabled
+during simulation; changing them afterward preserves the completed export.
+Remaining party-battle attacks now retarget after a kill. Ordinary attacks
+select against the current opponent's defenses; explicit multiattacks and
+turn plans retain their chosen entries. Resource pools, spell action limits,
+and once-per-turn bonuses remain shared across targets within a turn.
+Group-state regressions cover ally eligibility for Pack Tactics and Sneak
+Attack after death/incapacitation, condition isolation when retargeting,
+concentration cleanup, and reactions across multiple opponents. The packaged
+smoke test now exercises repeatable party battles and the offscreen party
+dialog, including composition persistence, results, export, and cancellation.
+See the README for battle file examples and targeting limitations. No release
+or tag has been created. The earlier work below records the 1.0 readiness milestone.
 
 ## Prepared changes
 
@@ -21,7 +38,7 @@ These limitations remain documented rather than expanded in this milestone.
 | --- | --- |
 | Wolf | Keen Hearing and Smell remains in `unmodeled_traits`; sensory perception benefits are not simulated. |
 | Character features | Preserved Roll20 traits, inventory, and spell text may lack combat mappings. Empty exclusion lists do not establish complete feature support. |
-| Multiple creatures | Roster comparisons are independent pairs. No party encounters, area targeting, ally turns, or ally healing/buffs. Bless and Cure Wounds target self. |
+| Multiple creatures | Party battles use shared initiative and counted monster groups; roster comparisons remain independent pairs. No area targeting or ally healing/buff selection. Bless and Cure Wounds target self. |
 | Battlefield | One separation distance, without terrain, cover, elevation, obstacles, hazardous paths, or complete perception/hearing. |
 | Reactions | No general opportunity attacks or arbitrary reactions. Supported exceptions include Hellish Rebuke, Nimble Escape repositioning, and Dissonant Whispers fleeing with one eligible caster melee opportunity attack. |
 | Spells | Arbitrary secondary effects, components, and concentration effects require mappings. Attack spells resolve one attack roll; repeated attacks do not model multiple rays/beams per casting. |
@@ -38,10 +55,27 @@ actions had no nonempty effect-exclusion entries. This audits recorded entries,
 not every preserved Roll20 feature. The [rules guide](supported-rules.md)
 defines the implemented subset and additional spell-policy constraints.
 
-## Outstanding release validation
+## Release validation checkpoint: 2026-11-03
 
-Installer validation needs an isolated Windows workflow run. Its synthetic older
-installer uses the current payload and does not test historical binaries. Manual
-keyboard, Narrator, theme, Windows scaling, and long-run checks remain in the
+Isolated Windows installer validation passed in
+[draft PR #2](https://github.com/dpmntmobile/d-d5ecombat/pull/2), including clean
+install, synthetic-baseline upgrade, installed smoke tests, and uninstall.
+The synthetic older installer uses the current payload and does not test
+historical binaries. Keyboard, Narrator, themes, Windows scaling, and the
+party-dialog flow are user-validated; see the
 [accessibility checklist](accessibility.md). The Windows executable was rebuilt
-on 2026-10-08 and passed its packaged smoke test with the GUI and tooltip changes.
+on 2026-11-03 and passed its expanded packaged smoke test. All 540 tests pass,
+Ruff passes, and coverage is 83%; the desktop and party tests also pass with
+200% Qt scaling. Inno Setup 6.7.3 was installed and the 0.5.0 installer compiled
+successfully. Both Linux/Python 3.10 and 3.12 CI jobs passed in draft PR #2.
+See the [0.5.0 review record](release-review-0.5.0.md) for validation evidence
+and commit/release scope.
+
+User validation (2026-11-03): the rebuilt executable's party-dialog flow passed
+multiple-profile selection, save/load, run/export, cancellation, and close.
+The user also confirmed keyboard/Escape, 150% and 200% Windows scaling,
+light/dark/high-contrast themes, and Narrator checks all passed. No issues were
+reported. All recorded party-combat follow-up tasks are complete. The initial
+installer CI job timed out without diagnostics; the subprocess runner now uses
+direct process handles, bounded waits, progress messages, and transcript logs,
+and the retry passes. No merge or release publication has occurred.

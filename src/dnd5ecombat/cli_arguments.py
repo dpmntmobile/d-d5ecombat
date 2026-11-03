@@ -11,6 +11,9 @@ def parse_args(argv=None):
         description="Compare simple D&D 5e combat options with seeded simulations."
     )
     parser.add_argument("--scenario", help="Load encounter settings from a JSON file.")
+    parser.add_argument("--party-battle", metavar="FILE", help="Simulate a saved party versus encounter battle JSON.")
+    parser.add_argument("--max-battle-rounds", type=int, default=100,
+                        help="Round limit per party battle trial; unfinished battles are draws.")
     parser.add_argument("--export-results", metavar="FILE",
                         help="Export profile comparison tables and run metadata to JSON; requires character and monster files.")
     parser.add_argument("--character-files", nargs="+", help="Character profiles to compare as a roster.")
@@ -128,6 +131,15 @@ def parse_args(argv=None):
     parser.add_argument("--rest-before-duel", choices=("none", "short", "long"), default="none",
                         help="Recover slot capacities before each duel trial.")
     arguments = parser.parse_args(argv)
+    if arguments.party_battle:
+        if any((arguments.gui, arguments.interactive, arguments.scenario,
+                arguments.save_scenario, arguments.character_files,
+                arguments.monster_files, arguments.character_file,
+                arguments.target_file, arguments.duels)):
+            parser.error("--party-battle uses profiles from its battle file; run it separately from other modes.")
+        if arguments.workers != 1 or arguments.starting_distance_feet is not None:
+            parser.error("Party battles currently require one worker and abstract positioning.")
+        return arguments
     if arguments.export_results:
         if arguments.gui or arguments.interactive or arguments.save_scenario:
             parser.error("Result export requires a non-interactive simulation run.")

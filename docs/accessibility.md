@@ -1,5 +1,20 @@
 # Desktop accessibility and usability
 
+## Party-combat validation: 2026-11-03
+
+The user confirmed all remaining checks passed in the rebuilt 0.5.0 app:
+Tab/Shift+Tab navigation through Party battle, Escape cancellation/close,
+readability at 150% and 200% Windows scaling, light/dark/high-contrast themes,
+and Narrator announcements for profile counts, run settings, buttons, and
+results. No issues were reported. The packaged selection/save/load/run/export/
+cancel/close flow was also confirmed separately on the same date.
+
+Automated checks passed all 540 tests, including the desktop and party tests
+at 200% Qt scaling, and the expanded frozen-application smoke test. The earlier
+checkpoint below remains the historical review of the main desktop workflow.
+
+## Main desktop workflow
+
 Buttons, checkboxes, and selection controls include hover explanations of their
 behavior, including encounter assumptions, resource choices, and editor actions.
 Numeric simulation settings also explain their effect on a run.

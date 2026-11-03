@@ -1,7 +1,7 @@
 # Supported simulation rules
 
 This describes the current source implementation, including the local spell
-extension to version 0.4.0. The project models a selected subset of 2014-style
+extension and party combat in version 0.5.0. The project models a selected subset of 2014-style
 D&D combat. It is not a complete rules adjudicator, a 2024 rules mode, or an
 optimal-play solver. The behavior below describes the software, rather than
 making claims about every tabletop rule.
@@ -14,8 +14,13 @@ making claims about every tabletop rule.
 | Turns | Repeated selected attack plans needed to reach zero HP | Ordered attacks and first-hit bonus damage; not two-sided tactical combat. |
 | Saves | Repeated damaging save actions needed to reach zero HP | Save success can cause half or no damage; no resource depletion or ongoing spell riders. |
 | Duels | Win rate, combat length, remaining HP, and initiative outcomes | Two combatants take turns, spend resources, move when positioning is enabled, and apply supported conditions/spells. |
+| Party battles | Party/encounter win rates, draws, rounds, remaining HP, and survivors | All characters and counted monster instances share initiative; each keeps separate resources and conditions. Abstract positioning, one worker; attacks target the first living opponent in file order and retarget after a kill. Ordinary attacks select against the current opponent's defenses; explicit plans and multiattacks retain their selected entries and resource limits. |
 
-Roster comparisons run multiple independent pairings, not a party encounter.
+Roster comparisons run multiple independent pairings. Use the separate party
+battle mode for a shared fight, with saved compositions described in the README.
+Active, surviving allies qualify as nearby in this abstract mode; no area
+targeting, ally healing/buff selection, or mid-turn retargeting is modeled.
+Party battles reaching their round limit are recorded as draws.
 Each trial resets HP, resources, and conditions. A round limit can end an
 unfinished duel without a winner. Seeded Monte Carlo estimates include sampling
 uncertainty; exact attack analytics apply to the attack model, not the entire duel.

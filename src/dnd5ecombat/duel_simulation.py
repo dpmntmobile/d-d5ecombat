@@ -156,6 +156,8 @@ def simulate_duel(
     seed=None,
     rng=None,
     cancellation_check=None,
+    *,
+    _battle=None,
 ):
     """Simulate initiative-ordered attack turns until one combatant reaches 0 HP."""
     _validate_trials(trials)
@@ -209,7 +211,7 @@ def simulate_duel(
             )
         )
 
-    if not can_damage(matchup.character, matchup.monster) and not can_damage(
+    if _battle is None and not can_damage(matchup.character, matchup.monster) and not can_damage(
         matchup.monster, matchup.character
     ):
         raise ValueError("duel cannot end because neither combatant can deal damage")
@@ -240,10 +242,28 @@ def simulate_duel(
         "character": matchup.character,
         "monster": matchup.monster,
     }
-    participants = (
-        InitiativeParticipant("character", matchup.character.initiative_bonus),
-        InitiativeParticipant("monster", matchup.monster.initiative_bonus),
+    if _battle is not None:
+        combatants = _battle.combatants
+    flexible_attacks = set()
+    if _battle is not None:
+        flexible_attacks.update(f"character:{i}" for i in range(len(_battle.party)))
+        flexible_attacks.update(
+            f"monster:{i}:{instance}"
+            for i, group in enumerate(_battle.encounter)
+            if not group.profile.multiattack
+            for instance in range(group.count)
+        )
+    sides = {
+        key: (key.split(":")[0] if _battle is not None else key)
+        for key in combatants
+    }
+    participants = tuple(
+        InitiativeParticipant(key, member.initiative_bonus)
+        for key, member in combatants.items()
     )
+    battle_totals = dict(party_wins=0, encounter_wins=0, draws=0,
+                         total_rounds=0, party_hp=0, encounter_hp=0,
+                         party_survivors=0, encounter_survivors=0)
 
     for trial_number in range(1, trials + 1):
         _check_cancellation(cancellation_check)
@@ -252,11 +272,8 @@ def simulate_duel(
         if turn_order[0] == "character":
             character_initiative_wins += 1
 
-        hit_points = {
-            "character": matchup.character.max_hp,
-            "monster": matchup.monster.max_hp,
-        }
-        conditions = {"character": ConditionState(), "monster": ConditionState()}
+        hit_points = {key: member.max_hp for key, member in combatants.items()}
+        conditions = {key: ConditionState() for key in combatants}
         resources = {
             key: AttackResources(
                 combatant.attack_sequence
@@ -275,13 +292,27 @@ def simulate_duel(
         if matchup.rest_before_duel != "none":
             for state in resources.values():
                 state.rest(matchup.rest_before_duel)
-        hidden = {"character": False, "monster": False}
+        hidden = dict.fromkeys(combatants, False)
         spells = DuelSpellState(combatants, hit_points, conditions, resources, hidden, random_source)
         distance = matchup.starting_distance_feet
         trial_rounds = 0
-        while hit_points["character"] > 0 and hit_points["monster"] > 0:
+        def alive(side):
+            return any(hit_points[k] > 0 for k in combatants if sides[k] == side)
+
+        def assumption(key, suffix):
+            if _battle is None:
+                return getattr(matchup, f"{key}_{suffix}")
+            if suffix == "ally_near_target":
+                return any(k != key and sides[k] == sides[key] and hit_points[k] > 0
+                           and not conditions[k].has_rule("prevents_actions")
+                           for k in combatants)
+            return 30 if suffix == "speed_feet" else False
+
+        while alive("character") and alive("monster"):
             _check_cancellation(cancellation_check)
             if trial_rounds >= max_rounds_per_trial:
+                if _battle is not None:
+                    break
                 raise RuntimeError(
                     f"trial {trial_number} exceeded "
                     f"max_rounds_per_trial={max_rounds_per_trial}"
@@ -289,7 +320,13 @@ def simulate_duel(
             trial_rounds += 1
 
             for attacker_key in turn_order:
-                defender_key = "monster" if attacker_key == "character" else "character"
+                if hit_points[attacker_key] <= 0:
+                    continue
+                opponents = [k for k in combatants
+                             if sides[k] != sides[attacker_key] and hit_points[k] > 0]
+                if not opponents:
+                    break
+                defender_key = opponents[0]
                 attacker = combatants[attacker_key]
                 defender = combatants[defender_key]
                 spells.start_turn(attacker_key)
@@ -298,7 +335,7 @@ def simulate_duel(
                 can_act = not attacker_conditions.has_rule("prevents_actions")
                 can_move = not attacker_conditions.has_rule("prevents_movement")
                 speed = (
-                    getattr(matchup, f"{attacker_key}_speed_feet") if can_move else 0
+                    assumption(attacker_key, "speed_feet") if can_move else 0
                 )
                 movement = speed
                 if can_move and (not positioned or speed > 0):
@@ -306,10 +343,8 @@ def simulate_duel(
                         movement /= 2
                 attacker_resources = resources[attacker_key]
                 attacker_resources.start_turn(random_source)
-                attack_sequence = attacker_resources.plan(
-                    attacker.attack_sequence,
-                    attacker.fallback_attacks,
-                    lambda available: select_best_attack(
+                def choose_attack(available):
+                    return select_best_attack(
                         available,
                         defender.armor_class,
                         defender.damage_resistances,
@@ -319,15 +354,25 @@ def simulate_duel(
                         target_hp=hit_points[defender_key],
                         constitution_save_bonus=defender.get_saving_throw_bonus("con"),
                         attacks_per_action=max(1, len(attacker.attack_sequence)),
-                    ),
+                    )
+
+                preferred = attacker.attack_sequence
+                if attacker_key in flexible_attacks:
+                    available = tuple(a for a in attacker.fallback_attacks
+                                      if attacker_resources.available(a))
+                    if available:
+                        preferred = (choose_attack(available),) * max(1, len(preferred))
+                attack_sequence = attacker_resources.plan(
+                    preferred, attacker.fallback_attacks, choose_attack,
                 )
                 entries = tuple(
                     (i, AttackScenario(a.name, a))
                     for i, a in enumerate(attack_sequence)
                 )
                 bonus_policy = None
+                base_entries = entries
                 attack_damage = 0.0
-                nearby_ally = getattr(matchup, f"{attacker_key}_ally_near_target")
+                nearby_ally = assumption(attacker_key, "ally_near_target")
                 tactical_advantage = attacker.pack_tactics and nearby_ally
                 if can_act and (
                     attacker.turn_plans
@@ -351,10 +396,11 @@ def simulate_duel(
                         nearby_ally=nearby_ally,
                         save_utility=lambda effect: spells.mockery_value(
                             effect, attacker_key, defender_key, distance,
-                            defender.pack_tactics and getattr(matchup, f"{defender_key}_ally_near_target"),
+                            defender.pack_tactics and assumption(defender_key, "ally_near_target"),
                         ),
                     )
                     attack_sequence = tuple(s.attack for _, s in entries)
+                flexible_sequence = attacker_key in flexible_attacks and entries == base_entries
                 support = None
                 if can_act and attacker.support_spells:
                     support = spells.choose_support(
@@ -412,7 +458,7 @@ def simulate_duel(
                     and attacker.nimble_escape
                     and not bonus_used
                     and not hidden[attacker_key]
-                    and getattr(matchup, f"{attacker_key}_can_hide")
+                    and assumption(attacker_key, "can_hide")
                 ):
                     stealth = random_source.randint(1, 20)
                     if Condition.POISONED in attacker_conditions:
@@ -429,7 +475,30 @@ def simulate_duel(
                 first_hit_available = True
                 weapon_action_attempted = False
                 for attack_index, scenario in entries:
+                    if _battle is not None:
+                        if hit_points[attacker_key] <= 0 or attacker_conditions.has_rule("prevents_actions"):
+                            break
+                        if hit_points[defender_key] <= 0:
+                            opponents = [k for k in combatants
+                                         if sides[k] != sides[attacker_key] and hit_points[k] > 0]
+                            if not opponents:
+                                break
+                            defender_key = opponents[0]
+                            defender = combatants[defender_key]
+                        nearby_ally = assumption(attacker_key, "ally_near_target")
+                        tactical_advantage = attacker.pack_tactics and nearby_ally
+                        # Only an ordinary Attack action may change weapons between
+                        # attacks. Explicit plans/multiattacks retain their entries;
+                        # a spell cannot replace a remaining Extra Attack.
+                        if flexible_sequence and scenario.attack.spell_slot_level is None:
+                            available = tuple(a for a in attacker.fallback_attacks
+                                              if a.spell_slot_level is None
+                                              and attacker_resources.available(a))
+                            if available:
+                                scenario = replace(scenario, attack=choose_attack(available))
                     attack = scenario.attack
+                    if _battle is not None and not attacker_resources.available(attack):
+                        continue
                     defender_conditions = conditions[defender_key]
                     in_range, advantage, disadvantage, critical = attack_flags(
                         scenario,
@@ -487,10 +556,10 @@ def simulate_duel(
                         if prepared.next_attack_disadvantage or prepared.next_save_penalty or prepared.flee_on_failed_save:
                             distance = spells.apply_save_riders(
                                 prepared, attacker_key, defender_key, result.saving_throw.success,
-                                distance, getattr(matchup, f"{defender_key}_speed_feet"))
+                                distance, assumption(defender_key, "speed_feet"))
                         if spells.handles_damage:
                             spells.damaged(defender_key, attacker_key, result.applied_damage, distance)
-                        if hit_points[defender_key] == 0 or hit_points[attacker_key] == 0:
+                        if hit_points[attacker_key] == 0 or (_battle is None and hit_points[defender_key] == 0):
                             break
                         continue
                     conditional_bonus = first_hit_dice(
@@ -531,7 +600,9 @@ def simulate_duel(
                     hit_points[defender_key] = result.remaining_hp
                     if hit_points[defender_key] == 0 or hit_points[attacker_key] == 0:
                         spells.check_incapacitated()
-                        break
+                        if _battle is None or hit_points[attacker_key] == 0:
+                            break
+                        continue
 
                     effect = attack.condition_effect
                     if result.attack.hit and effect is not None:
@@ -559,8 +630,19 @@ def simulate_duel(
                 attacker_conditions.end_turn(
                     attacker, resolve_saving_throw, random_source
                 )
-                if hit_points[defender_key] == 0 or hit_points[attacker_key] == 0:
+                if _battle is None and (hit_points[defender_key] == 0 or hit_points[attacker_key] == 0):
                     break
+
+        if _battle is not None:
+            battle_totals["total_rounds"] += trial_rounds
+            outcome = ("party_wins" if not alive("monster") else
+                       "encounter_wins" if not alive("character") else "draws")
+            battle_totals[outcome] += 1
+            for side, prefix in (("character", "party"), ("monster", "encounter")):
+                remaining = [hit_points[k] for k in combatants if sides[k] == side]
+                battle_totals[prefix + "_hp"] += sum(remaining)
+                battle_totals[prefix + "_survivors"] += sum(hp > 0 for hp in remaining)
+            continue
 
         total_rounds += trial_rounds
         if hit_points["monster"] == 0:
@@ -570,6 +652,9 @@ def simulate_duel(
             monster_wins += 1
             total_monster_remaining_hp += hit_points["monster"]
 
+    if _battle is not None:
+        from .party_combat import BattleResult
+        return BattleResult(trials=trials, **battle_totals)
     return DuelSimulationResult(
         trials=trials,
         character_wins=character_wins,

@@ -18,18 +18,38 @@ if (Test-Path -LiteralPath $RegistryPath) {
 }
 New-Item -ItemType Directory -Path $TestRoot | Out-Null
 
-function Invoke-CheckedProcess([string]$File, [string[]]$Arguments) {
+function Invoke-CheckedProcess([string]$File, [string[]]$Arguments, [int]$TimeoutMilliseconds = 300000) {
     Write-Output "Starting: $File"
-    $Process = Start-Process -FilePath $File -ArgumentList $Arguments -WindowStyle Hidden -PassThru
-    if (-not $Process.WaitForExit(300000)) {
-        $Process.Kill()
-        throw "Process timed out: $File"
+    # Use a direct process handle. Shell launching can block before it returns
+    # a handle on a noninteractive runner, defeating WaitForExit's timeout.
+    $Process = New-Object System.Diagnostics.Process
+    $Process.StartInfo.FileName = $File
+    $Process.StartInfo.Arguments = $Arguments -join " "
+    $Process.StartInfo.UseShellExecute = $false
+    $Process.StartInfo.CreateNoWindow = $true
+    $Elapsed = [System.Diagnostics.Stopwatch]::StartNew()
+    try {
+        if (-not $Process.Start()) { throw "Could not start: $File" }
+        $NextProgress = 15000
+        while (-not $Process.WaitForExit(1000)) {
+            if ($Elapsed.ElapsedMilliseconds -ge $TimeoutMilliseconds) {
+                $Process.Kill()
+                throw "Process timed out: $File"
+            }
+            if ($Elapsed.ElapsedMilliseconds -ge $NextProgress) {
+                Write-Output "Waiting for $File ($([int]$Elapsed.Elapsed.TotalSeconds)s)"
+                $NextProgress += 15000
+            }
+        }
+        if ($Process.ExitCode -ne 0) {
+            throw "Process failed ($($Process.ExitCode)): $File"
+        }
+        Write-Output "Completed: $File"
     }
-    $Process.WaitForExit()
-    if ($Process.ExitCode -ne 0) {
-        throw "Process failed ($($Process.ExitCode)): $File"
+    finally {
+        $Elapsed.Stop()
+        $Process.Dispose()
     }
-    Write-Output "Completed: $File"
 }
 
 function Assert-Installation([string]$Version) {
@@ -50,6 +70,8 @@ function Assert-Installation([string]$Version) {
 }
 
 Push-Location $ProjectDirectory
+$Transcript = Join-Path $ProjectDirectory "dist\installer-lifecycle.log"
+Start-Transcript -Path $Transcript -Force | Out-Null
 try {
     $Version = (& $Python scripts\project_version.py).Trim()
     if ($LASTEXITCODE -ne 0 -or -not $Version) { throw "Cannot read application version." }
@@ -86,5 +108,6 @@ try {
 finally {
     Write-Output "Collecting installer logs from $TestRoot"
     Copy-Item -Path (Join-Path $TestRoot "*.log") -Destination (Join-Path $ProjectDirectory "dist") -ErrorAction SilentlyContinue
+    Stop-Transcript | Out-Null
     Pop-Location
 }
